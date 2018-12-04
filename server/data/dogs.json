@@ -1,10 +1,30 @@
 [
-{
-  "name": "Lewis",
-  "type": "King Charles Cavalier"
-}, 
-{
-  "name": "Katie Rose", 
-  "type": "King Charles Cavalier"
-}
+  {
+    "name": "Lewis",
+    "type": "King Charles Cavalier",
+    "isAdopted": true
+  },
+  {
+    "name": "Katie Rose",
+    "type": "King Charles Cavalier",
+    "isAdopted": true
+  },
+  {
+    "id": "jOyPhy0S_"
+  },
+  {
+    "id": "E6iVbzvu0"
+  },
+  {
+    "id": "-fwMTDL4U"
+  },
+  {
+    "id": "UAJuGlgXL"
+  },
+  {
+    "name": "Lola",
+    "type": "Poodle",
+    "isAdopted": true,
+    "id": "kIUqFFE1I"
+  }
 ]

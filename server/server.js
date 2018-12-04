@@ -9,6 +9,11 @@ function readData() {
   return JSON.parse(data);
 }
 
+function saveData(dogs) {
+  const json = JSON.stringify(dogs, true, 2);
+  fs.writeFileSync('./data/dogs.json', json);
+}
+
 app.use(express.json()); 
 
 app.get('/api/dogs', (req, res) => {
@@ -21,7 +26,7 @@ app.post('/api/dogs', (req, res) => {
   const dog = req.body; 
   dog.id = shortid.generate(); 
   dogs.push(dog); 
-  // saveData(dogs);
+  saveData(dogs);
 
   res.json(dog);
 
