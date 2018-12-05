@@ -4,10 +4,11 @@ export default {
       .then(response => response.json());
   }, 
   addDogs(dog) {
+    console.log(dog); 
     return fetch('/api/dogs', {
       method: 'POST', 
       headers: {
-        'Content-type': 'application/json'
+        'Content-Type': 'application/json'
       }, 
       body: JSON.stringify(dog)
     })

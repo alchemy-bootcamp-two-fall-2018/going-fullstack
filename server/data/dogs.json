@@ -32,5 +32,15 @@
     "type": "Poodle/Australian Shepard",
     "isAdopted": true,
     "id": "dOeNcJ4kN"
+  },
+  {
+    "name": "Coco",
+    "type": "Poodle/Austrialian Shepard",
+    "isAdopted": true,
+    "id": "J9YQQpJMC"
+  },
+  {
+    "name": "Lews",
+    "id": "J_qs8Nmcw"
   }
 ]

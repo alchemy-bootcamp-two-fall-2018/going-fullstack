@@ -8,8 +8,9 @@
       <li v-for="dog in dogs"
       :key="dog.id">
 
-      {{dog.name}} and their breed is {{dog.type}} and they were {{dog.isAdopted}}
+      {{dog.name}} and their breed is {{dog.type}} and they were adoptd
       into a great family!
+      
       </li>
     </ul>
   </section>
@@ -26,11 +27,13 @@ export default {
     };
   },
   components: {
-    AddDogs
+    AddDogs,
   },
   created() {
+    this.error = null;
     api.getDogs()
       .then(dogs => {
+        console.log(dogs);
         this.dogs = dogs;
       })
       .catch(err => {
