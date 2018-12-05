@@ -1,52 +1,72 @@
 [
+  {
+    "name": "Pacific Universities",
+    "category": "Education",
+    "city": "Forest Grove",
+    "id": "YtqW2mSup"
+  },
+  {
+    "name": "Boys and Girls Aid Society of Oregon",
+    "category": "Youth",
+    "city": "Portland"
+  },
+  {
+    "name": "Free Geek",
+    "category": "Education",
+    "city": "Portland"
+  },
+  {
+    "name": "Bradley Angle",
+    "category": "Domestic Violence",
+    "city": "Portland"
+  },
+  {
+    "name": "Portland Art Museum",
+    "category": "Arts",
+    "city": "Portland"
+  },
+  {
+    "name": "Bandon Brewing Company Foundation",
+    "category": "Public Benefit",
+    "city": "Bandon"
+  },
+  {
+    "name": "Wiggly Tails Dog Rescue",
+    "category": "Animals",
+    "city": "Eugene"
+  },
+  {
+    "name": "Oregon Performing Arts Foundation",
+    "category": "Arts",
+    "city": "Mount Vernon"
+  },
+  {
+    "name": "One Planet Community Land Trust",
+    "category": "Environment",
+    "city": "Eugene"
+  },
+  [
     {
-        "name": "Pacific University",
-        "category": "Education",
-        "city": "Forest Grove"
+      "name": "Pacific University",
+      "category": "Education",
+      "city": "Forest Grove"
     },
     {
-        "name": "Champoeg Cemetery Association",
-        "category": "Public Benefit",
-        "city": "Champoeg"
-    },
-    {
-        "name": "Boys and Girls Aid Society of Oregon",
-        "category": "Youth",
-        "city": "Portland"
-    },
-    {
-        "name": "Free Geek",
-        "category": "Education",
-        "city": "Portland"
-    },
-    {
-        "name": "Bradley Angle",
-        "category": "Domestic Violence",
-        "city": "Portland"
-    },
-    {
-        "name": "Portland Art Museum",
-        "category": "Arts",
-        "city": "Portland"
-    },
-    {
-        "name": "Bandon Brewing Company Foundation",
-        "category": "Public Benefit",
-        "city": "Bandon"
-    },
-    {
-        "name": "Wiggly Tails Dog Rescue",
-        "category": "Animals",
-        "city": "Eugene"
-    },
-    {
-        "name": "Oregon Performing Arts Foundation",
-        "category": "Arts",
-        "city": "Mount Vernon"
-    },
-    {
-        "name": "One Planet Community Land Trust",
-        "category": "Environment",
-        "city": "Eugene"
+      "name": "Champoeg Cemetery Association",
+      "category": "Public Benefit",
+      "city": "Champoeg"
     }
+  ],
+  [
+    {
+      "name": "Pacific University",
+      "category": "Education",
+      "city": "Forest Grove"
+    },
+    {
+      "name": "Champoeg Cemetery Association",
+      "category": "Public Benefit",
+      "city": "Champoeg"
+    }
+  ]
 ]
