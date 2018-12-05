@@ -1,9 +1,8 @@
 [
   {
-    "name": "Pacific Universities",
+    "name": "Pacific University",
     "category": "Education",
     "city": "Forest Grove",
-    "id": "YtqW2mSup"
   },
   {
     "name": "Boys and Girls Aid Society of Oregon",
@@ -45,28 +44,9 @@
     "category": "Environment",
     "city": "Eugene"
   },
-  [
-    {
-      "name": "Pacific University",
-      "category": "Education",
-      "city": "Forest Grove"
-    },
-    {
-      "name": "Champoeg Cemetery Association",
-      "category": "Public Benefit",
-      "city": "Champoeg"
-    }
-  ],
-  [
-    {
-      "name": "Pacific University",
-      "category": "Education",
-      "city": "Forest Grove"
-    },
-    {
-      "name": "Champoeg Cemetery Association",
-      "category": "Public Benefit",
-      "city": "Champoeg"
-    }
-  ]
+  {
+    "name": "Champoeg Cemetery Association",
+    "category": "Public Benefit",
+    "city": "Champoeg"
+  }
 ]
