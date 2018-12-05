@@ -44,5 +44,10 @@
     "type": "Poodle/Australian Shepard",
     "isAdopted": true,
     "id": "4JIkY2U8S"
+  },
+  {
+    "name": "Cari",
+    "type": "Human",
+    "id": "QFjNpzwn4"
   }
 ]
