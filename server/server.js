@@ -18,7 +18,17 @@ app.use(express.json());
 
 app.get('/api/dogs', (req, res) => {
   const dogs = readData(); 
-  res.json(dogs); 
+
+  if(req.query.name) {
+    const match = req.query.name.toLowerCase(); 
+    const filtered = dogs.filter(d => {
+      return d.name.toLowerCase().startsWith(match); 
+    }); 
+    res.json(filtered); 
+  }
+  else {
+    res.json(dogs); 
+  }
 });
 
 app.post('/api/dogs', (req, res) => {

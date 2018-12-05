@@ -1,6 +1,9 @@
 <template>
-  <form @submit.prevent="handleSubmit"> 
-    <input v-model="dog.name" required> 
+  <form @submit.prevent="handleSubmit">
+    <label> Name </label> 
+    <input v-model="dog.name" required>
+    <label> Breed Type </label>
+    <input v-model="dog.type" required> 
     <button> Add </button>
   </form>
 </template>
