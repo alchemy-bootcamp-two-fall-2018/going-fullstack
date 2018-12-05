@@ -11,11 +11,11 @@
   "author": "Teonna Zaragoza",
   "license": "ISC",
   "dependencies": {
-    "eslint": "^5.9.0"
+    "eslint": "^5.9.0",
+    "express": "^4.16.4",
+    "shortid": "^2.2.14"
   },
   "devDependencies": {
     "nodemon": "^1.18.7"
   }
 }
-
-

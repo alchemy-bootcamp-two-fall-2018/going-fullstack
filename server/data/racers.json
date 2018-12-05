@@ -1,26 +1,30 @@
 [
   { 
-    "'name'": "Austin Ulloa",
+    "name": "Austin Ulloa",
     "age": 17,
     "gender": "male",
+    "varsity": false,
     "time": 25.00
   },
   { 
-    "'name'": "Quintin Ulloa",
+    "name": "Quintin Ulloa",
     "age": 15,
     "gender": "male",
+    "varsity": true,
     "time": 30.00
   },
   { 
-    "'name'": "Mara Kramer",
+    "name": "Mara Kramer",
     "age": 15,
     "gender": "female",
+    "varsity": true,
     "time": 19.58
   },
   { 
-    "'name'": "Alani Nakamura",
+    "name": "Alani Nakamura",
     "age": 16,
     "gender": "female",
+    "varsity": true,
     "time": 24.01
   }
 ]
