@@ -17,11 +17,14 @@ export default {
             }
         };
     },
-    handleSubmit() {
-        this.onAdd(this.racer)
-            .then(() => {
-                this.racer = { name: '' };
-            });
+    methods: {
+        handleSubmit() {
+            this.onAdd(this.racer)
+                .then(() => {
+                    this.racer = { name: '' };
+                });
+        }
+
     }
 };
 </script>

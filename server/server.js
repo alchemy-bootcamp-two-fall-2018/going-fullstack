@@ -19,7 +19,8 @@ app.use(express.json());
 app.get('/api/racers', (req, res) => {
   const racers = readData();
   if(req.query.name) {
-    const filtered = racers.filter(racer => racer.name.startsWith(req.query.name));
+    const match = req.query.name;
+    const filtered = racers.filter(racer => racer.name.startsWith(match));
     res.json(filtered);
   }
   else {
@@ -40,7 +41,6 @@ app.post('/api/racers', (req, res) => {
 const PORT = 3000;
 
 app.listen(PORT, () => {
-  console.log('server app started on port', PORT);
 });
 
 

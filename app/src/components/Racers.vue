@@ -1,7 +1,7 @@
 <template>
     <section>
         Racers Section
-        <AddRacer onAdd="handleAdd"/>
+        <AddRacer :onAdd="handleAdd"/>
         <ul v-if="racers">
             <li v-for="racer in racers"
                 :key="racer.name">
