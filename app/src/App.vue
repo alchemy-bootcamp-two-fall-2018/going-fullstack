@@ -22,7 +22,7 @@ export default {
 <style scoped>
 header {
   height: 75px;
-  background: lightsteelblue;
+  background: lightgray; 
   display: flex;
   align-items: center;
   justify-content: space-between;
