@@ -1,8 +1,7 @@
 <template>
-    <form @submit.prevent="onAdd(racer)">
-        <input v-model="name" required>
+    <form @submit.prevent="handleSubmit">
+        <input v-model="racer.name" require>
         <button> Add </button>
-
     </form>
 </template>
 
@@ -13,10 +12,16 @@ export default {
     },
     data() {
         return {
-            student: {
+            racer: {
                 name: ''
             }
         };
+    },
+    handleSubmit() {
+        this.onAdd(this.racer)
+            .then(() => {
+                this.racer = { name: '' };
+            });
     }
 };
 </script>

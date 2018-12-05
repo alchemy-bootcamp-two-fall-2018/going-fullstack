@@ -2,7 +2,7 @@
     <section>
         Racers Section
         <AddRacer onAdd="handleAdd"/>
-        <ul>
+        <ul v-if="racers">
             <li v-for="racer in racers"
                 :key="racer.name">
                 {{racer.name}}
@@ -28,7 +28,6 @@ export default {
     created() {
         api.getRacers()
             .then(racers => {
-                console.log(racers);
                 this.racers = racers;
             })
             .catch(err => {
@@ -37,9 +36,12 @@ export default {
     },
     methods: {
         handleAdd(racer) {
-            
+            return api.addRacer(racer)
+                .then(saved => {
+                    this.racers.push(saved);
+                });
         }
-    }
+    }   
 };
 </script>
 
