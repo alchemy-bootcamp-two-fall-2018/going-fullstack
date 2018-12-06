@@ -9,22 +9,11 @@ app.use(express.json());
 const Client = pg.Client;
 const dbUrl = 'postgres://localhost:5432/crosscountry';
 const client = new Client(dbUrl);
+
 client.connect();
 
-// function readData() {
-//   const data = fs.readFileSync('./data/racers.json', 'utf8');
-//   return JSON.parse(data);
-// }
-
-// function saveData(racers) {
-//   const json = JSON.stringify(racers, true, 2);
-//   fs.writeFileSync('./data/racers.json', json);
-// }
-
-
 app.get('/api/racers', (req, res) => {
-  // const racers = readData();
-
+  
   client.query(`
     SELECT id, name
     FROM racers;
