@@ -15,15 +15,17 @@ Promise.all(
     return Promise.all(
       guitarists.map(guitarist => {
         return client.query(`
-          INSERT INTO guitarists (name, guitar_id, yob)
+          INSERT INTO guitarists (name, guitar_id, yob, type, alive)
           SELECT 
             $1 as name, 
             id as guitar_id,
-            $2 as yob
+            $2 as yob,
+            $4 as type,
+            $5 as alive
           FROM guitar
           WHERE model = $3;
         `,
-        [guitarist.name, guitarist.yob, guitarist.guitar]);
+        [guitarist.name, guitarist.yob, guitarist.guitar, guitarist.type, guitarists.alive]);
       })
     );
   })

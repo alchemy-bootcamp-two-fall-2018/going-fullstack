@@ -4,41 +4,41 @@
     "yob": 1942,
     "type": "Rock",
     "alive": false,
-    "guitar": "Fender"
+    "guitar": "Stratocaster"
   },
   {
     "name": "Howlin' Wolf",
     "yob": 1910,
     "type": "Blues",
-    "alive": "false",
-    "guitar": "Epiphone"
+    "alive": false,
+    "guitar": "Casino"
   },
   {
     "name": "Tommy Iommi",
     "yob": 1948,
     "type": "Metal",
-    "alive": "true",
-    "guitar": "Gibson"
+    "alive": true,
+    "guitar": "SG"
   },
   {
     "name": "Frank Zappa",
     "yob": 1940,
     "type": "Rock",
     "alive": false,
-    "guitar": "Gibson"
+    "guitar": "SG"
   },
   {
     "name": "John Williams",
     "yob": 1941,
     "type": "Classical",
     "alive": true,
-    "guitar": "Smallman"
+    "guitar": "Cedar Top"
   },
   {
     "name": "The Edge",
     "yob": 1961,
     "type": "Pop",
     "alive": true,
-    "guitar": "Gibson"
+    "guitar": "SG"
   }
 ]
