@@ -1,50 +1,56 @@
 const express = require('express');
 const app = express();
-const morgan = require('morgan');
 const pg = require('pg');
-const shortid = require('shortid');
-
-const fs = require('fs');
-
-function readData() {
-  const data = fs.readFileSync('./data/islands.json', 'utf8');
-  return JSON.parse(data);
-}
-
-function saveData(islands) {
-  const json = JSON.stringify(islands, true, 2);
-  fs.writeFileSync('./data/islands.json', json);
-}
+const morgan = require('morgan');
 
 app.use(morgan('dev'));
-
 app.use(express.json());
 
-app.get('/api/islands', (req, res) => {
-  const islands = readData();
-  if(req.query.name) {
-    const match = req.query.name.toLowerCase();
-    const filtered = islands.filter(s => {
-      return i.name.toLowerCase().startsWith(match);
-    });
-    res.json(filtered);
-  }
-  else {
-    res.json(islands);
-  }
+const Client = pg.Client;
+const dbUrl = 'postgres://localhost:5432/islanddb';
+const client = new Client(dbUrl);
+client.connect();
 
+app.get('/api/islands', (req, res) => {
+  client.query(`
+  SELECT id, name FROM islands;
+`)
+  .then(result => {
+    res.json(result.rows);
+  });
+});
+
+app.get('/api/islands/:id', (req, res) => {
+ client.query(`
+ SELECT * FROM islands WHERE id = $1;
+ `,
+ [req.params.id])
+   .then(result => {
+     res.json(result.rows[0]);
+   });
 });
 
 app.post('/api/islands', (req, res) => {
+  const body = req.body;
 
-  const islands = readData();
-  const island = req.body;
-  island.id = shortid.generate();
-  islands.push(island);
-  saveData(islands);
-  
-  res.json(island);
+  client.query(`
+    INSERT INTO islands (name, loca, image, is_amazing)
+    VALUES($1, $2, $3, $4)
+    RETURNING id, name, loca, image, is_amazing as "isAmazing";
+  `,
+  [body.name, body.loca, body.image, body.isAmazing])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
 });
+
+// app.post('/api/islands/delete', (req, res) => {
+//   client.query(`
+//     DELETE FROM islands WHERE id = $1
+//   `,
+//   [req.body.id]);
+//   res.json();
+// });
 
 const PORT = 3000;
 

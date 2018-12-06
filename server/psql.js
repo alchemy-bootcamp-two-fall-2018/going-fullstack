@@ -4,15 +4,14 @@ const pg = require('pg');
 
 const Client = pg.Client; 
 
-// from islands,?? look at the ending
-const databaseUrl = 'postgres://localhost:5432/islands'; 
+const databaseUrl = 'postgres://localhost:5432/islanddb'; 
 
 const client = new Client(databaseUrl); 
 
 client.connect(); 
 
 client.query(`
-  SELECT name, loca, isAmaing; 
+  SELECT name, loca, image, is_amazing FROM islands; 
 `)
   .then(
     results => {

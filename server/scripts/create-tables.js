@@ -1,16 +1,16 @@
 const pg = require('pg');
  const Client = pg.Client;
- const databaseUrl = 'postgres://localhost:5432/animal';
+ const databaseUrl = 'postgres://localhost:5432/islanddb';
  const client = new Client(databaseUrl);
  client.connect()
   .then(() => {
     return client.query(`
-      CREATE TABLE IF NOT EXISTS students (
+      CREATE TABLE IF NOT EXISTS islands
         id SERIAL PRIMARY KEY,
         name VARCHAR(256) NOT NULL,
-        description VARCHAR(256),
-        track VARCHAR(256),
-        start_date DATE
+        loca VARCHAR(256),
+        image VARCHAR(256),
+        is_amazing Boolean
       );
     `);
   })
