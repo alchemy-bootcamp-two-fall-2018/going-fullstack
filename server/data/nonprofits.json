@@ -3,50 +3,80 @@
     "name": "Pacific University",
     "category": "Education",
     "city": "Forest Grove",
+    "description": "A fine school",
+    "employees": "1500",
+    "metropolitan": true
   },
   {
     "name": "Boys and Girls Aid Society of Oregon",
     "category": "Youth",
-    "city": "Portland"
+    "city": "Portland",
+    "description": "A fine society",
+    "employees": "750",
+    "metropolitan": true
   },
   {
     "name": "Free Geek",
     "category": "Education",
-    "city": "Portland"
+    "city": "Portland",
+    "description": "A fine organization",
+    "employees": "200",
+    "metropolitan": true
   },
   {
     "name": "Bradley Angle",
     "category": "Domestic Violence",
-    "city": "Portland"
+    "city": "Portland",
+    "description": "A very fine organization",
+    "employees": "210",
+    "metropolitan": true
   },
   {
     "name": "Portland Art Museum",
     "category": "Arts",
-    "city": "Portland"
+    "city": "Portland",
+    "description": "A fine museum",
+    "employees": "500",
+    "metropolitan": true
   },
   {
     "name": "Bandon Brewing Company Foundation",
     "category": "Public Benefit",
-    "city": "Bandon"
+    "city": "Bandon",
+    "description": "A fine foundation",
+    "employees": "75",
+    "metropolitan": false
   },
   {
     "name": "Wiggly Tails Dog Rescue",
     "category": "Animals",
-    "city": "Eugene"
+    "city": "Eugene",
+    "description": "A fine rescue",
+    "employees": "10",
+    "metropolitan": false
   },
   {
     "name": "Oregon Performing Arts Foundation",
     "category": "Arts",
-    "city": "Mount Vernon"
+    "city": "Mount Vernon",
+    "description": "A fine arts foundation",
+    "employees": "125",
+    "metropolitan": false
   },
   {
     "name": "One Planet Community Land Trust",
     "category": "Environment",
-    "city": "Eugene"
+    "city": "Eugene",
+    "description": "A fine land trust",
+    "employees": "25",
+    "metropolitan": false
   },
   {
     "name": "Champoeg Cemetery Association",
     "category": "Public Benefit",
-    "city": "Champoeg"
+    "city": "Champoeg",
+    "description": "A fine cemetery association",
+    "employees": "24",
+    "metropolitan": false
   }
 ]
