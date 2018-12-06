@@ -3,31 +3,36 @@
     "name": "Jimi Hendrix",
     "yob": 1942,
     "type": "Rock",
-    "alive": false
+    "alive": false,
+    "guitar": "Fender"
   },
   {
     "name": "Howlin' Wolf",
     "yob": 1910,
     "type": "Blues",
-    "alive": "false"
+    "alive": "false",
+    "guitar": "Epiphone"
   },
   {
     "name": "Tommy Iommi",
     "yob": 1948,
     "type": "Metal",
-    "alive": "true"
+    "alive": "true",
+    "guitar": "Gibson"
   },
   {
     "name": "Frank Zappa",
     "yob": 1940,
     "type": "Rock",
-    "alive": false
+    "alive": false,
+    "guitar": "Gibson"
   },
   {
     "name": "John Williams",
     "yob": 1941,
     "type": "Classical",
-    "alive": true
+    "alive": true,
+    "guitar": "Smallman"
   },
   {
     "name": "The Edge",
