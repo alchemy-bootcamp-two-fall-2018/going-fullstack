@@ -10,11 +10,16 @@ client.connect()
   .then(() => {
     return client.query(`
             CREATE TABLE IF NOT EXISTS books (
-                id SERIAL PRIMARY KEY,
-                title VARCHAR(256) NOT NULL,
-                author VARCHAR(256),
-                pages INT,
-                good BOOLEAN
+              id SERIAL PRIMARY KEY,
+              title VARCHAR(256) NOT NULL,
+              author VARCHAR(256),
+              pages INT,
+              good BOOLEAN
+            );
+
+            CREATE TABLE IF NOT EXISTS book_genre (
+              id SERIAL PRIMARY KEY,
+              genre VARCHAR(256) NOT NULL
             );
         `);
   })

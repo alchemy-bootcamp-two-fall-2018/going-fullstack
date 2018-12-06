@@ -21,7 +21,7 @@ client.connect();
 /* defined routes: METHOD, URLPATH */
 app.get('/api/books', (req, res) => {
   client.query(`
-    SELECT id, title FROM books;  
+    SELECT id, title, author, pages FROM books;  
   `)
     .then(result => {
       res.json(result.rows);
