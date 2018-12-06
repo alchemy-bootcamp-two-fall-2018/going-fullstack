@@ -1,20 +1,15 @@
 <template>
-  <section>
-    <h2> Islands </h2>
-    <addIslands :onAdd="handleAdd"/>
-  
-    <ul v-if="islands">
-      <li v-for="island in island"
-      :key="island.id">
-      <h3>{{island.name}} and place {{island.loc}}</h3>
-      </li>
-    </ul>
+  <section class="islands">
+    <h2> Island List </h2>
+    <AddIsland v-bind:onAdd="handleAdd"/>
+    <IslandList v-bind:islands="islands"/>
   </section>
 </template>
 
 <script>
 import islandsApi from '../../islandsApi.js';
-import AddIslands from './AddIslands.vue';
+import AddIsland from './AddIsland.vue';
+import IslandList from './IslandList.vue';
 
 export default {
     data() {
@@ -23,17 +18,26 @@ export default {
     };
   },
   components: {
-    AddIslands
+    AddIsland,
+    IslandList
   },
   created() {
-    api.getIslands()
+    islandsApi.getIslands()
       .then(islands => {
         this.islands = islands;
       });
   }, 
   methods: {
     handleAdd(island) {
-      return api.addIslands(island)
+      island.loca = parseInt(island.loca);
+      if(island.isAmazing === 'true') {
+        island.isAmazing = true;
+      }
+      else {
+        island.isAmazing = false;
+      }
+    
+      return islandsApi.addIslands(island)
         .then(saved => {
           this.islands.push(saved); 
         });
@@ -44,10 +48,11 @@ export default {
 
 <style>
 img {
-  width: 100px;
+  width: 80px;
 }
 li {
   list-style: none;
+  text-align: center;
+  margin: 5px;
 }
-
 </style>

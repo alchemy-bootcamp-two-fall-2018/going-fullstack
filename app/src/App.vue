@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app">
     <header>
       <nav>
         <RouterLink to="/"> Home </RouterLink>
@@ -31,6 +31,7 @@ header {
   background: lightseagreen;
   display: flex;
   align-content: center;
+  padding: 10px;
 }
 
 img {
