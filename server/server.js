@@ -1,20 +1,25 @@
 const express = require('express');
 const app = express();
-// const shortid = require('shortid');
+const morgan = require('morgan');
+const pg = require('pg');
 
-const fs = require('fs');
-
-function readData() {
-  const data = fs.readFileSync('./data/racers.json', 'utf8');
-  return JSON.parse(data);
-}
-
-function saveData(racers) {
-  const json = JSON.stringify(racers, true, 2);
-  fs.writeFileSync('./data/racers.json', json);
-}
-
+app.use(morgan('dev'));
 app.use(express.json());
+
+const Client = pg.Client;
+const dbUrl = 'postgres://localhost:5432/crosscountry';
+const client = new Client(dbUrl);
+
+// function readData() {
+//   const data = fs.readFileSync('./data/racers.json', 'utf8');
+//   return JSON.parse(data);
+// }
+
+// function saveData(racers) {
+//   const json = JSON.stringify(racers, true, 2);
+//   fs.writeFileSync('./data/racers.json', json);
+// }
+
 
 app.get('/api/racers', (req, res) => {
   const racers = readData();
