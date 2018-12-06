@@ -1,15 +1,11 @@
 <template>
     <section v-if="racer">
-            This is the Detail 
         <h2>{{racer.name}}</h2>
         <p>
             Age:{{racer.age}}
         </p>
         <p>
             Gender:{{racer.gender}}
-        </p>
-        <p>
-            Age:{{racer.age}}
         </p>
         <p>
             Team:{{racer.varsity}}
