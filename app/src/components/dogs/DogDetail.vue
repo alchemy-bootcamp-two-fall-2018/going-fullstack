@@ -8,11 +8,8 @@
     {{dog.name}} weighs {{dog.weight}} lbs
   </p>
   <p>
-   {{dog.name}} was adopted into a great family! 
+   It is {{dog.isadopted}} that {{dog.name}} was adopted into a great family! 
   </p> 
-  <p> 
-    {{dog.isAdopted}}
-  </p>
   </section> 
 </template>
 
