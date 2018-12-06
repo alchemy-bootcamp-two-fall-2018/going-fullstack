@@ -1,19 +1,11 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const pg = require('pg');
-
+const client = require('./db-client');
 
 app.use(morgan('dev'));
 
-// utility that check requests, if body turn into JSON and ready it for us
 app.use(express.json());
-
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/synthesizers';
-const client = new Client(databaseUrl);
-client.connect();
-
 
 app.get('/api/synths', (req, res) => {
   client.query(`
@@ -34,7 +26,7 @@ app.get('/api/synths/:id', (req, res) => {
     });
 });
 
-app.del('/api/synths/:id', (req, res) => {
+app.delete('/api/synths/:id', (req, res) => {
   client.query(`
     DELETE FROM synths WHERE id = $1;
   `,
