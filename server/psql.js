@@ -12,10 +12,12 @@ client.query (`
   .then(
     results => {
       fs.writeFileSync(
-        '.nonprofits.json', *********
+        '.nonprofit.json',
+        JSON.stringify(results.rows, true, 3)
       );
-      console.log(results);    
-    })
-  .catch(err =>{
-    console.log(err);
+    },
+    err => console.log(err)
+  )
+  .then(() => {
+    client.end();
   });

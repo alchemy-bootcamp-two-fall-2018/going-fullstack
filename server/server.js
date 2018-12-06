@@ -1,33 +1,47 @@
 const express = require('express');
 const app = express();
-const shortid = require('shortid');
-const fs = require('fs');
+const pg = require('pg');
+const morgan = require('morgan');
 
-
-function readData() {
-  const data = fs.readFileSync('./data/nonprofits.json', 'utf8');
-  return JSON.parse(data);
-}
-
-function saveData(nonprofits) {
-  const json = JSON.stringify(nonprofits, true, 2);
-  fs.writeFileSync('./data/nonprofits.json', json);
-}
-
+app.use(morgan('dev'));
 app.use(express.json());
+
+const Client = pg.Client;
+const dbUrl = 'postgres://postgres:1234@localhost:5432/nonprofits';
+const client = new Client(dbUrl);
+client.connect();
+
+
 app.get('/api/nonprofits', (req, res) => {
-  const nonprofits = readData();
-  res.json(nonprofits);
+  client.query(`
+    SELECT id, name, category, city, description, employees, metropolitan FROM organizations;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
 });
 
+app.get('/api/nonprofits:id', (req, res) => {
+  client.query(`
+    SELECT * FROM nonprofits WHERE id = $1;
+  `,
+  [req.params.id])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
+});
 app.post('/api/nonprofits', (req, res) => {
-  const nonprofits = readData();
-  const nonprofit = req.body;
-  nonprofit.id = shortid.generate();
-  nonprofits.push(nonprofit);
-  saveData(nonprofits);
+  const body = req.body;
 
-  res.json(nonprofit);
+  client.query(`
+    INSERT INTO nonprofits (name, category, city, description, employees, metropolitan)
+    VALUES($1, $2, $3, $4, $5)
+    RETURNING id, name, category, city, description, employees, metropolitan;
+  `,
+  [body.name, body.category, body.city, body.description, body.employees, body.metropolitan])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
 });
 
 const PORT = 3000;
