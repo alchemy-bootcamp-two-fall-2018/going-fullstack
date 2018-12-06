@@ -10,10 +10,10 @@ client.connect()
     return Promise.all(
       dogs.map(dog => {
         return client.query(`
-        INSERT INTO dog_table (name, breed, weight)
-        VALUES ($1, $2, $3);
+        INSERT INTO dog_table (name, breed, weight, isAdopted)
+        VALUES ($1, $2, $3, $4);
         `,
-        [dog.name, dog.breed, dog.weight]); 
+        [dog.name, dog.breed, dog.weight, dog.isAdopted]); 
       })
     );
   })

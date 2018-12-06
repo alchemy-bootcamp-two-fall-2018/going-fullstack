@@ -42,6 +42,7 @@ export default {
   }, 
   methods: {
     handleAdd(dog) {
+      console.log('vue', dog); 
       return api.addDogs(dog)
         .then(saved => {
           this.dogs.push(saved); 

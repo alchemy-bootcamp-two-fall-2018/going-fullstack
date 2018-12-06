@@ -4,6 +4,8 @@
     <input v-model="dog.name" required>
     <label> Breed Type </label>
     <input v-model="dog.type" required> 
+    <label> Is Adopted? </label>
+    <input v-model="dog.isAdopted" required>
     <button> Add </button>
   </form>
 </template>

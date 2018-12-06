@@ -13,7 +13,8 @@ client.connect ()
         id SERIAL PRIMARY KEY,
         name VARCHAR(256) NOT NULL,
         breed VARCHAR(256),
-        weight Int
+        weight Int, 
+        isAdopted boolean
         );
       `); 
   })
