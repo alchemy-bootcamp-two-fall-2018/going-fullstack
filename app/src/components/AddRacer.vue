@@ -33,7 +33,11 @@ export default {
     data() {
         return {
             racer: {
-                name: ''
+                name: '',
+                age: '',
+                gender: '',
+                varsity: '',
+                pr: ''
             }
         };
     },

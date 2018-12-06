@@ -4,6 +4,13 @@ export default {
             .then(response => response.json());
 
     },
+    getRacer(id) {
+        return fetch(`/api/racers/${id}`)
+            .then(response => response.json());
+    },
+        
+
+
     addRacer(racer) {
         return fetch('/api/racers', {
             method: 'POST',
