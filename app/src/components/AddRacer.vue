@@ -6,7 +6,7 @@
         </p>
          <p>
             <label>Age</label>
-            <input v-model="racer.age" required>
+            <input type="number" v-model="racer.age" required>
         </p>
         <p>
             <label>Gender</label>
@@ -14,7 +14,10 @@
         </p>
         <p>
             <label>Varsity</label>
-            <input v-model="racer.varsity" required>
+            <select v-model="racer.varsity" required>
+                <option value="true">YES</option>
+                <option value="false">NO</option>
+            </select>
         </p>
         <p>
             <label>PR</label>
@@ -43,9 +46,11 @@ export default {
             }
         };
     },
+   
     
     methods: {
         handleSubmit() {
+            console.log('banana', this.racer);
             this.onAdd(this.racer)
                 .then(() => {
                     this.racer = { name: '' };

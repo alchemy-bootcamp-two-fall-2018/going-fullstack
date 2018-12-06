@@ -2,27 +2,16 @@
     <section>
         Racers Section
         <AddRacer :onAdd="handleAdd"/>
-        <ul v-if="racers">
-            <li
-                v-for="racer in racers"
-                :key="racer.id">
-                
-                <RouterLink :to="`/racers/${racer.id}`"> 
-                {{racer.name}}
-                </RouterLink>
-            </li>
-        </ul>
+        <RacerList :racers="racers"/>
     </section>
 </template>
     
 <script>
 import api from '../services/api';
 import AddRacer from './AddRacer';
+import RacerList from './RacerList';
 
 export default {
-    props: {
-        racers: null
-    },
     data() {
         return {
             racers: null,
@@ -30,7 +19,8 @@ export default {
         };
     },
     components: {
-        AddRacer
+        AddRacer,
+        RacerList
     },
     created() {
         api.getRacers()

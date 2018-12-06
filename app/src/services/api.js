@@ -8,8 +8,6 @@ export default {
         return fetch(`/api/racers/${id}`)
             .then(response => response.json());
     },
-        
-
 
     addRacer(racer) {
         return fetch('/api/racers', {
