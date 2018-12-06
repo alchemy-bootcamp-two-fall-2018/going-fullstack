@@ -6,7 +6,7 @@ const client = new Client(databaseUrl);
 client.connect()
   .then(() => {
     return client.query(`
-      CREATE TABLE IF NOT EXISTS superheroes (
+      CREATE TABLE IF NOT EXISTS hero (
         name VARCHAR(256) NOT NULL,
         age INT,
         id SERIAL PRIMARY KEY
