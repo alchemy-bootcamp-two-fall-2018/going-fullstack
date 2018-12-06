@@ -7,8 +7,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 const Client = pg.Client;
-const dbUrl = 'postgres://localhost:5432/crosscountry';
-const client = new Client(dbUrl);
+const databaseUrl = 'postgres://localhost:5432/crosscountry';
+const client = new Client(databaseUrl);
 
 // function readData() {
 //   const data = fs.readFileSync('./data/racers.json', 'utf8');
