@@ -10,7 +10,7 @@ app.use(express.json());
 app.get('/api/dog_size_table', (req, res) => {
   client.query(`
     SELECT id, name, short_name as "shortName" 
-    FROM dog_size_table;
+    FROM dog_size_table
     ORDER BY NAME;
     `)
     .then(result => {
@@ -18,24 +18,34 @@ app.get('/api/dog_size_table', (req, res) => {
     }); 
 }); 
 
-app.get('/api/dog_picker/:id', (req, res) => {
+app.get('/api/dog_picker', (req, res) => {
   client.query(`
     SELECT
-      dog.id,
-      dog.name as name,
-      dog.breed,
-      dog.weight,
-      dog.isAdopted,
-      size.id as "sizeId"
-      size.name as size
+      dog_table.id,
+      dog_table.name as name,
+      dog_table.breed,
+      dog_table.weight,
+      dog_table.isAdopted,
+      dog_size_table.id as "sizeId",
+      dog_size_table.name as size
       FROM dog_table
       JOIN dog_size_table
-      ON dog.size_id = size.id
+      ON dog_table.size_id = dog_size_table.id
       ORDER BY weight DESC, name ASC;
     `)
     .then(result => {
       res.json(result.rows); 
     }); 
+});
+
+app.get('/api/dog_picker/:id', (req, res) => {
+  client.query(`
+  SELECT * FROM dog_table WHERE id = $1;
+  `,
+  [req.params.id])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
 });
 
 app.post('/api/dog_picker', (req, res) => {
@@ -51,17 +61,17 @@ app.post('/api/dog_picker', (req, res) => {
 
       return client.query(`
         SELECT 
-          dog.id,
-          dog.name as name,
-          dog.breed,
-          dog.weight,
-          dog.isAdopted,
-          size.id as "sizeId",
-          size.name as size
+          dog_table.id,
+          dog_table.name as name,
+          dog_table.breed,
+          dog_table.weight,
+          dog_table.isAdopted,
+          dog_size_table.id as "sizeId",
+          dog_size_table.name as size
         FROM dog_table
         JOIN dog_size_table
-        ON dog.size_id = size.id
-        WHERE dog.id = $1;
+        ON dog_table.size_id = dog_size_table.id
+        WHERE dog_table.id = $1;
       `,
       [id]);
     });
