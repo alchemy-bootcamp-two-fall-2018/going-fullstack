@@ -3,6 +3,10 @@ export default {
     return fetch('/api/dog_picker')
       .then(response => response.json());
   }, 
+  getDog(id) {
+    return fetch(`/api/dog_picker/${id}`)
+      .then(response => response.json()); 
+  },
   addDogs(dog) {
     console.log('api', dog); 
     return fetch('/api/dog_picker', {

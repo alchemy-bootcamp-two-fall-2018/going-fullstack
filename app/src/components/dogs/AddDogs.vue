@@ -7,7 +7,8 @@
     <label> Weight </label>
     <input v-model="dog.weight" required> 
     <label> Is Adopted? </label>
-    <input v-model="dog.isAdopted" required>
+    <input type="radio" v-model="dog.isAdopted" v-bind:value="true" required>
+    <input type="radio" v-model="dog.isAdopted" v-bind:value="false">
     <button> Add </button>
   </form>
 </template>
@@ -18,7 +19,7 @@ function initDog() {
     name: '',
     breed: '',
     weight: '',
-    isAdopted: true
+    isAdopted: '',
   }; 
 }
 
@@ -35,7 +36,7 @@ export default {
     handleSubmit() {
       this.onAdd(this.dog)
         .then(() => {
-          this.dog = { name: '' };
+          this.dog = initDog();
         });
     }
   }
