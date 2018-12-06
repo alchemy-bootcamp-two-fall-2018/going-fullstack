@@ -5,7 +5,7 @@ const sizes = require('./dog-size');
 Promise.all(
   sizes.map(size => {
     return client.query(`
-    INSERT INTO dogSize (name, short_name)
+    INSERT INTO dog_size_table (name, short_name)
     VALUES ($1, $2);
     `,
     [size.name, size.shortName]);
@@ -18,13 +18,14 @@ Promise.all(
         INSERT INTO dog_table (name, breed, weight, size_id, isAdopted)
         SELECT
         $1 as name,
-        id as size_id,
         $2 as breed,
-        $3 as weight
-        FROM size 
-        WHERE short_name = $4;
+        $3 as weight,
+        id as size_id,
+        $4 as isAdopted
+        FROM dog_size_table
+        WHERE short_name = $5;
         `,
-        [dog.name, dog.breed, dog.weight, dog.size, dog.isAdopted]); 
+        [dog.name, dog.breed, dog.weight, dog.isAdopted, dog.size]); 
       })
     );
   })

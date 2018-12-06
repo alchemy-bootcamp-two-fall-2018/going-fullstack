@@ -1,6 +1,6 @@
 const pg = require('pg'); 
 
-const DATABASE_URL = 'postgres://localhost:5432/dog_table';
+const DATABASE_URL = 'postgres://localhost:5432/dog_picker';
 
 const Client = pg.Client; 
 
