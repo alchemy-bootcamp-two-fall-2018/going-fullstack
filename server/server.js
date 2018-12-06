@@ -11,7 +11,7 @@ app.get('/api/dog_size_table', (req, res) => {
   client.query(`
     SELECT id, name, short_name as "shortName" 
     FROM dog_size_table
-    ORDER BY NAME;
+    ORDER BY name;
     `)
     .then(result => {
       res.json(result.rows); 
@@ -27,7 +27,7 @@ app.get('/api/dog_picker', (req, res) => {
       dog_table.weight,
       dog_table.isAdopted,
       dog_size_table.id as "sizeId",
-      dog_size_table.name as size
+      dog_size_table.short_name as size
       FROM dog_table
       JOIN dog_size_table
       ON dog_table.size_id = dog_size_table.id
@@ -67,7 +67,7 @@ app.post('/api/dog_picker', (req, res) => {
           dog_table.weight,
           dog_table.isAdopted,
           dog_size_table.id as "sizeId",
-          dog_size_table.name as size
+          dog_size_table.short_name as size
         FROM dog_table
         JOIN dog_size_table
         ON dog_table.size_id = dog_size_table.id
