@@ -1,12 +1,12 @@
 <template>
-  <section class="islands">
+  <section>
     <h2> Islands </h2>
     <addIslands :onAdd="handleAdd"/>
   
     <ul v-if="islands">
       <li v-for="island in island"
       :key="island.id">
-      {{island.name}} and place {{island.loc}}
+      <h3>{{island.name}} and place {{island.loc}}</h3>
       </li>
     </ul>
   </section>
@@ -14,8 +14,7 @@
 
 <script>
 import islandsApi from '../../islandsApi.js';
-// how do we write the path when it's in same folder?
-import AddIslands from '.AddIslands.vue';
+import AddIslands from './AddIslands.vue';
 
 export default {
     data() {
@@ -24,7 +23,7 @@ export default {
     };
   },
   components: {
-    AddIslands,
+    AddIslands
   },
   created() {
     api.getIslands()
@@ -44,5 +43,11 @@ export default {
 </script>
 
 <style>
+img {
+  width: 100px;
+}
+li {
+  list-style: none;
+}
 
 </style>

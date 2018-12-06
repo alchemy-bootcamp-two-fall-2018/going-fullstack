@@ -1,7 +1,5 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <h3 class="form-title">Add an Island</h3>
-    
     <label>
       <input v-model="island.name" required>
     </label>
@@ -15,18 +13,15 @@
 </template>
 
 <script>
-import islandsApi from '../../islandsApi';
 
 export default {
+  data() {
+    return {
+      island: {}
+    };
+  },
   props: {
     onAdd: Function
-  },
- data() {
-  return {
-      name: {
-      loc: ''
-      }
-    };
   },
   methods: {
     handleSubmit() {
