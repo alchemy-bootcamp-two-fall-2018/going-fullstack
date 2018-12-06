@@ -8,8 +8,9 @@
       <li v-for="dog in dogs"
       :key="dog.id">
 
-      {{dog.name}} and their breed is {{dog.type}} and they were adopted
-      into a great family!
+      {{dog.name}} 
+      <!-- and their breed is {{dog.breed}}, they weight {{dog.weight}} and they were adopted
+      into a great family! -->
       
       </li>
     </ul>
