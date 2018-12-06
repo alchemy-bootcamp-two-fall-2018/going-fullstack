@@ -10,6 +10,7 @@
   <p>
    It is {{dog.isadopted}} that {{dog.name}} was adopted into a great family! 
   </p> 
+  <button @click="handleDelete"> Remove </button>
   </section> 
 </template>
 
@@ -27,6 +28,14 @@ export default {
       .then(dog => {
         this.dog = dog; 
       });
+  },
+  methods: {
+    handleDelete() {
+      api.deleteDog(this.dog.id)
+        .then(() => {
+          this.$router.push('/dog'); 
+        });
+    }
   }
 }; 
 </script>
