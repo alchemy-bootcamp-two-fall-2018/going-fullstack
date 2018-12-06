@@ -1,14 +1,8 @@
-const pg = require('pg'); 
 
-const Client = pg.Client;
 
-const databaseURL = 'postgres://localhost:5432/dog_picker'; 
-
-const client = new Client(databaseURL); 
-
-client.connect ()
-  .then(() => {
-    return client.query(`
+const client = require('../db-client'); 
+  
+client.query(`
       CREATE TABLE IF NOT EXISTS dog_table (
         id SERIAL PRIMARY KEY,
         name VARCHAR(256) NOT NULL,
@@ -16,8 +10,8 @@ client.connect ()
         weight Int, 
         isAdopted boolean
         );
-      `); 
-  })
+      `)
+  // })
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)
