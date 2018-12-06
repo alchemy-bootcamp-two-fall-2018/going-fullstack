@@ -46,6 +46,16 @@ app.post('/api/dog_picker', (req, res) => {
     });
 });
 
+app.delete('/api/dog_picker/:id', (req, res) => {
+  client.query(`
+    DELETE FROM dog_table WHERE id = $1;
+  `,
+  [req.params.id])
+    .then(result => {
+      res.json({ removed:result.rowCount === 1 }); 
+    });
+});
+
 const PORT = 3000; 
 
 app.listen(PORT, () => {
