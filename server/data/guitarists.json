@@ -38,6 +38,7 @@
     "name": "The Edge",
     "yob": 1961,
     "type": "Pop",
-    "alive": true
+    "alive": true,
+    "guitar": "Gibson"
   }
 ]
