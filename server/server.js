@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
+const pg = require('pg');
 const shortid = require('shortid');
 
 const fs = require('fs');
@@ -23,7 +25,7 @@ app.get('/api/islands', (req, res) => {
   if(req.query.name) {
     const match = req.query.name.toLowerCase();
     const filtered = islands.filter(s => {
-      return s.name.toLowerCase().startsWith(match);
+      return i.name.toLowerCase().startsWith(match);
     });
     res.json(filtered);
   }

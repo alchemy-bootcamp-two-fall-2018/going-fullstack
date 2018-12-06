@@ -1,0 +1,37 @@
+[
+  {
+    "name": "St. Lucia",
+    "loc": "Carribean",
+    "isAmazing": true
+  },
+  {
+    "name": "Fiji",
+    "loc": "South Pacific",
+    "isAmazing": true
+  },
+  {
+    "name": "Maui",
+    "loc": "Hawaiian Islands",
+    "isAmazing": true
+  },
+  {
+    "name": "Maldives",
+    "loc": "Indian Ocean",
+    "isAmazing": true
+  },
+  {
+    "name": "Santorini, Greece",
+    "loc": "Aegean Sea",
+    "isAmazing": true
+  },
+  {
+    "name": "Bora-Bora",
+    "loc": "South Pacific",
+    "isAmazing": true
+  },
+  {
+    "name": "Palawan",
+    "loc": "Philippines",
+    "isAmazing": true
+  }
+]
