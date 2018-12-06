@@ -3,9 +3,13 @@
         Racers Section
         <AddRacer :onAdd="handleAdd"/>
         <ul v-if="racers">
-            <li v-for="racer in racers"
-                :key="racer.name">
+            <li
+                v-for="racer in racers"
+                :key="racer.id">
+                
+                <RouterLink :to="`/racers/${racer.id}`"> 
                 {{racer.name}}
+                </RouterLink>
             </li>
         </ul>
     </section>
@@ -16,6 +20,9 @@ import api from '../services/api';
 import AddRacer from './AddRacer';
 
 export default {
+    props: {
+        racers: null
+    },
     data() {
         return {
             racers: null,

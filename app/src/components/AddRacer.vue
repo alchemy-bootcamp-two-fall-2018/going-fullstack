@@ -26,6 +26,8 @@
 </template>
 
 <script>
+
+
 export default {
     props: {
         onAdd: Function
@@ -41,6 +43,7 @@ export default {
             }
         };
     },
+    
     methods: {
         handleSubmit() {
             this.onAdd(this.racer)
