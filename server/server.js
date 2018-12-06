@@ -7,8 +7,9 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/crosscountry';
-const client = new Client(databaseUrl);
+const dbUrl = 'postgres://localhost:5432/crosscountry';
+const client = new Client(dbUrl);
+client.connect();
 
 // function readData() {
 //   const data = fs.readFileSync('./data/racers.json', 'utf8');
@@ -22,25 +23,29 @@ const client = new Client(databaseUrl);
 
 
 app.get('/api/racers', (req, res) => {
-  const racers = readData();
-  if(req.query.name) {
-    const match = req.query.name;
-    const filtered = racers.filter(racer => racer.name.startsWith(match));
-    res.json(filtered);
-  }
-  else {
-    res.json(racers);
-  }
+  // const racers = readData();
+
+  client.query(`
+    SELECT id, name
+    FROM racers;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
 });
 
-
 app.post('/api/racers', (req, res) => {
-  const racers = readData();
-  const racer = req.body;
+  const body = req.body;
 
-  racers.push(racer);
-  saveData(racers);
-  res.json(racer);
+  client.query(`
+    INSERT INTO racers (name, age, gender, varsity, pr )
+    VALUES($1, $2, $3, $4, $5)
+    RETURNING *;
+  `,
+  [body.name, body.age, body.gender, body.varsity, body.pr])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
 });
  
 const PORT = 3000;

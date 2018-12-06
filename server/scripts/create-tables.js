@@ -8,11 +8,11 @@ client.connect()
     return client.query(`
         CREATE TABLE IF NOT EXISTS racers (
             id SERIAL PRIMARY KEY, 
-            name VARCHAR(256),
-            age INTEGER, 
-            gender VARCHAR(256), 
-            varsity VARCHAR(256), 
-            pr VARCHAR(256)
+            name VARCHAR(256) NOT NULL,
+            age INTEGER NOT NULL, 
+            gender VARCHAR(256) NOT NULL, 
+            varsity VARCHAR(256) NOT NULL, 
+            pr VARCHAR(256) NOT NULL
         );  
     `);
   })
