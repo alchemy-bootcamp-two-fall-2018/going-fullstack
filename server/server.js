@@ -47,15 +47,15 @@ app.get('/api/dog_picker/:id', (req, res) => {
       res.json(result.rows[0]);
     });
 });
-
 app.post('/api/dog_picker', (req, res) => {
   const body = req.body; 
+ 
   client.query(`
     INSERT INTO dog_table (name, breed, weight, isAdopted, size_id) 
     VALUES($1, $2, $3, $4, $5)
     RETURNING id;
     `,
-  [body.name, body.breed, body.weight, body.isAdopted])
+  [body.name, body.breed, body.weight, body.isAdopted, body.sizeId])
     .then(result => {
       const id = result.rows[0].id; 
 
@@ -74,6 +74,9 @@ app.post('/api/dog_picker', (req, res) => {
         WHERE dog_table.id = $1;
       `,
       [id]);
+    })
+    .then(result => {
+      res.json(result.rows[0]); 
     });
 });
 

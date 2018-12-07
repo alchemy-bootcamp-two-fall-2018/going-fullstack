@@ -9,7 +9,7 @@
     <label> Weight 
       <input v-model="dog.weight" required> 
     </label>
-    <label> Is Adopted? 
+    <label> Is Adopted?
       <input type="radio" v-model="dog.isAdopted" v-bind:value="true" required>
       <input type="radio" v-model="dog.isAdopted" v-bind:value="false">
     </label>
@@ -23,7 +23,7 @@
         :key="size.id"
         :value="size.id"
       >
-        {{size.name}} {{size.shortName}}
+       {{size.shortName}}
         </option>
       </select>
     </label>
