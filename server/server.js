@@ -55,13 +55,34 @@ app.get('/api/singers/:id', (req, res) => {
 
 app.post('/api/singers', (req, res) => {
   const body = req.body;
-
+  
+  console.log('post in api was called');
+  
   client.query(`
-      INSERT INTO singers (name, genre, age, summary)
+      INSERT INTO singers (name, genre_id, age, summary)
       VALUES($1, $2, $3, $4)
-      RETURNING id, name, genre, age, summary;
+      RETURNING id;
     `,
-  [body.name, body.genre, body.age, body.summary])
+  [body.name, body.genre_id, body.age, body.summary])
+    .then(result => {
+      const id = result.rows[0].id;
+      console.log(id);
+
+      return client.query(`
+        SELECT
+          singers.id,
+          singers.name as name,
+          singers.age as age,
+          singers.summary as summary,
+          genres.id as "genreId",
+          genres.name as genre
+          FROM singers
+          JOIN genres
+          ON singers.genre_id = genres.id
+          WHERE singers.id = $1
+      `,
+      [id]);
+    })
     .then(result => {
       res.json(result.rows[0]);
     });
