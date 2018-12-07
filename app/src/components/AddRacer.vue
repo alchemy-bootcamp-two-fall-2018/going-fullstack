@@ -9,21 +9,25 @@
             <input type="number" v-model="racer.age" required>
         </p>
         <p>
-            <label>Gender</label>
-            <input v-model="racer.gender" required>
-        </p>
-        <p>
-            <label>Varsity</label>
-            <select v-model="racer.varsity" required>
-                <option value="true">YES</option>
-                <option value="false">NO</option>
+            <label>Team</label>
+            <select v-model="racer.team" required>
+                <option value="varsity">Varsity</option>
+                <option value="juniorVarsity">Junior Varsity</option>
             </select>
+            
         </p>
         <p>
             <label>PR</label>
             <input v-model="racer.pr" required>
         </p>
-
+        <p>
+            <label>Previous Races</label>
+            <select v-model="racer.previous" required>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            
+        </p>
         <button> Add </button>
     </form>
 </template>

@@ -1,14 +1,14 @@
 
-const client = ('../db-client');
+const client = require('../db-client');
 const racers = require('./racers.json');
 
 Promise.all( 
   racers.map(racer => {
     return client.query (`
-    INSERT INTO racer (name, age, gender, varsity, pr)
+    INSERT INTO racer (name, age, team, pr, previous)
     VALUES ($1, $2, $3, $4, $5);
     `,
-    [racers.name, racers.age, racers.gender, racers.varsity, racers.pr]);
+    [racer.name, racer.age, racer.team, racer.pr, racer.previous]);
   })
 )
   .then(

@@ -1,14 +1,13 @@
-
-const client = ('../db-client');
+const client = require('../db-client');
 
 client.query(`
         CREATE TABLE IF NOT EXISTS racer (
             id SERIAL PRIMARY KEY, 
             name VARCHAR(256) NOT NULL,
             age INTEGER NOT NULL, 
-            gender VARCHAR(256) NOT NULL, 
-            varsity VARCHAR(256) NOT NULL, 
-            pr VARCHAR(256) NOT NULL
+            team VARCHAR(256) NOT NULL, 
+            pr VARCHAR(256) NOT NULL, 
+            previous BOOLEAN NOT NULL
         );  
     `)
   .then(

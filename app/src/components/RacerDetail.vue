@@ -5,13 +5,13 @@
             Age:{{racer.age}}
         </p>
         <p>
-            Gender:{{racer.gender}}
-        </p>
-        <p>
-            Team:{{racer.varsity}}
+            Team:{{racer.team}}
         </p>
         <p>
             PR:{{racer.pr}}
+        </p>
+        <p>
+            Previous Race:{{racer.previous}}
         </p>
     </section>
 </template>

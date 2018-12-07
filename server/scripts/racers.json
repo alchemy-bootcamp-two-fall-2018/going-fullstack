@@ -2,36 +2,38 @@
   {
     "name": "Austin Ulloa",
     "age": 17,
-    "gender": "male",
-    "varsity": "jv",
-    "pr": "25"
+    "team": "jv",
+    "pr": "25",
+    "previous" : "yes"
   },
   {
     "name": "Quintin Ulloa",
     "age": 15,
-    "gender": "male",
-    "varsity": "varsity",
-    "pr": "30"
+    "team ": "varsity",
+    "pr": "30",
+    "previous" : "yes"
   },
   {
     "name": "Mara Kramer",
     "age": 15,
-    "gender": "female",
-    "varsity": "varsity",
-    "pr": "19:58"
+    "team": "varsity",
+    "pr": "19:58",
+    "previous" : "yes"
   },
   {
     "name": "Alani Nakamura",
     "age": 16,
-    "gender": "female",
-    "varsity": "varsity",
-    "pr": "24:01"
+    "team": "varsity",
+    "pr": "24:01",
+    "previous" : "yes"
+
   },
   {
     "name": "Zach Nakamura",
     "age": 18,
-    "gender": "male",
-    "varsity": "varsity",
-    "pr": "18:30"
+    "team": "varsity",
+    "pr": "18:30",
+    "previous" : "yes"
+
   }
 ]

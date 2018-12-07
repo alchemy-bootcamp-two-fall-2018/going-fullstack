@@ -1,7 +1,8 @@
-const client = ('../db-client');
+const client = require('../db-client');
 
 client.query(`
     DROP TABLE IF EXISTS racer;
+    
     `)
   
   .then(
