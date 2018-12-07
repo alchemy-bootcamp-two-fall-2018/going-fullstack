@@ -21,5 +21,18 @@ export default {
     })
       .then(response => response.json());
     
+  },
+
+  deleteArticle(id) {
+    return fetch(`/api/articles/${id}`, {
+      method: 'DELETE'
+    })
+      .then(response => response.json());
+  },
+
+  getCategories() {
+    fetch('/api/categories')
+      .then(response => response.json());
   }
+
 };
