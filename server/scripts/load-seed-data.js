@@ -1,6 +1,6 @@
 const client = require('../db-client');
 const singers = require('./singers.json');
-const genres = require('./genres');
+const genres = require('./genres-data');
 
 // "Promise all" does a parallel execution of async tasks
 Promise.all(
