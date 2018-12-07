@@ -1,6 +1,7 @@
 <template>
   <section v-if="guitarist">
     <h2>{{guitarist.name}}</h2>
+    <button>✎ Edit</button>
     <p>
       {{guitarist.type}} musician
     </p>
