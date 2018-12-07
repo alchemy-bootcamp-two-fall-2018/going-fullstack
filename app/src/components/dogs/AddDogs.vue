@@ -10,8 +10,8 @@
       <input v-model="dog.weight" required> 
     </label>
     <label> Is Adopted?
-      <input type="radio" v-model="dog.isAdopted" v-bind:value="true" required> True
-      <input type="radio" v-model="dog.isAdopted" v-bind:value="false"> False
+      <input type="radio" v-model="dog.isAdopted" v-bind:value="true" required> True/False
+      <input type="radio" v-model="dog.isAdopted" v-bind:value="false"> 
     </label>
     <label>
       <select v-if="sizes"

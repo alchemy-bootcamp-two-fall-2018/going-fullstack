@@ -37,6 +37,11 @@ nav a {
   padding: 3px;
   border: 1px solid black;
 }
+nav a:hover {
+  border: 1px solid black;
+  font: white;
+  background-color: grey;
+}
 main {
   padding: 8px;
 }

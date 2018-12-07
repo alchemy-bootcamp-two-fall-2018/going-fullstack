@@ -16,7 +16,7 @@ export default {
 img {
   height: 100%;
   margin: auto; 
-  border: 1px solid black; 
+  border: 5px solid grey; 
 }
 h2 {
   text-align: center;
@@ -38,8 +38,5 @@ h2 {
   border: 1px solid black;
   font: white;
   background-color: grey;
-}
-img:hover {
-  border: 10px solid red;  
 }
 </style>

@@ -40,7 +40,18 @@ app.get('/api/dog_picker', (req, res) => {
 
 app.get('/api/dog_picker/:id', (req, res) => {
   client.query(`
-  SELECT * FROM dog_table WHERE id = $1;
+  SELECT
+      dog_table.id,
+      dog_table.name as name,
+      dog_table.breed,
+      dog_table.weight,
+      dog_table.isAdopted,
+      dog_size_table.id as "sizeId",
+      dog_size_table.short_name as size
+      FROM dog_table
+      JOIN dog_size_table
+      ON dog_table.size_id = dog_size_table.id
+      WHERE dog_size_table.id = $1;
   `,
   [req.params.id])
     .then(result => {
