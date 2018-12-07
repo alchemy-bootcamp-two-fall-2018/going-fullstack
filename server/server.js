@@ -12,10 +12,28 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 /* defined routes: METHOD, URLPATH */
+app.get('/api/genres', (req, res) => {
+  client.query(`
+    SELECT id, title, author, pages, short_name as "shortName"
+    FROM genre;
+    ORDER BY title;  
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
 app.get('/api/books', (req, res) => {
   client.query(`
-    SELECT id, title, author, pages 
-    FROM books;  
+    SELECT
+      book.id,
+      book.title as title,
+      genre.id as "genreId",
+      genre.name as genre
+    FROM book
+    JOIN genre
+    ON book.genre_id = genre.id
+    ORDER BY title ASC;
   `)
     .then(result => {
       res.json(result.rows);
@@ -37,7 +55,7 @@ app.post('/api/books', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO books (title, author, pages, good)
+    INSERT INTO book (title, author, pages, good)
     VALUES($1, $2, $3, $4)
     RETURNING id, title, author, pages, good;
   `,

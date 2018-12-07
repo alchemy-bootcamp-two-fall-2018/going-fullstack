@@ -2,15 +2,15 @@
     <form @submit.prevent="handleSubmit">
       <p>
         <label>Title:</label>
-        <input v-model="book.title" required>
+        <input v-model="book.title" require>
       </p>
       <p>
         <label>Author:</label>
-        <input v-model="book.author" required>
+        <input v-model="book.author" require>
       </p>
       <p>
         <label>Pages:</label>
-        <input v-model="book.pages" type=number required>
+        <input v-model="book.pages" type=number require>
       </p>
       <p>
         <label>Genre:</label>
@@ -23,6 +23,8 @@
             :key="genre.id"
             :value="genre.id"
           >
+            {{genre.genre}} ({{genre.shortName}})
+          </option>
         </select>
       </p>
       <p>
