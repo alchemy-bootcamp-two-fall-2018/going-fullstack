@@ -4,8 +4,6 @@
   "description": "",
   "main": "http-server.js",
   "scripts": {
-    "test:app": "cd app && npm i && npm test && cd ..",
-    "test:server": "cd server && npm i && npm test && cd ..",
     "lint": "eslint .",
     "pretest": "npm run lint",
     "test": "exit 0",
