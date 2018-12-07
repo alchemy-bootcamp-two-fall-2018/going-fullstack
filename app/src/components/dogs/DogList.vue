@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     sortedDogs() {
-      return this.dogs.slice().sort((a,b) => {
+      return this.dogs.slice().sort((a, b) => {
         if(a.weight === b.weight) {
           if(a.name > b.name) return 1;
           if(a.name > b.name) return -1;
@@ -32,5 +32,6 @@ export default {
 };
 </script>
 
-<style lang="postcss" scoped>
+<style>
+  
 </style>
