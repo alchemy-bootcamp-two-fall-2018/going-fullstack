@@ -1,14 +1,9 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/crosscountry';
-const client = new Client(databaseUrl);
+const client = ('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-    DROP TABLE IF EXISTS racers;
-    `);
-  })
+client.query(`
+    DROP TABLE IF EXISTS racer;
+    `)
+  
   .then(
     () => console.log('drop tables complete'),
     err => console.log(err)

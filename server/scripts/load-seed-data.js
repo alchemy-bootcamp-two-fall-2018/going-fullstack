@@ -1,22 +1,16 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/crosscountry';
+
+const client = ('../db-client');
 const racers = require('./racers.json');
 
-const client = new Client(databaseUrl);
-
-client.connect()
-  .then (() => {
-    return Promise.all(
-      racers.map(racer => {
-        return client.query (`
-                INSERT INTO racers (name, age, gender, varsity, pr)
-                VALUES ($1, $2, $3, $4, $5);
-            `,
-        [racer.name, racer.age, racer.gender, racer.varsity, racer.pr]);
-      })
-    );
+Promise.all( 
+  racers.map(racer => {
+    return client.query (`
+    INSERT INTO racer (name, age, gender, varsity, pr)
+    VALUES ($1, $2, $3, $4, $5);
+    `,
+    [racers.name, racers.age, racers.gender, racers.varsity, racers.pr]);
   })
+)
   .then(
     () => console.log('seed data load complete'),
     err => console.log(err)
@@ -24,3 +18,6 @@ client.connect()
   .then(() => {
     client.end();
   });
+  
+    
+  
