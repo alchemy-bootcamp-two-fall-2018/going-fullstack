@@ -64,28 +64,10 @@ app.post('/api/dog_picker', (req, res) => {
   client.query(`
     INSERT INTO dog_table (name, breed, weight, isAdopted, size_id) 
     VALUES($1, $2, $3, $4, $5)
-    RETURNING id;
+    RETURNING id, name, breed, weight, isAdopted, short_name as "shortName";
     `,
-  [body.name, body.breed, body.weight, body.isAdopted, body.sizeId])
-    .then(result => {
-      const id = result.rows[0].id; 
-
-      return client.query(`
-        SELECT 
-          dog_table.id,
-          dog_table.name as name,
-          dog_table.breed,
-          dog_table.weight,
-          dog_table.isAdopted,
-          dog_size_table.id as "sizeId",
-          dog_size_table.short_name as size
-        FROM dog_table
-        JOIN dog_size_table
-        ON dog_table.size_id = dog_size_table.id
-        WHERE dog_table.id = $1;
-      `,
-      [id]);
-    })
+  [body.name, body.breed, body.weight, body.isAdopted, body.sizeId]
+  )
     .then(result => {
       res.json(result.rows[0]); 
     });
