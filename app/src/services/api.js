@@ -2,17 +2,17 @@ export default {
 
   getArticles() {
 
-    return fetch('/api/articles_table')
+    return fetch('/api/articles')
       .then(response => response.json());
   },
 
   getArticle(id) {
-    return fetch(`/api/articles_table/${id}`)
+    return fetch(`/api/articles/${id}`)
       .then(response => response.json());
   },
 
   addArticle(article) {
-    return fetch('/api/articles_table', {
+    return fetch('/api/articles', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
