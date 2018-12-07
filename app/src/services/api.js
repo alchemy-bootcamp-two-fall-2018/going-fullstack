@@ -24,6 +24,16 @@ export default {
     getGenres() {
       return fetch('/api/genres')
         .then(response => response.json());
+    },
+
+    deleteSinger(id) {
+      return fetch(`/api/singers/${id}`, {
+        method: 'DELETE'
+      })
+      .then(response => response.json());
     }
+
+
+
   };
 

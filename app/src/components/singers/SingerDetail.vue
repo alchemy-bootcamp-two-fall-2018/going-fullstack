@@ -10,8 +10,7 @@
     <p class="summary">
       {{singer.summary}}
     </p>
-    <!-- WIP delete functionality -->
-     <!-- <button @click=handleDelete>Delete</button> -->
+     <button @click=handleDelete>Delete</button>
   </section>
 </template>
 
@@ -29,6 +28,14 @@ export default {
       .then(singer => {
         this.singer = singer;
       });
+  },
+  methods: {
+    handleDelete() {
+      api.deleteSinger(this.singer.id)
+        .then(() => {
+          this.$router.push('/singers')
+        })
+    }
   }
 };
 </script>
