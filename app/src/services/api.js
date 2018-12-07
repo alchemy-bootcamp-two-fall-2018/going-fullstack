@@ -21,7 +21,11 @@ export default {
                 return response.json();
             });
     }, 
-    deleteGrappler(grappler){
-        console.log(grappler);
+    deleteGrappler(id){
+        return fetch(`/api/data/grapplers/${id}`, {
+            
+            method: 'DELETE', 
+        })
+            .then(response => response.json());
     }
 };

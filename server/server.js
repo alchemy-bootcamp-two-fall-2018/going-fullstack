@@ -48,7 +48,7 @@ app.delete('/api/data/grapplers/:id', (req, res) => {
     DELETE FROM grapplers WHERE id = $1;`, 
     [req.params.id])
         .then(result => {
-            res.json({ removed: result.rowCount === [1] });
+            res.json({ removed: result.rowCount === 1 });
         });
 });
 

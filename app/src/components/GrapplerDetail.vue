@@ -26,7 +26,7 @@ export default {
     }, 
     methods: {
         handleDelete() {
-            console.log('delete function runs from button');
+            api.deleteGrappler(this.grappler.id);
         }
     }
 
