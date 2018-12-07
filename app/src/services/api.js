@@ -20,5 +20,8 @@ export default {
                 console.log('response from api', response);
                 return response.json();
             });
+    }, 
+    deleteGrappler(grappler){
+        console.log(grappler);
     }
 };
