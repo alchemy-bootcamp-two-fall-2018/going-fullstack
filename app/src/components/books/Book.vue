@@ -2,10 +2,10 @@
   <li>
     <RouterLink :to="`/books/${book.id}`">
       {{book.title}} </RouterLink>
-    by {{book.author}}.<template>
+      by {{book.author}}
   </li>
 </template>
-    
+
 <script>
 export default {
   props: {
@@ -17,4 +17,3 @@ export default {
 <style>
 
 </style>
-    

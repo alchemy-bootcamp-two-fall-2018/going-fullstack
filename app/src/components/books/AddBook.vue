@@ -13,6 +13,19 @@
         <input v-model="book.pages" type=number required>
       </p>
       <p>
+        <label>Genre:</label>
+        <select v-if="genres"
+          v-model="book.genreId"
+          required
+        >
+          <option value="-1" disabled>Select a Genre</option>
+          <option v-for="genre in genres"
+            :key="genre.id"
+            :value="genre.id"
+          >
+        </select>
+      </p>
+      <p>
         <label>Check if it was good:</label>
         <input v-model="book.good" type=checkbox>
       </p>
@@ -21,14 +34,16 @@
 </template>
 
 <script>
-// import api from '../../services/api';
+import api from '../../services/api';
 
 function initBook() {
   return {
     title: '',
     author: '',
     pages: '',
-    good: Boolean
+    genre: '',
+    genreId: -1,
+    good: Boolean,
   };
 }
 
@@ -39,14 +54,20 @@ export default {
   data() {
     return {
       book: initBook(),
+      genres: null
     };
   },
-  
+  created() {
+    api.getGenres()
+      .then(genres => {
+        this.genres = genres;
+      });
+  },
   methods: {
     handleSubmit() {
       this.onAdd(this.book)
         .then(() => {
-          this.student = initBook();
+          this.book = initBook();
         });
     }
   },
