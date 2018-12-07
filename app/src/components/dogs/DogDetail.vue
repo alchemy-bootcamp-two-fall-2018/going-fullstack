@@ -2,15 +2,16 @@
   <section v-if="dog">
   <h2> {{dog.name}} </h2>
   <p>
-    {{dog.name}} is a type of {{dog.breed}}
+    {{dog.name}} is a type of {{dog.breed}}.
   </p> 
   <p> 
-    {{dog.name}} weighs {{dog.weight}} lbs
+    {{dog.name}} is a {{dog.size}} that weighs {{dog.weight}} lbs.
   </p>
   <p>
    It is {{dog.isadopted}} that {{dog.name}} was adopted into a great family! 
   </p> 
-  <button @click="handleDelete"> Remove </button>
+  <button @click="handleDelete"> REMOVE </button>
+  <button id="edit" @click="handleEdit"> ✎ EDIT </button>
   </section> 
 </template>
 

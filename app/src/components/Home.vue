@@ -16,6 +16,7 @@ export default {
 img {
   height: 100%;
   margin: auto; 
+  border: 5px solid grey; 
 }
 h2 {
   text-align: center;
@@ -26,5 +27,16 @@ h2 {
   margin: 3px;
   padding: 3px;
   border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#dogs:hover {
+  color: black;
+  margin: 3px;
+  padding: 3px;
+  border: 1px solid black;
+  font: white;
+  background-color: grey;
 }
 </style>

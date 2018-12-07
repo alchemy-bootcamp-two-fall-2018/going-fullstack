@@ -25,7 +25,7 @@ header {
   background: lightgray; 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 header img {
   height: 100%;
@@ -36,6 +36,11 @@ nav a {
   margin: 3px;
   padding: 3px;
   border: 1px solid black;
+}
+nav a:hover {
+  border: 1px solid black;
+  font: white;
+  background-color: grey;
 }
 main {
   padding: 8px;

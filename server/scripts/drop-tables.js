@@ -1,17 +1,9 @@
-const pg = require('pg'); 
+const client = require('../db-client'); 
 
-const Client = pg.Client; 
-
-const databaseUrl = 'postgres://localhost:5432/dog_picker'; 
-
-const client = new Client(databaseUrl); 
-
-client.connect()
-  .then(() => {
-    return client.query(`
-      DROP TABLE IF EXISTS dog_table;
-      `);
-  })
+client.query(`
+  DROP TABLE IF EXISTS dog_table;
+  DROP TABLE IF EXISTS dog_size_table;
+  `)
   .then(
     () => console.log('drop tables complete'), 
     err => console.log(err)
