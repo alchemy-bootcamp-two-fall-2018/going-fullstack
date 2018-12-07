@@ -75,7 +75,7 @@ app.post('/api/guitarists', (req, res) => {
           guitarists.name as name,
           guitarists.yob as "yob",
           guitar.id as "guitarId",  
-          guitar.model as guitar,
+          guitar.brand as guitar,
           guitarists.type
         FROM guitarists
         JOIN guitar
@@ -96,6 +96,30 @@ app.delete('/api/guitarists/:id', (req, res) => {
   [req.params.id])
     .then(result => {
       res.json({ removed:result.rowCount === 1 });
+    });
+});
+
+app.put('/api/guitarists/:id', (req, res) => {
+  const body = req.body;
+
+  client.query(`
+      UPDATE guitarists
+      SET
+        name = $1,
+        guitar_id = $2,
+        yob = $3,
+        type = $4
+      WHERE id = $5
+      RETURNING
+        id, 
+        name,
+        guitar_id as "guitarId",
+        yob,
+        type
+    `,
+  [body.name, body.guitarId, body.yob, body.type, body.id])
+    .then(result => {
+      res.json(result.rows[0]);
     });
 });
 

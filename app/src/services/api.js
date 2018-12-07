@@ -24,10 +24,21 @@ export default {
     return fetch('/api/guitars')
       .then(response => response.json());
   },
-  
+
   deleteGuitarist(id) {
     return fetch(`/api/guitarists/${id}`, {
       method: 'DELETE'
+    })
+      .then(response => response.json());
+  },
+
+  updateStudent(guitarist) {
+    return fetch(`/api/guitarists/${guitarist.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(guitarist)
     })
       .then(response => response.json());
   }

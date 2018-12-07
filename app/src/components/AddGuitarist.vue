@@ -3,6 +3,7 @@
         <input v-model="guitarist.name" placeholder="Name" require>
         <input v-model="guitarist.type" placeholder="Music Type" require>
         <input type="number" v-model="guitarist.yob" placeholder="Year of Birth" require>
+        <p>
         <select v-model="guitarist.alive" class="alive">
           <option disabled value="">Alive?</option>
           <option value="true">Alive</option>
@@ -21,6 +22,7 @@
         </select>
 
     <button>Add</button>
+    </p>
   </form>
 </template>
 

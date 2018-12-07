@@ -3,7 +3,7 @@
     "name": "Jimi Hendrix",
     "yob": 1942,
     "type": "Rock",
-    "alive": false,
+    "alive": "false",
     "guitar": "Stratocaster"
   },
   {
