@@ -12,7 +12,7 @@ client.query (`
   .then(
     results => {
       fs.writeFileSync(
-        '.nonprofit.json',
+        '.nonprofits.json',
         JSON.stringify(results.rows, true, 3)
       );
     },
