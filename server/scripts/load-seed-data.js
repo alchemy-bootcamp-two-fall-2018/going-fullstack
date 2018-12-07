@@ -17,7 +17,13 @@ Promise.all(
                 return client.query (`
                 INSERT INTO grapplers (name, age, champ, pref_id)
                 SELECT
+
                     $1 as name, 
+
+
+
+
+                    
                     $2 as age, 
                     $3 as champ,
                     id as pref_id
