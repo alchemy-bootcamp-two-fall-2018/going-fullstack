@@ -1,49 +1,15 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <p class="add-title">Add your favorite singer:</p>
-      <span>
-        Name: 
-          <input v-model="singer.name" require>
-      </span>
-      <span>
-        Genre: 
-          <select v-if="genres"
-            v-model="singer.genre_id"
-            required
-          >
-            <option value="-1" disabled>Select a Genre</option>
-            <option v-for="genre in genres"
-              :key="genre.id"
-              :value="genre.id"
-            >
-            {{genre.name}}
-            </option>
-            </select>
-      </span>
-      <span>
-        Age: 
-          <input type=number  v-model="singer.age">
-      </span>
-      <span>
-        Summary: 
-        <input v-model="singer.summary">
-      </span>
-    <button>Add</button>
-  </form>
+  <section>
+    <button @click="show = true">Add a Singer</button>
+    <Modal v-if="show" :onClose="() => show = false">
+      <SingerForm :onSubmit="handleAdd"/>
+      </Modal>
+  </section>
 </template>
 
 <script>
-import api from '../../services/api';
-
-function initSinger() {
-  return {
-    name: '',
-    genre: '',
-    age: null,
-    summary: '',
-    genre_id: -1
-  };
-}
+import SingerForm from './SingerForm';
+import Modal from '../shared/Modal';
 
 export default {
   props: {
@@ -51,24 +17,19 @@ export default {
   },
   data() {
     return {
-      singer: initSinger(),
-      genres: null
+      show: false
     };
   },
-  created() {
-    api.getGenres()
-      .then(genres => {
-        this.genres = genres;
-      });
+  components: {
+    SingerForm,
+    Modal
   },
   methods: {
-    handleSubmit() {
-      this.onAdd(this.singer)
-        .then(() => {
-          this.singer = initSinger();
-        });
+    handleAdd(singer) {
+      return this.onAdd(singer)
+        .then(() => this.show = false);
+      }
     }
-  }
 };
 </script>
 
