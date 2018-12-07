@@ -25,7 +25,8 @@ app.get('/api/guitarists', (req, res) => {
       guitarists.name as name,
       guitarists.yob as yob,
       guitar.id as "guitarId",
-      guitarists.type as type
+      guitarists.type as type,
+      guitar.brand as brand
     FROM guitarists
     JOIN guitar
     ON guitarists.guitar_id = guitar.id

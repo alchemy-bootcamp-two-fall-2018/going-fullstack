@@ -8,7 +8,7 @@
       Year of birth: {{guitarist.yob}}
     </p>
     <p>
-      Alive: {{guitarist.alive}}
+      Guitar: {{guitarist.guitar}}
     </p>
   </section>
 </template>

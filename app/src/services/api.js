@@ -19,4 +19,8 @@ export default {
     })
       .then(response => response.json());
   },
+  getGuitars() {
+    return fetch('/api/guitars')
+      .then(response => response.json());
+  }
 };

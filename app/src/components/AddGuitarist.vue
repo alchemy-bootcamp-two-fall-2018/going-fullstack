@@ -8,17 +8,33 @@
           <option value="true">Alive</option>
           <option value="false">Deceased</option>
         </select>
+        <p>
+      <label>Guitar:</label>
+        <select v-if="guitars" 
+          v-model="guitarist.guitarId" 
+          required>
+          <option value="-1" disabled>Select a Guitar</option>
+          <option v-for="guitar in guitars"
+            :key="guitar.id"
+            :value="guitar.id">
+            {{guitar.brand}} ({{guitar.model}})
+          </option>
+        </select>
+        </p>
     <button>Add</button>
   </form>
 </template>
 
 <script>
+import api from '../services/api';
+
 function initGuitarist() {
   return {
     name: '',
     type: '',
     yob: '',
-    alive: ''
+    alive: '',
+    guitarId: -1
   };
 }
 export default {
@@ -27,8 +43,15 @@ export default {
   },
   data() {
     return {
-      guitarist: initGuitarist()
+      guitarist: initGuitarist(),
+      guitars: null
     };
+  },
+  created() {
+    api.getGuitars()
+      .then(guitars => {
+        this.guitars = guitars;
+      });
   },
   methods: {
     handleSubmit() {
