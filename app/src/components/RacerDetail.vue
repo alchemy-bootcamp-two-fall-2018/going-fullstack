@@ -10,9 +10,6 @@
         <p>
             PR:{{racer.pr}}
         </p>
-        <p>
-            Previous Race:{{racer.previous}}
-        </p>
     </section>
 </template>
 

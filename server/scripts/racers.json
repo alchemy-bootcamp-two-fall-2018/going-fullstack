@@ -3,37 +3,30 @@
     "name": "Austin Ulloa",
     "age": 17,
     "team": "jv",
-    "pr": "25",
-    "previous" : "yes"
+    "pr": "25"
   },
   {
     "name": "Quintin Ulloa",
     "age": 15,
-    "team ": "varsity",
-    "pr": "30",
-    "previous" : "yes"
+    "team ": "v",
+    "pr": "30"
   },
   {
     "name": "Mara Kramer",
     "age": 15,
-    "team": "varsity",
-    "pr": "19:58",
-    "previous" : "yes"
+    "team": "v",
+    "pr": "19:58"
   },
   {
     "name": "Alani Nakamura",
     "age": 16,
-    "team": "varsity",
-    "pr": "24:01",
-    "previous" : "yes"
-
+    "team": "v",
+    "pr": "24:01"
   },
   {
     "name": "Zach Nakamura",
     "age": 18,
-    "team": "varsity",
-    "pr": "18:30",
-    "previous" : "yes"
-
+    "team": "v",
+    "pr": "18:30"
   }
 ]

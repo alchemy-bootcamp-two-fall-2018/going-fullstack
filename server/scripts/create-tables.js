@@ -6,8 +6,7 @@ client.query(`
             name VARCHAR(256) NOT NULL,
             age INTEGER NOT NULL, 
             team VARCHAR(256) NOT NULL, 
-            pr VARCHAR(256) NOT NULL, 
-            previous BOOLEAN NOT NULL
+            pr VARCHAR(256) NOT NULL
         );  
     `)
   .then(
