@@ -6,13 +6,14 @@ client.query(`
   CREATE TABLE IF NOT EXISTS author (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
-    url VARCHAR(256) NOT NULL
+    short_name VARCHAR(256) NOT NULL
   );
 
   CREATE TABLE IF NOT EXISTS article (
     id SERIAL PRIMARY KEY,
-    author VARCHAR(256) NOT NULL,
+    title VARCHAR(256) NOT NULL,
     author_id INTEGER NOT NULL REFERENCES author(id),
+    is_clickbait BOOLEAN NOT NULL,
     views INTEGER
     );
 
