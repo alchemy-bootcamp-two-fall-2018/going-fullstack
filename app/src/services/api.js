@@ -21,15 +21,9 @@ export default {
         .then(response => response.json());
     },
 
-    //WIP Delete functionality
-    deleteSinger(singer) {
-      return fetch('/api/singers', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(singer)
-      })
+    getGenres() {
+      return fetch('/api/genres')
+        .then(response => response.json());
     }
   };
 

@@ -7,7 +7,18 @@
       </span>
       <span>
         Genre: 
-          <input v-model="singer.genre">
+          <select v-if="genres"
+            v-model="singer.genre_id"
+            required
+          >
+            <option value="-1" disabled>Select a Genre</option>
+            <option v-for="genre in genres"
+              :key="genre.id"
+              :value="genre.id"
+            >
+            {{genre.name}}
+            </option>
+            </select>
       </span>
       <span>
         Age: 
@@ -22,13 +33,15 @@
 </template>
 
 <script>
+import api from '../../services/api';
 
 function initSinger() {
   return {
     name: '',
     genre: '',
     age: null,
-    summary: ''
+    summary: '',
+    genre_id: -1
   };
 }
 
@@ -38,8 +51,15 @@ export default {
   },
   data() {
     return {
-      singer: initSinger()
+      singer: initSinger(),
+      genres: null
     };
+  },
+  created() {
+    api.getGenres()
+      .then(genres => {
+        this.genres = genres;
+      });
   },
   methods: {
     handleSubmit() {
