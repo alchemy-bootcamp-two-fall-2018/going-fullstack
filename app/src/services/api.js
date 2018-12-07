@@ -23,5 +23,9 @@ export default {
       method: 'DELETE'
     })
       .then(response => response.json());
+  },
+  getSizes() {
+    return fetch('/api/dog_size_table')
+      .then(response => response.json());
   }
 };

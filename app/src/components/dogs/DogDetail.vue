@@ -5,7 +5,7 @@
     {{dog.name}} is a type of {{dog.breed}}
   </p> 
   <p> 
-    {{dog.name}} weighs {{dog.weight}} lbs
+    {{dog.name}} is a {{dog.shortName}} and weighs {{dog.weight}} lbs
   </p>
   <p>
    It is {{dog.isadopted}} that {{dog.name}} was adopted into a great family! 
