@@ -20,7 +20,7 @@ export default {
   },
   components: {
     AddNonprofit,
-    NonprofitList
+    NonprofitsList
   },
   created() {
     api.getNonprofits()
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     handleAdd(nonprofit) {
-      return api.addNonprofit(student)
+      return api.addNonprofit(nonprofit)
         .then(saved => {
           this.nonprofits.push(saved);
         });

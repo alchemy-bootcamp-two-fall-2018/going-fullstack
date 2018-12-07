@@ -14,7 +14,7 @@ export default {
     nonprofits: null
   },
   components: {
-    Student
+    Nonprofit
   },
   computed: {
     sortedNonprofits() {
