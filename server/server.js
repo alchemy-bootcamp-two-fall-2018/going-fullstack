@@ -15,6 +15,8 @@ app.get('/api/scripts/pref', (req, res) => {
     client.query(`
     SELECT id, name, short_name as "shortName
     FROM pref`)
+
+    
         .then (result => {
             res.json(result.rows);
         });
