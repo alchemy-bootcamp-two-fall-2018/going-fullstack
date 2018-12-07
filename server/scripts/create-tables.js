@@ -1,24 +1,23 @@
-const pg = require('pg');
 
-const Client = pg.Client;
-
-const databaseURL = 'postgres://localhost:5432/news_articles';
+const client = require('../db-client');
 
 
-const client = new Client(databaseURL);
+client.query(`
+  CREATE TABLE IF NOT EXISTS author (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL,
+    url VARCHAR(256) NOT NULL
+  );
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS articles_table (
-        id SERIAL PRIMARY KEY,
-        title VARCHAR(256) NOT NULL,
-        is_clickbait BOOLEAN,
-        author VARCHAR(256),
-        views VARCHAR(256)
-      );
-    `);
-  })
+  CREATE TABLE IF NOT EXISTS article (
+    id SERIAL PRIMARY KEY,
+    author VARCHAR(256) NOT NULL,
+    author_id INTEGER NOT NULL REFERENCES author(id),
+    views INTEGER
+    );
+
+`)
+  
   .then(
     () => console.log('create tables complete'),
     // err => console.log(err)
