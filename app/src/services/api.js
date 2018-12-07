@@ -27,5 +27,18 @@ export default {
             method: 'DELETE', 
         })
             .then(response => response.json());
+    }, 
+    updateGrappler(id, grappler) {
+        return fetch(`/api/data/grapplers${id}`, {
+            method: 'PUT', 
+            headers: {
+                'Content-Type': 'application/json'
+            }, 
+            body: JSON.stringify(grappler)
+        })
+            .then(response => {
+                console.log('response from api from UPDATE method');
+                return response.json();
+            });
     }
 };
