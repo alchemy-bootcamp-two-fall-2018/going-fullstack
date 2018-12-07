@@ -19,8 +19,16 @@ app.get('api/teams', (req, res) => {
 
 app.get('/api/racers', (req, res) => {
   client.query(`
-    SELECT id, name
-    FROM racer;
+    SELECT 
+      racer.id, 
+      racer.name AS name,
+      racer.age AS age,
+      team.id AS "teamId",
+      team.name AS team,
+      racer.pr AS pr
+    FROM racer
+    JOIN team
+    ON racer.team_id = team.id;
   `)
     .then(result => {
       res.json(result.rows);
