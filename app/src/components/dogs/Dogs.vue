@@ -3,22 +3,14 @@
     <h2> Dogs </h2>
     
     <AddDogs :onAdd="handleAdd"/>
-
-    <ul v-if="dogs">
-      <li v-for="dog in dogs"
-      :key="dog.id">
-
-      {{dog.name}} and their breed is {{dog.type}} and they were adopted
-      into a great family!
-      
-      </li>
-    </ul>
+    <DogList :dogs="dogs"/>
   </section>
 </template>
 
 <script>
 import api from '../../services/api';
 import AddDogs from './AddDogs';
+import DogList from './DogList'; 
 export default {
   data() {
     return {
@@ -28,6 +20,7 @@ export default {
   },
   components: {
     AddDogs,
+    DogList
   },
   created() {
     this.error = null;
@@ -42,6 +35,7 @@ export default {
   }, 
   methods: {
     handleAdd(dog) {
+      console.log('vue', dog); 
       return api.addDogs(dog)
         .then(saved => {
           this.dogs.push(saved); 

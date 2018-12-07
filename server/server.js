@@ -1,45 +1,59 @@
 const express = require('express'); 
 const app = express(); 
-const shortid = require('shortid'); 
+const morgan = require('morgan'); 
+const pg = require('pg'); 
 
-const fs = require('fs'); 
-
-function readData() {
-  const data = fs.readFileSync('./data/dogs.json', 'utf8'); 
-  return JSON.parse(data);
-}
-
-function saveData(dogs) {
-  const json = JSON.stringify(dogs, true, 2);
-  fs.writeFileSync('./data/dogs.json', json);
-}
+app.use(morgan('dev')); 
 
 app.use(express.json()); 
 
-app.get('/api/dogs', (req, res) => {
-  const dogs = readData(); 
+const Client = pg.Client; 
+const dbUrl = 'postgres://localhost:5432/dog_picker'; 
+const client = new Client(dbUrl); 
 
-  if(req.query.name) {
-    const match = req.query.name.toLowerCase(); 
-    const filtered = dogs.filter(d => {
-      return d.name.toLowerCase().startsWith(match); 
+client.connect();
+
+app.get('/api/dog_picker', (req, res) => {
+  client.query(`
+    SELECT id, name, breed, weight, isAdopted FROM dog_table;
+    `)
+    .then(result => {
+      res.json(result.rows); 
     }); 
-    res.json(filtered); 
-  }
-  else {
-    res.json(dogs); 
-  }
+}); 
+
+app.get('/api/dog_picker/:id', (req, res) => {
+  client.query(`
+    SELECT * FROM dog_table WHERE id = $1;
+    `,
+  [req.params.id])
+    .then(result => {
+      res.json(result.rows[0]); 
+    }); 
 });
 
-app.post('/api/dogs', (req, res) => {
-  const dogs = readData();
-  const dog = req.body; 
-  dog.id = shortid.generate(); 
-  dogs.push(dog); 
-  saveData(dogs);
+app.post('/api/dog_picker', (req, res) => {
+  const body = req.body; 
+  console.log('server', body); 
+  client.query(`
+    INSERT INTO dog_table (name, breed, weight, isAdopted) 
+    VALUES($1, $2, $3, $4)
+    RETURNING id, name, breed, weight, isAdopted; 
+    `,
+  [body.name, body.breed, body.weight, body.isAdopted])
+    .then(result => {
+      res.json(result.rows[0]); 
+    });
+});
 
-  res.json(dog);
-
+app.delete('/api/dog_picker/:id', (req, res) => {
+  client.query(`
+    DELETE FROM dog_table WHERE id = $1;
+  `,
+  [req.params.id])
+    .then(result => {
+      res.json({ removed:result.rowCount === 1 }); 
+    });
 });
 
 const PORT = 3000; 

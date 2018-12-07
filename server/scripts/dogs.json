@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Lewis",
+    "breed": "King Charles Cavalier",
+    "weight": 20,
+    "isAdopted": true
+  },
+  {
+    "name": "Katie Rose",
+    "breed": "King Charles Cavalier",
+    "weight": 20,
+    "isAdopted": true
+  },
+  {
+    "name": "Lola",
+    "breed": "Poodle",
+    "weight": 50,
+    "id": "kIUqFFE1I",
+    "isAdopted": true
+  },
+  {
+    "name": "Frank",
+    "breed": "Mutt, half adorable, half perfect",
+    "weight": 75,
+    "id": "tRz_7iF3-",
+    "isAdopted": true
+  },
+  {
+    "name": "Cubs",
+    "breed": "Poodle/Australian Shepard",
+    "weight": 7,
+    "id": "qvJBd6uhc",
+    "isAdopted": true
+  },
+  {
+    "name": "Pebbles",
+    "breed": "Poodle/Australian Shepard",
+    "weight": 7,
+    "id": "dOeNcJ4kN",
+    "isAdopted": true
+  }
+]
