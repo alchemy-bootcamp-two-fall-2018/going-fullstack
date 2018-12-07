@@ -1,11 +1,11 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <label>Name:
-      <input v-model="island.name" required>
+      <input v-model="island.name" require>
     </label>
     
     <label>Location:
-      <input v-model="island.loca" required>
+      <input v-model="island.loca" require>
     </label>
 
     <label>Image:
@@ -18,13 +18,18 @@
         <opiton value="true">True</opiton>
         <opiton value="false">False</opiton>
       </select>
-
-    <label>Inhabited (T/F):
-      <select v-model="island.inhabited">
-        <option value="" disabled selected >Select</option>
-        <opiton value="true">True</opiton>
-        <opiton value="false">False</opiton>
+    <p>
+    <label>Amazingness:</label>
+      <select v-if="amazingness" 
+        v-model="island.amazingnessId" require>
+        <option value="-1" disabled>Select Amazingness</option>
+        <option v-for="amazingness in amazingness"
+          v-bind:key="amazingness.id"
+          v-bind:value="amazingness.id">
+          {{size.name}} ({{size.shortName}})
+        </option>
       </select>
+    </p>
     </label>
 
     <button>Add</button>
@@ -32,6 +37,18 @@
 </template>
 
 <script>
+import islandApi from '../../islandsApi';
+
+function initAnimal() {
+  return {
+    name: '',
+    loca: '',
+    imagel: '',
+    isAmazing: '',
+    amazingnessId: -1,
+  };
+}
+
 
 export default {
    props: {
@@ -39,14 +56,21 @@ export default {
    },
   data() {
     return {
-      island: {}
+      island: initIsland(),
+      amazingnesses: null
     };
+  },
+  created() {
+    api.getAmazingnesses()
+      .then(amazingnesses => {
+        this.amazingnesses = amazingnesses;
+      });
   },
   methods: {
     handleSubmit() {
       this.onAdd(this.island)
       .then(() => {
-        this.island = {};
+        this.island = initIsland();
       });
     }
   }

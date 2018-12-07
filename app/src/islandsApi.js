@@ -16,6 +16,16 @@ export default {
       body: JSON.stringify(island)
     })
       .then(response => response.json());
+  },
+
+  deleteIsland(id) {
+    return fetch(`/api/islands/${id}`, {
+      method: 'DELETE'
+    })
+    .then(response => response.json());
+  },
+  getAmazingness() {
+    return fetch('/api/amazingness')
+      .then(response => response.json());
   }
 };
-
