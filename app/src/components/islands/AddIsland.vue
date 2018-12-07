@@ -19,14 +19,14 @@
         <opiton value="false">False</opiton>
       </select>
     <p>
-    <label>Amazingness:</label>
-      <select v-if="amazingness" 
-        v-model="island.amazingnessId" require>
-        <option value="-1" disabled>Select Amazingness</option>
-        <option v-for="amazingness in amazingness"
-          v-bind:key="amazingness.id"
-          v-bind:value="amazingness.id">
-          {{size.name}} ({{size.shortName}})
+    <label>rating:</label>
+      <select v-if="ratings" 
+        v-model="island.ratingId" require>
+        <option value="-1" disabled>Select rating</option>
+        <option v-for="rating in ratings"
+          v-bind:key="rating.id"
+          v-bind:value="rating.id">
+          {{rating.name}} ({{rating.shortName}})
         </option>
       </select>
     </p>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import islandApi from '../../islandsApi';
+import islandApi from '../../api';
 
 function initAnimal() {
   return {
@@ -45,7 +45,7 @@ function initAnimal() {
     loca: '',
     imagel: '',
     isAmazing: '',
-    amazingnessId: -1,
+    ratingId: -1,
   };
 }
 
@@ -57,20 +57,20 @@ export default {
   data() {
     return {
       island: initIsland(),
-      amazingnesses: null
+      ratinges: null
     };
   },
   created() {
-    api.getAmazingnesses()
-      .then(amazingnesses => {
-        this.amazingnesses = amazingnesses;
+    api.getRatings()
+      .then(ratings => {
+        this.ratings = ratings;
       });
   },
   methods: {
     handleSubmit() {
       this.onAdd(this.island)
-      .then(() => {
-        this.island = initIsland();
+        .then(() => {
+          this.island = initIsland();
       });
     }
   }

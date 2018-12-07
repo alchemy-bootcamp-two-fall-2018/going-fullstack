@@ -10,7 +10,7 @@
 <script>
 export default {
   props: {
-    islands:null
+    islands: null
   }
 };
 </script>

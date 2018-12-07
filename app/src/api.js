@@ -24,8 +24,8 @@ export default {
     })
     .then(response => response.json());
   },
-  getAmazingness() {
-    return fetch('/api/amazingness')
+  getrating() {
+    return fetch('/api/rating')
       .then(response => response.json());
   }
 };

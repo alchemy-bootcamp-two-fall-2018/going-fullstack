@@ -1,7 +1,7 @@
 const client = require('../db-client');
 
 client.query(`
-CREATE TABLE IF NOT EXISTS amazingness (
+CREATE TABLE IF NOT EXISTS rating (
   id SERIAL PRIMARY KEY,
   name VARCHAR(256) NOT NULL,
   short_name VARCHAR(1) NOT NULL
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS amazingness (
     loca VARCHAR(256),
     image VARCHAR(256),
     is_amazing BOOLEAN,
-    amazingness_id INTEGER NOT NULL REFERENCES amazingness(id)
+    rating_id INTEGER NOT NULL REFERENCES rating(id)
   );
   `)
   

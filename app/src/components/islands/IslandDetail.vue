@@ -5,25 +5,36 @@
       <img v-bind:src="island.iamge"/>
       <p>Location: {{island.loca}} </p>
       <p>isAmazing: {{island.isAmazing}} </p>
-      <p>inhabited: {{island.inhabited}} </p>
+      <p>rating: {{island.rating}} </p>
+      <button @click="handleDelete">Delete</button>
+      <button @click="handleUpdate">Edit</button>
     </div>
   </section>    
 </template>
 
 <script>
-import islandsApi from '../../islandsApi';
+import api from '../../api';
+
 export default {
-  data() 
+  data() {
     return {
       island: null
     };
-};
+},
   // not recognizing command created
   created() {
     api.getIsland(this.$route.params.id)
       .then(island => {
         this.island = island;
       });
+  }, 
+  methods: {
+    handleDelete() {
+      api.deleteIsland(this.island.id)
+        .then(() => {
+          this.$router.push('/islands');
+        });
+    }
   }
 };
 </script>

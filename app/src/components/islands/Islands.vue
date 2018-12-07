@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import islandsApi from '../../islandsApi.js';
+import api from '../../api.js';
 import AddIsland from './AddIsland.vue';
 import IslandList from './IslandList.vue';
 
@@ -22,7 +22,7 @@ export default {
     IslandList
   },
   created() {
-    islandsApi.getIslands()
+    api.getIslands()
       .then(islands => {
         this.islands = islands;
       });
@@ -37,14 +37,8 @@ export default {
         island.isAmazing = false;
         
       }
-      if(island.inhabited === 'true') {
-        island.inhabited = true;
-      }
-      else {
-        island.inhabited = false;
-      }
     
-      return islandsApi.addIslands(island)
+      return api.addIsland(island)
         .then(saved => {
           this.islands.push(saved); 
         });

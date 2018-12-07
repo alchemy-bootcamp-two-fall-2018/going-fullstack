@@ -1,14 +1,14 @@
 const client = require('../db-client');
 const islands = require('./islands.json');
-const amazingness = require('./amazingness');
+const ratings = require('./ratings');
 
 Promise.all(
-  amazingness.map(size => {
+  rating.map(size => {
     return client.query(`
-    INSERT INTO amazingness (name, short_name)
+    INSERT INTO rating (name, short_name)
     VALUES ($1, $2);
     `,
-    [amazingness.name, amazingness.shortName]);
+    [rating.name, rating.shortName]);
   })
 )
 
@@ -17,17 +17,17 @@ Promise.all(
     return Promise.all(
       islands.map(island => {
         return client.query(`
-          INSERT INTO islands (name, loca, image, is_amazing, amazingness)
+          INSERT INTO islands (name, loca, image, is_amazing, rating)
           SELECT
             $1 as name,
             $2 as loca,
             $3 as image,
             $4 as is_amazing,
-            id as amazingness_id
-          FROM amazingness
+            id as rating_id
+          FROM rating
           WHERE short_name = $5;
         `,
-        [island.name, island.loca, island.image, island.isAmazing, island.amazingness]);
+        [island.name, island.loca, island.image, island.isAmazing, island.rating]);
       })
     );
   })
