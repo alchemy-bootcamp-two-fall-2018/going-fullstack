@@ -26,11 +26,12 @@
         v-model="nonprofit.metropolitan" 
         required
       >
-        <option v-for="(display, key) in metropolitans"
-          :key="key"
-          :value="key"
+        <option value="-1" disabled>Select A Response</option>
+        <option v-for="metropolitan in metropolitans"
+          :key="metropolitan.id"
+          :value="metropolitan.id"
         >
-          {{display}}
+          {{metropolitan.name}}
         </option>
       </select>
     </p>
@@ -63,7 +64,10 @@ export default {
     };
   },
   created() {
-    this.metropolitans = api.getMetropolitans();
+    api.getMetropolitans()
+      .then(metropolitans => {
+        this.metropolitans = metropolitans;
+      });
   },
   methods: {
     handleSubmit() {

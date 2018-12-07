@@ -1,17 +1,28 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://postgres:1234@localhost:5432/nonprofit';
+const client = require('../db-client');
 const nonprofits = require('./nonprofits.json');
+const metropolitans = require('metropolitans');
 
-const client = new Client(databaseUrl);
-
-client.connect()
+Promise.all(
+  metropolitans.map(metropolitans => {
+    return client.query(`
+      INSERT INTO metropolitans (name)
+      VALUES ($1);
+    `,
+    [metropolitans.name]);
+  })
+)
   .then(() => {
     return Promise.all(
       nonprofits.map(nonprofit => {
         return client.query(`
-          INSERT INTO nonprofits (name, category, city, description, employees, metropolitan)
-          VALUES ($1, $2, $3, $4, $5, $6);
+          INSERT INTO nonprofits (name, category, city, description, employees, metro_id)
+          SELECT
+            $1 as name,
+            $2 as category,
+            $3 as city,
+            $4 as description,
+            $5 as employees,
+            $ as metro_id
         `,
         [nonprofit.name, nonprofit.category, nonprofit.city, nonprofit.description, nonprofit.employees, nonprofit.metropolitan]);
       })

@@ -2,16 +2,9 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const client = require('./db-client');
-const pg = require('pg'); //
 
 app.use(morgan('dev'));
 app.use(express.json());
-
-// const Client = pg.Client;
-// const dbUrl = 'postgres://postgres:1234@localhost:5432/nonprofits';
-// const client = new Client(dbUrl);
-// client.connect();
-
 
 app.get('/api/metropolitans', (req, res) => {
   client.query(`

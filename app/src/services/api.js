@@ -20,10 +20,9 @@ export default {
     })
       .then(response => response.json());
   },
+  
   getMetropolitans() {
-    return {
-      true: 'True',
-      false: 'False'
-    };
+    return fetch('./api/metropolitans')
+      .then(response => response.json());
   }
 };
