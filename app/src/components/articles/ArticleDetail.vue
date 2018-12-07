@@ -9,7 +9,7 @@
       Views:{{article.views}}
     </p>
     <p>
-      Clickbait: {{article.isClickbait}}
+      Category: {{article.category}}
     </p>
   </section>
 </template>

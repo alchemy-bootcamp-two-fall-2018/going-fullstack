@@ -3,7 +3,7 @@ const client = require('../db-client');
 
 
 client.query(`
-  CREATE TABLE IF NOT EXISTS author (
+  CREATE TABLE IF NOT EXISTS article_category_table (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
     short_name VARCHAR(256) NOT NULL
@@ -12,7 +12,7 @@ client.query(`
   CREATE TABLE IF NOT EXISTS article (
     id SERIAL PRIMARY KEY,
     title VARCHAR(256) NOT NULL,
-    author_id INTEGER NOT NULL REFERENCES author(id),
+    author_id INTEGER NOT NULL REFERENCES article_category_table(id),
     is_clickbait BOOLEAN NOT NULL,
     views INTEGER
     );

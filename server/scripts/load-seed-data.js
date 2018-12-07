@@ -4,12 +4,12 @@ const articles = require('./articles.json');
 const categories = require('./categories');
 
 Promise.all(
-  categories.map(author => {
+  categories.map(category => {
     return client.query(`
-      INSERT INTO author (name, short_name)
+      INSERT INTO article_category_table (name, short_name)
       VALUES ($1, $2);
     `,
-    [author.name, author.shortName]);
+    [category.name, category.shortName]);
   })
 )
   .then(() => {
@@ -21,7 +21,7 @@ Promise.all(
             $1 as title,
             id as author_id,
             $2 as views
-          FROM author
+          FROM article_category_table
           WHERE short_name = $3;
         `,
         [article.title, article.views, article.author]);

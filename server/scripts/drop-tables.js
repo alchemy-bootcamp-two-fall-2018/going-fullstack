@@ -10,7 +10,7 @@ client.connect()
   .then(() => {
     return client.query(`
       DROP TABLE IF EXISTS article;
-      DROP TABLE IF EXISTS author;
+      DROP TABLE IF EXISTS article_category_table;
     `);
   })
   .then(
