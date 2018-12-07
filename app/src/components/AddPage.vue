@@ -3,6 +3,8 @@
         <form @submit.prevent="handleSubmit">
             <label> Name:</label>
             <input v-model="grappler.name" required>
+            <label> Preference:</label>
+            <input v-model="grappler.prefId" required>
             <label> Age:</label>
             <input v-model="grappler.age" type ="number" required>
             <label> WorldChampion? Yes/No</label>
@@ -19,6 +21,7 @@ export default {
             grappler: {
                 name: '',
                 age: '',
+                prefId: '',
                 champion: Boolean
             }
         };
@@ -30,7 +33,7 @@ export default {
         handleSubmit() {
             this.onAdd(this.grappler) 
                 .then(() => {
-                    this.grappler = { name: '', age: '', champion:'' };
+                    this.grappler = { name: '', age: '', prefId: '', champion:'' };
                 });
         }
     }
