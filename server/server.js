@@ -10,9 +10,7 @@ app.use(express.json());
 app.get('/api/ratings', (req, res) => {
 
   client.query(`
-    SELECT id, name, short_name as "shortName" 
-    FROM rating
-    ORDER BY name;
+    SELECT * FROM ratings;
   `)
     .then(result => {
       res.json(result.rows);
@@ -21,22 +19,24 @@ app.get('/api/ratings', (req, res) => {
 app.get('/api/islands', (req, res) => {
   client.query(`
   SELECT 
-    islands.id, 
-    islands.name as name,
-    islands.loca as loca,
-    islands.image as image,
-    islands.is_amazing as isAmazing,
-    rating.id as "ratingID",
-    rating.name as rating    
+    islands.name,
+    islands.loca,
+    islands.image,
+    islands.is_amazing,
+    ratings.rating as rating    
   FROM islands
   JOIN rating
   ON islands.rating_id = rating.id
-  ORDER BY name ASC;
-`)
+  WHERE islands.id = $1
+  `,
+[req.params.id])
   .then(result => {
-    res.json(result.rows);
+    res.json(result.rows[0]);
   });
 });
+app.post('/api/islands/:id', (req, res) => {
+  const body = req.body;
+
 
 app.get('/api/islands/:id', (req, res) => {
  client.query(`
@@ -65,7 +65,7 @@ app.post('/api/islands', (req, res) => {
   client.query(`
     INSERT INTO islands (name, loca, image, is_amazing, rating)
     VALUES($1, $2, $3, $4, $5)
-    RETURNING id;
+    RETURNING id. name,loca, image, isAmazing, 
   `,
   [body.name, body.loca, body.image, body.isAmazing, body.rating])
     .then(result => {

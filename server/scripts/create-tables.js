@@ -4,7 +4,7 @@ client.query(`
 CREATE TABLE IF NOT EXISTS rating (
   id SERIAL PRIMARY KEY,
   name VARCHAR(256) NOT NULL,
-  short_name VARCHAR(1) NOT NULL
+  short_name VARCHAR(4) NOT NULL
 );
 
   CREATE TABLE IF NOT EXISTS islands
