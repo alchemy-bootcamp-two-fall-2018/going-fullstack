@@ -54,14 +54,9 @@ app.post('/api/data/grapplers', (req, res) => {
                 SELECT
                     grapplers.id,
 
-                    grapplers.name as 
-
-                    name,
+                    grapplers.name as name,
                     grapplers.age as age,
-
-                    grapplers.champ as 
-                    
-                    champ,
+                    grapplers.champ as champ,
                     pref.id as "prefId",
                     pref.name as pref
                 FROM grapplers
