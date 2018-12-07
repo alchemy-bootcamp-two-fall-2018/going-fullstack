@@ -1,17 +1,9 @@
-const pg = require('pg'); 
+const client = require('../db-client'); 
 
-const Client = pg.Client; 
-
-const databaseUrl = 'postgres://localhost:5432/islanddb'; 
-
-const client = new Client(databaseUrl); 
-
-client.connect()
-  .then(() => {
-    return client.query(`
-      DROP TABLE IF EXISTS islands_table;
-      `);
-  })
+client.query(`
+  DROP TABLE IF EXISTS islands;
+  DROP TABLE IF EXISTS amazingness;
+  `)
   .then(
     () => console.log('drop tables complete'), 
     err => console.log(err)

@@ -1,19 +1,22 @@
-const pg = require('pg');
- const Client = pg.Client;
- const databaseUrl = 'postgres://localhost:5432/islanddb';
- const client = new Client(databaseUrl);
- client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS islands
-        id SERIAL PRIMARY KEY,
-        name VARCHAR(256) NOT NULL,
-        loca VARCHAR(256),
-        image VARCHAR(256),
-        is_amazing Boolean
-      );
-    `);
-  })
+const client = require('../db-client');
+
+client.query(`
+CREATE TABLE IF NOT EXISTS amazingness (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(256) NOT NULL,
+  short_name VARCHAR(1) NOT NULL
+);
+
+  CREATE TABLE IF NOT EXISTS islands
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL,
+    loca VARCHAR(256),
+    image VARCHAR(256),
+    is_amazing BOOLEAN,
+    amazingness_id INTEGER NOT NULL REFERENCES amazingness(id)
+  );
+  `)
+  
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)
