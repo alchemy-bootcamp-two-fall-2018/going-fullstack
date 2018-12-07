@@ -51,7 +51,7 @@ app.get('/api/dog_picker/:id', (req, res) => {
       FROM dog_table
       JOIN dog_size_table
       ON dog_table.size_id = dog_size_table.id
-      WHERE dog_size_table.id = $1;
+      WHERE dog_table.id = $1;
   `,
   [req.params.id])
     .then(result => {

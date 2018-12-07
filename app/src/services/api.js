@@ -1,3 +1,15 @@
+let sizes = null;
+
+const getOptions = (method, data) => {
+  return {
+    method, 
+    headers: {
+      'Content-Type': 'application/json'
+    }, 
+    body: JSON.stringify(data)
+  };
+};
+
 export default {
   getDogs() {
     return fetch('/api/dog_picker')
@@ -9,13 +21,7 @@ export default {
   },
   addDogs(dog) {
     console.log('api', dog); 
-    return fetch('/api/dog_picker', {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json'
-      }, 
-      body: JSON.stringify(dog)
-    })
+    return fetch('/api/dog_picker', getOptions('POST', dog))
       .then(response => response.json());
   },
   deleteDog(id) {
@@ -25,7 +31,28 @@ export default {
       .then(response => response.json());
   },
   getSizes() {
-    return fetch('/api/dog_size_table')
-      .then(response => response.json());
+    if(sizes) {
+      return Promise.resolve(sizes);
+    }
+    else {
+      return fetch('/api/dog_size_table')
+        .then(response => response.json())
+        .then(fetchedSizes => {
+          sizes = fetchedSizes;
+          return sizes;
+        });
+    }
+  },
+  addSizes(size) {
+    return fetch('/api/dog_size_table', getOptions('POST', size))
+      .then(response => response.json())
+      .then(saved => {
+        sizes.push(saved);
+        sizes.sort((a, b) => {
+          if(a.name > b.name) return 1; 
+          if(a.name < b.name) return -1; 
+          return 0;
+        });
+      });
   }
 };
