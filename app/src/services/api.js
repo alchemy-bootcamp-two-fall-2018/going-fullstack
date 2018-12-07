@@ -1,3 +1,5 @@
+let sizes = null;
+
 export default {
   getAnimals() {
     return fetch('/api/animals')
@@ -39,7 +41,16 @@ export default {
   },
 
   getSizes() {
-    return fetch('/api/sizes')
-      .then(response => response.json());
+    if(sizes) {
+      return Promise.resolve(sizes);
+    }
+    else {
+      return fetch('/api/sizes')
+        .then(response => response.json())
+        .then(fetchedSizes => {
+          sizes = fetchedSizes;
+          return sizes;
+        });
+    }
   }
 };
