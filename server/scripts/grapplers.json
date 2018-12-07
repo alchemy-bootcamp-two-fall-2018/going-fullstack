@@ -2,6 +2,7 @@
     {
         "name": "Gordan Ryan",
         "age": 22,
-        "champ": true
+        "champ": true,
+        "pref": "NO-GI"
     }
 ]

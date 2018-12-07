@@ -1,14 +1,10 @@
-const pg = require('pg');
-const Client = pg.Client;
-const dataBaseUrl = 'postgres://localhost:5432/champions';
-const client = new Client(dataBaseUrl);
+const client = require('../db-client.js');
 
-client.connect()
-    .then(() => {
-        return client.query(` 
+client.query(` 
     DROP TABLE IF EXISTS grapplers;
-    `);
-    })
+    DROP TABLE IF EXISTS pref;
+    `)
+
     .then(
         () => console.log('drop tables complete'),
         err => console.log(err)
