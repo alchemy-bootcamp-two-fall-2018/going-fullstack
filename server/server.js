@@ -39,7 +39,17 @@ app.get('/api/guitarists', (req, res) => {
 
 app.get('/api/guitarists/:id', (req, res) => {
   client.query(`
-    SELECT * FROM guitarists WHERE id = $1;
+    SELECT 
+      guitarists.id, 
+      guitarists.name as name,
+      guitarists.yob as yob,
+      guitar.id as "guitarId",
+      guitarists.type as type,
+      guitar.brand as brand
+    FROM guitarists
+    JOIN guitar
+    ON guitarists.guitar_id = guitar.id
+    WHERE guitarists.id = $1;
   `,
   [req.params.id])
     .then(result => {

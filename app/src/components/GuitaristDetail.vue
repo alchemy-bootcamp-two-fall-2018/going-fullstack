@@ -8,7 +8,7 @@
       Year of birth: {{guitarist.yob}}
     </p>
     <p>
-      Guitar: {{guitarist.guitar}}
+      Guitar brand: {{guitarist.brand}}
     </p>
     <button @click="handleDelete" class="delete">Delete</button>
   </section>

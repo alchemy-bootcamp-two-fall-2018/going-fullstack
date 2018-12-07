@@ -21,8 +21,7 @@ Promise.all(
             id as guitar_id,
             $2 as yob,
             $4 as type,
-            $5 as alive,
-            $6 as model
+            $5 as alive
           FROM guitar
           WHERE model = $3;
         `,
