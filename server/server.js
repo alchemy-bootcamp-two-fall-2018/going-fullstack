@@ -15,8 +15,6 @@ app.get('/api/scripts/pref', (req, res) => {
     client.query(`
     SELECT id, name, short_name as "shortName
     FROM pref`)
-
-    
         .then (result => {
             res.json(result.rows);
         });
@@ -24,6 +22,9 @@ app.get('/api/scripts/pref', (req, res) => {
 
 app.get('/api/data/grapplers', (req, res) => {
     client.query(`
+
+
+    
     SELECT grapplers.id, grapplers.name, grapplers.age, grapplers.champ FROM grapplers
     JOIN pref
     ON grapplers.pref_id = pref.id
