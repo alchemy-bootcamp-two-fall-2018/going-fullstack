@@ -65,6 +65,7 @@ router.post('/', (req, res) => {
         animals.name as name,
         animals.weight as weight,
         animals.mammal as mammal,
+        animals.image as image,
         size.id as "sizeId",
         size.name as size
       FROM animals
