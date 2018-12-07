@@ -1,22 +1,18 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/superheroes';
+const client = require('../db-client');
 const superheroes = require('./superheroes.json');
 
-const client = new Client(databaseUrl);
-
-client.connect()
-  .then(() => {
-    return Promise.all(
-      superheroes.map(superhero => {
-        return client.query(`
-          INSERT INTO hero (name, age, track)
+// client.connect()
+//   .then(() => {
+return Promise.all(
+  superheroes.map(hero => {
+    return client.query(`
+          INSERT INTO hero (name, age, ability)
           VALUES ($1, $2, $3);
         `,
-        [superhero.name, superhero.age, superhero.track]);
-      })
-    );
+    [hero.name, hero.age, hero.ability]);
   })
+)
+
   .then(
     () => console.log('seed data load complete'),
     err => console.log(err)
@@ -24,3 +20,20 @@ client.connect()
   .then(() => {
     client.end();
   });
+
+
+// .then(() => {
+//   return Promise.all(
+//     superheroes.map(hero => {
+//       return client.query(`
+//         INSERT INTO hero (name, age, ability)
+//         SELECT
+//           $1 as name,
+//           $2 as age,
+//           $3 as ability
+//         FROM hero
+//         WHERE name = $1;
+//       `,
+//       [hero.name, hero.age, hero.ability]);
+//     })
+//   );

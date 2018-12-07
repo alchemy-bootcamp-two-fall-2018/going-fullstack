@@ -1,19 +1,24 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const pg = require('pg');
+const client = require('./db-client');
 
 app.use(morgan('dev'));
 app.use(express.json());
 
-const Client = pg.Client;
-const dbUrl = 'postgres://localhost:5432/superheroes';
-const client = new Client(dbUrl);
-client.connect();
+// const Client = pg.Client;
+// const dbUrl = 'postgres://localhost:5432/superheroes';
+// const client = new Client(dbUrl);
+// client.connect();
 
 app.get('/api/superheroes', (req, res) => {
   client.query(`
-    SELECT id, name FROM hero;
+    SELECT 
+      hero.id, 
+      hero.name,
+      hero.age,
+      hero.ability
+    FROM hero
   `)
     .then(result => {
       res.json(result.rows);
@@ -34,11 +39,11 @@ app.post('/api/superheroes', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO hero (name, age, track)
+    INSERT INTO hero (name, age, ability)
     VALUES($1, $2, $3)
-    RETURNING id, name, age;
+    RETURNING *;
   `,
-  [body.name, body.age, body.track])
+  [body.name, body.age, body.ability])
     .then(result => {
       res.json(result.rows[0]);
     });
