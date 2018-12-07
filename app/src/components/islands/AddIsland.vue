@@ -5,7 +5,7 @@
     </label>
     
     <label>Location:
-      <input v-model="island.loc" required>
+      <input v-model="island.loca" required>
     </label>
 
     <label>Image:
@@ -18,7 +18,15 @@
         <opiton value="true">True</opiton>
         <opiton value="false">False</opiton>
       </select>
+
+    <label>Inhabited (T/F):
+      <select v-model="island.inhabited">
+        <option value="" disabled selected >Select</option>
+        <opiton value="true">True</opiton>
+        <opiton value="false">False</opiton>
+      </select>
     </label>
+
     <button>Add</button>
   </form>
 </template>

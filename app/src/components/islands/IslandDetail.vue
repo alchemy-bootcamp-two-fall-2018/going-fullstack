@@ -3,8 +3,9 @@
     <div id="detail">
       <h2>{{island.name}}</h2>
       <img v-bind:src="island.iamge"/>
-      <p>Loca: {{island.loca}} </p>
+      <p>Location: {{island.loca}} </p>
       <p>isAmazing: {{island.isAmazing}} </p>
+      <p>inhabited: {{island.inhabited}} </p>
     </div>
   </section>    
 </template>
@@ -12,15 +13,15 @@
 <script>
 import islandsApi from '../../islandsApi';
 export default {
-  data() }
+  data() 
     return {
       island: null
     };
-  },
+};
   // not recognizing command created
   created() {
     api.getIsland(this.$route.params.id)
-      .then(animal => {
+      .then(island => {
         this.island = island;
       });
   }

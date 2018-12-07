@@ -35,6 +35,13 @@ export default {
       }
       else {
         island.isAmazing = false;
+        
+      }
+      if(island.inhabited === 'true') {
+        island.inhabited = true;
+      }
+      else {
+        island.inhabited = false;
       }
     
       return islandsApi.addIslands(island)

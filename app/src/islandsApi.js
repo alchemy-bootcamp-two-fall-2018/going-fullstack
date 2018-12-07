@@ -7,7 +7,7 @@ export default {
     return fetch(`/api/islands/${id}`)
       .then(response => response.json());
   },
-  addIslands(island) {
+  addIsland(island) {
     return fetch('/api/islands', {
       method: 'POST', 
       headers: {
@@ -18,3 +18,4 @@ export default {
       .then(response => response.json());
   }
 };
+
