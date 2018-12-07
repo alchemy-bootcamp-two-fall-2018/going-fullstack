@@ -3,6 +3,7 @@
         <h2> Name: {{grappler.name}}</h2>
         <h3> Age:{{grappler.age}}</h3>
         <h3>Championship Status: {{grappler.champ}}</h3>
+        <h3>Preference: {{grappler.pref_id}}</h3>
 
     </div>
 </template>
