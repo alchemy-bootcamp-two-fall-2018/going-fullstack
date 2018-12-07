@@ -52,6 +52,25 @@ app.delete('/api/data/grapplers/:id', (req, res) => {
         });
 });
 
+app.put('/api/data/grapplers/:id', (req, res) => {
+    console.log('You have updated grapplers from DB');
+    const body = req.body;
+    client.query (`
+        UPDATE grapplers
+        SET
+            name = $1, 
+            age = $2,
+            champ = $3, 
+            pref_id = $4 
+        WHERE id = $5
+        RETURNING id, name, age, champ, pref_id as "prefId";`,
+
+    [body.name, body.age, body.champ, body.prefId, body.id])
+        .then(result => {
+            res.json(result.rows[0]);
+        });
+});
+
 app.post('/api/data/grapplers', (req, res) => {
     const body = req.body;
     client.query (`
