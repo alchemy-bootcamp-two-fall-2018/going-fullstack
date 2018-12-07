@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const pg = require('pg');
+const client = require('./db-client');
 
 // enhanced logging
 app.use(morgan('dev'));
@@ -9,22 +9,34 @@ app.use(morgan('dev'));
 // register the json "middleware" body parser
 app.use(express.json());
 
-/* Connect to pg */
-const Client = pg.Client;
-const dbUrl = 'postgres://localhost:5432/rockstars';
-const client = new Client(dbUrl);
-client.connect();
-/* end connect pg */
-
-
 /* Defined routes: METHOD, URL PATH */
-
 // method == app.<method>
 // path = app.get('/this/is/path', ...)
-app.get('/api/singers', (req, res) => {
-   
+
+app.get('/api/genres', (req, res) => {
   client.query(`
-    SELECT * FROM singers;
+    SELECT id, name, short_name as "shortName"
+    FROM genres
+    ORDER BY name;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
+app.get('/api/singers', (req, res) => {
+  client.query(`
+    SELECT
+      singers.id,
+      singers.name as name,
+      singers.age,
+      singers.summary,
+      genres.id as genre_id,
+      genres.name as genre
+    FROM singers
+    JOIN genres
+    ON singers.genre_id = genres.id
+    ORDER BY singers.name ASC;
   `)
     .then(result => {
       res.json(result.rows);
