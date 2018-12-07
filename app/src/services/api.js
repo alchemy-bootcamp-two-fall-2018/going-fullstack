@@ -19,8 +19,16 @@ export default {
     })
       .then(response => response.json());
   },
+
   getGuitars() {
     return fetch('/api/guitars')
+      .then(response => response.json());
+  },
+  
+  deleteGuitarist(id) {
+    return fetch(`/api/guitarists/${id}`, {
+      method: 'DELETE'
+    })
       .then(response => response.json());
   }
 };

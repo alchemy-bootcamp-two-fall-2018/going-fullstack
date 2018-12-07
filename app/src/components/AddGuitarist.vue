@@ -3,13 +3,12 @@
         <input v-model="guitarist.name" placeholder="Name" require>
         <input v-model="guitarist.type" placeholder="Music Type" require>
         <input type="number" v-model="guitarist.yob" placeholder="Year of Birth" require>
-        <select v-model="guitarist.alive">
-          <option disabled value="">Please select one</option>
+        <select v-model="guitarist.alive" class="alive">
+          <option disabled value="">Alive?</option>
           <option value="true">Alive</option>
           <option value="false">Deceased</option>
         </select>
-        <p>
-      <label>Guitar:</label>
+        
         <select v-if="guitars" 
           v-model="guitarist.guitarId" 
           required>
@@ -20,7 +19,7 @@
             {{guitar.brand}} ({{guitar.model}})
           </option>
         </select>
-        </p>
+
     <button>Add</button>
   </form>
 </template>
@@ -91,6 +90,9 @@ button:hover {
   color: white;
 }
 select {
-  margin-right: 20px;
+  margin-right: 10px;
+}
+.alive {
+  margin-left: 10px;
 }
 </style>

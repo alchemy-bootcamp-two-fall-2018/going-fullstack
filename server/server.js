@@ -79,6 +79,16 @@ app.post('/api/guitarists', (req, res) => {
     });
 });
 
+app.delete('/api/guitarists/:id', (req, res) => {
+  client.query(`
+    DELETE FROM guitarists WHERE id = $1;
+  `,
+  [req.params.id])
+    .then(result => {
+      res.json({ removed:result.rowCount === 1 });
+    });
+});
+
 const PORT = 3000;
 
 app.listen(PORT, () => {

@@ -10,6 +10,7 @@
     <p>
       Guitar: {{guitarist.guitar}}
     </p>
+    <button @click="handleDelete" class="delete">Delete</button>
   </section>
 </template>
 
@@ -26,12 +27,30 @@ export default {
       .then(guitarist => {
         this.guitarist = guitarist;
       });
+  },
+  methods: {
+    handleDelete() {
+      api.deleteGuitarist(this.guitarist.id)
+        .then(() => {
+          this.$router.push('/guitarists');
+        });
+    }
   }
 };
 </script>
 
 <style scoped>
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 h2, p {
-    text-align: center;
+  text-align: center;
+}
+.delete {
+  background-color: red;
+
 }
 </style>
