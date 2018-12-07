@@ -40,6 +40,17 @@ app.get('/api/data/grapplers/:id', (req, res) => {
             res.json(result.rows[0]);
         });
 });
+app.delete('/api/data/grapplers/:id', (req, res) => {
+
+    console.log('you have deleted from DB', req, res);
+
+    client.query (`
+    DELETE FROM grapplers WHERE id = $1;`, 
+    [req.params.id])
+        .then(result => {
+            res.json({ removed: result.rowCount === [1] });
+        });
+});
 
 app.post('/api/data/grapplers', (req, res) => {
     const body = req.body;

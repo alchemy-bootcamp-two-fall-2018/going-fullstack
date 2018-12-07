@@ -3,7 +3,7 @@
         <form @submit.prevent="handleSubmit">
             <label> Name:</label>
             <input v-model="grappler.name" required>
-            <label> Preference:</label>
+            <label> Preference(must be 1/2):</label>
             <input v-model="grappler.prefId" required>
             <label> Age:</label>
             <input v-model="grappler.age" type ="number" required>
