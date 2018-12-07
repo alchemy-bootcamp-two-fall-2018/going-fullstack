@@ -6,6 +6,17 @@ const client = require('./db-client');
 app.use(morgan('dev'));
 app.use(express.json());
 
+app.get('api/teams', (req, res) => {
+  client.query (`
+    SELECT id, name, short_name as "shortName"
+    FROM team
+    Order BY name;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
 app.get('/api/racers', (req, res) => {
   client.query(`
     SELECT id, name
@@ -30,11 +41,11 @@ app.post('/api/racers', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO racer (name, age, team, pr, previous )
-    VALUES($1, $2, $3, $4, $5)
+    INSERT INTO racer (name, age, team, pr )
+    VALUES($1, $2, $3, $4)
     RETURNING *;
   `,
-  [body.name, body.age, body.team, body.pr, body.previous])
+  [body.name, body.age, body.team, body.pr])
     .then(result => {
       res.json(result.rows[0]);
     });

@@ -1,6 +1,4 @@
 module.exports = [
-{ name: 'Varsity', shortName: 'v'}
-{ name: 'Junior Varsity', shortName: 'jv'}
-
-
-]
+  { name: 'Varsity', shortName: 'v' },
+  { name: 'Junior Varsity', shortName: 'jv' }
+];
