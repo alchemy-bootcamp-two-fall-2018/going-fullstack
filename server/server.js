@@ -45,7 +45,17 @@ app.get('/api/singers', (req, res) => {
 
 app.get('/api/singers/:id', (req, res) => {
   client.query(`
-      SELECT * FROM singers WHERE id = $1;
+    SELECT
+    singers.id,
+    singers.name as name,
+    singers.age,
+    singers.summary,
+    genres.id as genre_id,
+    genres.name as genre
+    FROM singers
+    JOIN genres
+    ON singers.genre_id = genres.id
+    WHERE singers.id = $1;
     `,
   [req.params.id])
     .then(result => {
