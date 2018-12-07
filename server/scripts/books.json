@@ -1,17 +1,16 @@
 [
   {
-    "id":665,
     "title": "Oryx and Crake",
     "author": "Margaret Atwood",
     "pages": 389,
-    "good": "yes"
+    "genre": "sf",
+    "good": true
   },
   {
-    "id":664,
     "title": "Mink River",
     "author": "Brian Doyle",
     "pages": 320,
-    "good": "yes"  
+    "genre": "fic",
+    "good": true
   }
- 
 ]

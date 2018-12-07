@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
-const pg = require('pg');
 const morgan = require('morgan');
+const client = require('./db-client');
 
 // const shortid = require('shortid');
 // const fs = require('fs');
@@ -11,17 +11,11 @@ app.use(morgan('dev'));
 //register the json "middleware" body parser
 app.use(express.json());
 
-/* connect to pg */
-const Client = pg.Client;
-const dbUrl = 'postgres://postgres:Stitch32.@localhost:5432/books';
-const client = new Client(dbUrl);
-client.connect();
-/* end connect pg */
-
 /* defined routes: METHOD, URLPATH */
 app.get('/api/books', (req, res) => {
   client.query(`
-    SELECT id, title, author, pages FROM books;  
+    SELECT id, title, author, pages 
+    FROM books;  
   `)
     .then(result => {
       res.json(result.rows);
@@ -30,7 +24,8 @@ app.get('/api/books', (req, res) => {
 
 app.get('/api/books/:id', (req, res) => {
   client.query(`
-    SELECT * FROM books WHERE id = $1;
+    SELECT * 
+FROM books WHERE id = $1;
   `,
   [req.params.id])
     .then(result => {

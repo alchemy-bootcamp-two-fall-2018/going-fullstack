@@ -1,14 +1,8 @@
-const pg = require('pg');
-
-const Client = pg.Client;
-
-const databaseUrl = 'postres://postgres:Stitch32.@localhost:5432/books';
-
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
 client.query(`
-  DROP TABLE IF EXISTS book_genre;
-  DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS genre;
 `)
   .then(
     () => console.log('drop tables complete'),
