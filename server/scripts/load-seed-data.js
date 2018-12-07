@@ -1,6 +1,6 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/news_articles';
+
+const client = require ('../db-client');
+const articles = require('./')
 const articles = require('../data/articles.json');
 
 const client = new Client(databaseUrl);
