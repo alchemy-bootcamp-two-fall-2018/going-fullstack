@@ -53,7 +53,6 @@ app.post('/api/data/grapplers', (req, res) => {
             return client.query(`
                 SELECT
                     grapplers.id,
-
                     grapplers.name as name,
                     grapplers.age as age,
                     grapplers.champ as champ,

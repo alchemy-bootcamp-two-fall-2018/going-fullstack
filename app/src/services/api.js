@@ -17,7 +17,7 @@ export default {
             body: JSON.stringify(grappler)
         })
             .then(response => {
-                console.log('reponse form api', response);
+                console.log('response from api', response);
                 return response.json();
             });
     }
