@@ -98,16 +98,16 @@ app.post('/api/singers', (req, res) => {
     });
 });
 
-//WIP delete functionality`
-// app.delete('/api/singers', (req, res) => {
-//   const body = req.body;
-
-//   client.query(`
-//     DELETE FROM singers
-//     WHERE id = $1;
-//   `,
-//   [body.id]);
-// });
+app.del('/api/singers/:id', (req, res) => {
+  res.json(req.params.id); 
+  client.query(`
+	  DELETE from singers WHERE id = $1
+  `,
+  [req.params.id])
+    .then(result => {
+      res.json({ removed: result.rowCount === 1 });
+    })
+  ;});
 
 /* end defined routes */
 
