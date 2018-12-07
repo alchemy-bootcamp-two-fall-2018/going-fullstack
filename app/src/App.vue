@@ -4,6 +4,7 @@
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/singers">A List of Singers</RouterLink>
+        <RouterLink to="/genres">Genre Admin</RouterLink>
       </nav>
     </header>
 

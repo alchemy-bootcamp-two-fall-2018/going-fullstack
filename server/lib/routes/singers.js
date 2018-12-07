@@ -3,6 +3,10 @@ const client = require('../../db-client');
 const Router = express.Router;
 const router = Router(); //eslint-disable-line new-cap
 
+/* Defined routes: METHOD, URL PATH */
+// method == app.<method>
+// path = app.get('/this/is/path', ...)
+
 router
   .get('/', (req, res) => {
     client.query(`
@@ -76,17 +80,20 @@ router
       .then(result => {
         res.json(result.rows[0]);
       });
-  })
-  
-  .del('/:id', (req, res) => {
-    res.json(req.params.id); 
-    client.query(`
-        DELETE from singers WHERE id = $1
-    `,
-    [req.params.id])
-      .then(result => {
-        res.json({ removed: result.rowCount === 1 });
-      });
   });
+  
+//   .del('/:id', (req, res) => {
+//     res.json(req.params.id); 
+//     client.query(`
+//         DELETE from singers WHERE id = $1
+//     `,
+//     [req.params.id])
+//       .then(result => {
+//         res.json({ removed: result.rowCount === 1 });
+//       });
+//   });
 
 module.exports = router;
+
+
+
