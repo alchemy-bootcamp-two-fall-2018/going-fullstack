@@ -80,6 +80,34 @@ router.post('/', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+  const body = req.body;
+  console.log('this is the body', body);
+
+  client.query(`
+    UPDATE animals
+    SET
+      name = $1,
+      weight = $2, 
+      mammal = $3,
+      size_id = $4,
+      image = $5
+    WHERE id = $6
+    RETURNING 
+      id,
+      name, 
+      weight,
+      mammal,
+      size_id as "sizeId",
+      image;
+  `,
+  [body.name, body.weight, body.mammal, body.sizeId, body.image, body.id])
+    .then(result => {
+      console.log('this is the result', result);
+      res.json(result.rows[0]);
+    });
+});
+
 router.delete('/:id', (req, res) => {
   client.query(`
     DELETE FROM animals WHERE id = $1;

@@ -27,8 +27,8 @@ export default {
       .then(response => response.json());
   },
 
-  updateAnimal(animal, id) {
-    return fetch(`api/animals/${id}`, {
+  updateAnimal(animal) {
+    return fetch(`/api/animals/${animal.id}`, {
       method: 'UPDATE',
       headers: {
         'Content-Type': 'application/json'
