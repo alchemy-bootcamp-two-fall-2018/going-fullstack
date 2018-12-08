@@ -4,6 +4,7 @@
       <nav>
         <RouterLink to="/"> Home </RouterLink>
         <RouterLink to="/dogs"> Dogs </RouterLink>
+        <RouterLink to="/dogSize"> Dog Size </RouterLink>
       </nav>
     </header>
 

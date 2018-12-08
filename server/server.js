@@ -1,12 +1,43 @@
 const express = require('express'); 
 const app = express(); 
-const morgan = require('morgan'); 
+const morgan = require('morgan');
 const client = require('./db-client'); 
 
 app.use(morgan('dev')); 
 
 app.use(express.json()); 
 
+const getShortName = n => n
+  .toLowerCase()
+  .slice(0, 10)
+  .trim()
+  .replace(/[^a-z]/ig, '-');
+
+app.get('/', (req, res) => {
+  client.query(`
+    SELECT id, name, short_name as "shortName"
+    FROM dog_size_table
+    ORDER BY name;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
+app.post('/', (res, req) => {
+  const body = req.body; 
+
+  client.query(`
+    INSERT INTO dog_size_table (name, short_name)
+    VALUES ($1, $2)
+    RETURNING id, name, short_name as "shortName"
+    `,
+    [body.name, getShortName(body.name)]
+    )
+      .then(result => {
+        res.json(result.rows[0]);
+      });
+});
 app.get('/api/dog_size_table', (req, res) => {
   client.query(`
     SELECT id, name, short_name as "shortName" 
