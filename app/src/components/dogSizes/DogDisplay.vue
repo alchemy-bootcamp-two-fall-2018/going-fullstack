@@ -1,5 +1,5 @@
 <template>
-  <span v-i="size">
+  <span v-if="size">
     {{size.name}}
   </span>
 </template>

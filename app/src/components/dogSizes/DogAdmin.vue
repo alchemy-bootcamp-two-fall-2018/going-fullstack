@@ -4,7 +4,7 @@
     <ul>
       <li v-for="size in sizes"
       :key="size.id">
-      {{size.name}}
+      {{size.shortName}}
       </li>
     </ul>
     <form @submit.prevent="handleAdd">
