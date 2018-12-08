@@ -11,13 +11,11 @@ Promise.all(
     [rating.name, rating.shortName]);
   })
 )
-
-
   .then(() => {
     return Promise.all(
       islands.map(island => {
         return client.query(`
-          INSERT INTO island (name, loca, image, is_amazing, rating)
+          INSERT INTO island (name, loca, image, is_amazing, rating_id)
           SELECT
             $1 as name,
             $2 as loca,
