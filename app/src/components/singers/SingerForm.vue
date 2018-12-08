@@ -37,7 +37,7 @@ import api from '../../services/api';
 function initSinger() {
     return {
         name: '',
-        age: 0,
+        age: null, //pay attention to this
         summary: '',
         genreId: -1 
     };

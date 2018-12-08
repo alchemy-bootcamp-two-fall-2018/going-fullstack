@@ -55,7 +55,7 @@ router
         VALUES($1, $2, $3, $4)
         RETURNING id;
       `,
-    [body.name, body.genre_id, body.age, body.summary])
+    [body.name, body.genreId, body.age, body.summary])
       .then(result => {
         const id = result.rows[0].id;
   
