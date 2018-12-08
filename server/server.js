@@ -76,7 +76,30 @@ app.post('/api/dog_picker', (req, res) => {
       res.json(result.rows[0]); 
     });
 });
+app.put('/api/dog_picker/:id', (req, res) => {
+  const body = req.body;
 
+    client.query(`
+    UPDATE dog_table
+    SET 
+      name = $1,
+      breed = $2,
+      weight = $3,
+      isadopted = $4
+    WHERE id = $5
+    RETURNING 
+      id, 
+      name,
+      breed,
+      weight, 
+      isadopted as "isAdopted", 
+      size_id as "sizeId";
+    `, 
+    [body.name, body.breed, body.weight, body.isAdopted, body.sizeId])
+      .then(result => {
+        res.json(result.rows[0]);
+      })
+});
 app.delete('/api/dog_picker/:id', (req, res) => {
   client.query(`
     DELETE FROM dog_table WHERE id = $1;

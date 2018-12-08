@@ -10,13 +10,17 @@
   <p>
    It is {{dog.isadopted}} that {{dog.name}} was adopted into a great family! 
   </p> 
+  <EditDog 
+    :dog="dog"
+    :onEdit="handleEdit"/>
   <button @click="handleDelete"> REMOVE </button>
-  <button id="edit" @click="handleEdit"> ✎ EDIT </button>
   </section> 
 </template>
 
 <script>
 import api from '../../services/api'; 
+import EditDog from './EditDogs'; 
+
 
 export default {
   data() {
@@ -24,6 +28,9 @@ export default {
       dog: null
     };
   }, 
+  components: {
+    EditDog
+  },
   created() {
     api.getDog(this.$route.params.id)
       .then(dog => {
@@ -36,6 +43,10 @@ export default {
         .then(() => {
           this.$router.push('/dog'); 
         });
+    },
+    handleEdit(dog) {
+      return api.updateDog(dog)
+        .then(() => this.show = false);
     }
   }
 }; 

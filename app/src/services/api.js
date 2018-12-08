@@ -43,6 +43,13 @@ export default {
         });
     }
   },
+  updateDog(dog) {
+    return fetch(
+      `/api/dog_picker/${dog.id}`,
+      getOptions('PUT', dog)
+    )
+      .then(response => response.json());
+  },
   addSizes(size) {
     return fetch('/api/dog_size_table', getOptions('POST', size))
       .then(response => response.json())
