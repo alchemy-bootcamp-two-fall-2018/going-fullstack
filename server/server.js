@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const pg = require('pg');
+const client = require('./db-client');
 
 /* setting up simple database */
 
@@ -10,28 +10,43 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 /* connect to pg */
-const Client = pg.Client;
-const dbUrl = 'postgres://localhost:5432/news_articles';
-const client = new Client(dbUrl);
-client.connect();
 
 console.log('I am the server file');
 
-app.get('/api/articles_table/:id', (req, res) => {
+app.get('/api/article_category_table', (req, res) => {
 
   client.query(`
-    SELECT id, title, is_clickbait, author, views FROM articles_table;
-  `,
-  [req.params.id])
+    SELECT id, name, short_name as "shortName"
+    FROM article_category_table
+    ORDER BY name;
+  `)
     .then(result => {
       res.json(result.rows);
     });
 });
 
-app.get('/api/articles_table/:id', (req, res) => {
+app.get('/api/article', (req, res) => {
+  client.query(`
+    SELECT
+      article.id,
+      article.title as title,
+      article.author_id as "authorId",
+      article.views as views,
+      article.is_clickbait as "isClickbait"
+    FROM article
+    JOIN article_category_table
+    ON article.author_id = article_category_table.id
+    ORDER BY views DESC, name ASC;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
+app.get('/api/article_category_table/:id', (req, res) => {
 
   client.query(`
-    SELECT * FROM articles_table WHERE id = $1
+    SELECT * FROM article_category_table WHERE id = $1
   `,
   [req.params.id])
     .then(result => {
@@ -39,15 +54,31 @@ app.get('/api/articles_table/:id', (req, res) => {
     });
 });
 
-app.post('/api/articles_table', (req, res)=> {
+app.post('/api/article', (req, res)=> {
   const body = req.body;
 
   client.query(`
-    INSERT INTO articles_table (title, author, views, is_clickbait)
+    INSERT INTO article (title, author_id, views, is_clickbait)
     VALUES ($1, $2, $3, $4)
-    RETURNING id, title, author, views, is_clickbait as "isClickbait";
+    RETURNING id;
   `,
-  [body.title, body.author, body.views])
+  [body.title, body.author_id, body.views])
+    .then(result => {
+      const id = result.rows[0].id;
+
+      return client.query(`
+        SELECT
+          article.id,
+          article.title as title,
+          author_id as "authorId",
+          article.views as views
+        FROM article
+        JOINT article_category_table
+        ON article.track_id = track.id
+        WHERE article.id = $1;
+      `,
+      [id]);
+    })
     .then(result => {
       res.json(result.rows[0]);
     });
