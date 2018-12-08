@@ -45,6 +45,7 @@ export default {
       return api.updateGuitarist(guitarist)
         .then(updated => {
           this.guitarist = updated;
+          this.$router.push('/guitarists');
         });
     },
     handleDelete() {
