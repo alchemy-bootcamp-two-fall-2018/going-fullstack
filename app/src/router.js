@@ -1,8 +1,9 @@
 import VueRouter from 'vue-router';
-import Home from './components/Home';
-import Nonprofits from './components/Nonprofits';
-import NonprofitsDetail from './components/NonprofitsDetail';
-import AddNonprofit from './components/AddNonprofit';
+import Home from './components/home/Home';
+import Nonprofits from './components/nonprofits/Nonprofits';
+import NonprofitsList from './components/nonprofits/NonprofitsList';
+import NonprofitsDetail from './components/nonprofits/NonprofitsDetail';
+import AddNonprofit from './components/nonprofits/AddNonprofit';
 
 
 export default new VueRouter({
@@ -11,6 +12,7 @@ export default new VueRouter({
     { path: '/nonprofits', component: Nonprofits },
     { path: '/nonprofits/add', component: AddNonprofit },
     { path: '/nonprofits/:id', component: NonprofitsDetail },
+    { path: '/nonprofits/list', component: NonprofitsList },
     { path: '*', redirect: '/' }
   ]
 });

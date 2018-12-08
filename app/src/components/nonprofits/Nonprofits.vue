@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import api from '../services/api';
-import AddNonprofit from './AddNonprofit.vue';
-import NonprofitsList from './NonprofitsList.vue';
+import api from '../../services/api';
+import AddNonprofit from './AddNonprofit';
+import NonprofitsList from './NonprofitsList';
 
 export default {
   data() {

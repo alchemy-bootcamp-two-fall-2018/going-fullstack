@@ -3,11 +3,11 @@
     <header>
       <img alt="Vue logo" src="./assets/logo.png">
       <nav>
-        <router-link to="/">Home</router-link>
-        <router-link to="/nonprofits">Nonprofits</router-link>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/nonprofits">Nonprofits</RouterLink>
       </nav>
     </header>
-    <router-view></router-view>
+    <RouterView></RouterView>
   </div>
 </template>
 
