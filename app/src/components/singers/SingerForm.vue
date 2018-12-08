@@ -34,13 +34,12 @@
 <script>
 import api from '../../services/api';
 
-// Likely problems with these functions
 function initSinger() {
     return {
         name: '',
-        age: null,
+        age: 0,
         summary: '',
-        genreId: -1 //var name correct?
+        genreId: -1 
     };
 }
 
@@ -48,8 +47,9 @@ function copySinger(singer) {
     return {
         id: singer.id,
         name: singer.name,
+        age: singer.age,
         summary: singer.summary,
-        genreId: singer.genreId //var names correct?
+        genreId: singer.genre_id 
     };
 }
 
