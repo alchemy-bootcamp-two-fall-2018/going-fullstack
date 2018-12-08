@@ -22,7 +22,7 @@ export default {
         this.size = sizes.find(size => size.id === this.sizeId); 
       });
   }
-}
+};
 </script>
 
 <style>

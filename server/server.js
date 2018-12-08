@@ -95,10 +95,10 @@ app.put('/api/dog_picker/:id', (req, res) => {
       isadopted as "isAdopted", 
       size_id as "sizeId";
     `, 
-    [body.name, body.breed, body.weight, body.isAdopted, body.sizeId])
+    [body.name, body.breed, body.weight, body.isAdopted, body.id])
       .then(result => {
         res.json(result.rows[0]);
-      })
+      });
 });
 app.delete('/api/dog_picker/:id', (req, res) => {
   client.query(`
