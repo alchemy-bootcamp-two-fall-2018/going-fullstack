@@ -22,12 +22,8 @@ export default {
   },
 
   deleteEmoji(emoji) {
-    return fetch('/api/emojis/delete', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(emoji)
+    return fetch(`/api/emojis/delete/${emoji.id}`, {
+      method: 'DELETE',
     });
   },
 

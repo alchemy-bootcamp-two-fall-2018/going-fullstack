@@ -47,11 +47,11 @@ app.post('/api/emojis', (req, res) => {
     });
 });
 
-app.post('/api/emojis/delete', (req, res) => {
+app.delete('/api/emojis/delete/:id', (req, res) => {
   client.query(`
     DELETE FROM emojis WHERE id = $1
   `,
-  [req.body.id]);
+  [req.params.id]);
   res.json();
 });
 
