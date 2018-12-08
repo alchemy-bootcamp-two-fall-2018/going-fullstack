@@ -22,7 +22,13 @@ app.get('/api/scripts/pref', (req, res) => {
 
 app.get('/api/data/grapplers', (req, res) => {
     client.query(`
-    SELECT grapplers.id, grapplers.name, grapplers.age, grapplers.champ FROM grapplers
+    SELECT
+        grapplers.id,
+        grapplers.name,
+        grapplers.age,
+        grapplers.champ,
+        pref.name as "prefName"
+    FROM grapplers
     JOIN pref
     ON grapplers.pref_id = pref.id
     `)
