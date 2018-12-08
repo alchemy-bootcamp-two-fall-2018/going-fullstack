@@ -21,6 +21,12 @@ export default {
     color: black;
     text-decoration: none;
   }
+
+  h3:hover {
+    background: black;
+    color: white;
+  }
+
   li {
     list-style: none;
     position: relative;
@@ -35,11 +41,13 @@ export default {
     text-align: center;
     z-index: 1;
     margin: 0px;
+    font-size: 1.4em;
   }
   .info {
     background: rgba(255, 255, 255, 0.8);
     margin-top: 0px;
     padding: 10px;
+    border-bottom: 2px solid black;
   }
   ul {
     display: flex;

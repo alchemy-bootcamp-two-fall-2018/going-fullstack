@@ -40,6 +40,18 @@ export default {};
     border: 2px solid gray;
     padding: 3px;
     background: white;
+    border-radius: 5px;
+  }
+
+  nav a:hover {
+    background: lightslategray;
+    color: white;
+    font-weight: bold;
+  }
+
+  h1 {
+    font-size: 3em;
+    margin: 5px;
   }
 
 </style>

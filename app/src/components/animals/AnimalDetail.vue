@@ -20,7 +20,7 @@
         <span>Mammal:</span> {{animal.mammal}}
       </p>
 
-      <button @click="handleDelete">Delete 🗑️</button>
+      <button @click="handleDelete">🗑️ Delete</button>
     </div>
   </section>
 </template>
@@ -79,14 +79,23 @@ export default {
   }
 
   button {
-    padding-bottom: 10px;
+    padding: 5px 5px 25px 5px;
     height: 25px;
     margin: 5px;
     font-size: 0.8em;
     border-radius: 5px;
     border: 1px solid black;
     cursor: pointer;
+    margin-bottom: 20px;
   }
+
+  button:hover {
+    background: black;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+
   span {
     font-weight: bold;
   }
