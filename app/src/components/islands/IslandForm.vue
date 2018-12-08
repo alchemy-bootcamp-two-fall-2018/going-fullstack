@@ -41,13 +41,14 @@
 
 <script>
 import api from '../../api';
+
 function initIsland() {
   return {
     name: '',
     loca: '',
     image: '',
     isAmazing: '',
-    RatingId: -1,
+    ratingId: -1,
   };
 }
 function copyIsland(island) {
@@ -68,7 +69,7 @@ export default {
   },
   data() {
     return {
-      island: this.islandToEdit ? copyAnimal(this.islandToEdit) : initAnimal(),
+      island: this.islandToEdit ? copyIsland(this.islandToEdit) : initIsland(),
       ratings: null
     };
   },
@@ -86,7 +87,7 @@ export default {
 .form {
     text-align: center;
     border: 5px solid black;
-    background: white;
+    background: rgb(199, 202, 161);
     padding: 40px;
     height: 300px;
     width: 400px;

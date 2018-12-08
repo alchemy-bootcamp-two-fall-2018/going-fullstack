@@ -3,7 +3,7 @@ const islands = require('./islands.json');
 const ratings = require('./ratings');
 
 Promise.all(
-  rating.map(size => {
+  ratings.map(rating => {
     return client.query(`
     INSERT INTO rating (name, short_name)
     VALUES ($1, $2);
@@ -17,7 +17,7 @@ Promise.all(
     return Promise.all(
       islands.map(island => {
         return client.query(`
-          INSERT INTO islands (name, loca, image, is_amazing, rating)
+          INSERT INTO island (name, loca, image, is_amazing, rating)
           SELECT
             $1 as name,
             $2 as loca,
