@@ -7,7 +7,6 @@ client.query(`
     short_name VARCHAR(1) NOT NULL
   );
 
-
   CREATE TABLE IF NOT EXISTS animals (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
@@ -16,7 +15,6 @@ client.query(`
     size_id INTEGER NOT NULL REFERENCES size(id),
     image VARCHAR(256)
   );
-
 `)
   
   .then(

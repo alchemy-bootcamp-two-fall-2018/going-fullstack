@@ -69,10 +69,12 @@ export default {
     border: 2px solid black;
     text-align: center;
   }
+
   section img {
     max-width: 300px;
     box-shadow: 2px 2px 2px black;
   }
+  
   .detail {
     border: 1px solid black;
     width: 600px;
@@ -99,5 +101,4 @@ export default {
   span {
     font-weight: bold;
   }
-
 </style>

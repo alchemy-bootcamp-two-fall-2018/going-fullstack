@@ -5,7 +5,6 @@ const animals = require('./routes/animals');
 const size = require('./routes/sizes');
 
 app.use(morgan('dev'));
-
 app.use(express.json());
 
 app.use('/api/sizes', size);

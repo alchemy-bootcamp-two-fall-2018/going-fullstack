@@ -3,8 +3,6 @@ const client = require('../../db-client');
 const Router = express.Router;
 const router = Router(); //eslint-disable-line new-cap
 
-
-
 router.get('/', (req, res) => {
   client.query(`
     SELECT 
@@ -39,7 +37,6 @@ router.get('/:id', (req, res) => {
   JOIN size
   ON animals.size_id = size.id
   WHERE animals.id = $1;
-    
   `,
   [req.params.id])
     .then(result => {
@@ -82,7 +79,6 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const body = req.body;
-  console.log('this is the body', body);
 
   client.query(`
     UPDATE animals

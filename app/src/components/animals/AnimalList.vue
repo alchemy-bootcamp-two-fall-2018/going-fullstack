@@ -35,25 +35,28 @@ export default {
     border: 2px solid black;
     text-align: center;
     margin: 20px;
-    
   }
+  
   h3 {
     text-align: center;
     z-index: 1;
     margin: 0px;
     font-size: 1.4em;
   }
+
   .info {
     background: rgba(255, 255, 255, 0.8);
     margin-top: 0px;
     padding: 10px;
     border-bottom: 2px solid black;
   }
+
   ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
+
   li img {
     position: absolute;
     top: 0;
@@ -63,5 +66,4 @@ export default {
     z-index: -1;
     object-fit: cover;
   }
-
 </style>

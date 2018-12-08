@@ -23,6 +23,7 @@ export default {};
   p, h1, h2, h3, label, a {
     font-family: avenir; 
   }
+
   header {
     display: flex;
     justify-content: center;
@@ -53,5 +54,4 @@ export default {};
     font-size: 3em;
     margin: 5px;
   }
-
 </style>

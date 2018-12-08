@@ -91,16 +91,14 @@ export default {
 </script>
 
 <style>
+  label {
+    display: block;
+  }
 
-label {
-  display: block;
-}
-
-input, select {
-  width: 300px;
-  font-size: 1.05em;
-}
-
+  input, select {
+    width: 300px;
+    font-size: 1.05em;
+  }
 </style>
 
 
