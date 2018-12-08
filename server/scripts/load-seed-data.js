@@ -15,13 +15,13 @@ Promise.all(
     return Promise.all(
       dogs.map(dog => {
         return client.query(`
-        INSERT INTO dog_table (name, breed, weight, size_id, isAdopted)
+        INSERT INTO dog_table (name, breed, weight, size_id, isadopted)
         SELECT
         $1 as name,
         $2 as breed,
         $3 as weight,
         id as size_id,
-        $4 as isAdopted
+        $4 as isadopted
         FROM dog_size_table
         WHERE short_name = $5;
         `,

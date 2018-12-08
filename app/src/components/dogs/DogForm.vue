@@ -1,19 +1,27 @@
 <template>
- <form @submit.prevent="handleSubmit">
+ <form @submit.prevent="onSubmit(dog)">
+   <p>
     <label> Name  
       <input v-model="dog.name" required>
     </label>
+   </p>
+   <p>
     <label> Breed 
       <input v-model="dog.breed" required>
     </label> 
+  </p>
+  <p>
     <label> Weight 
       <input v-model="dog.weight" required> 
     </label>
+  </p>
+  <p>
     <label> Is Adopted?
       <input type="radio" v-model="dog.isAdopted" v-bind:value="true" required> True/False
       <input type="radio" v-model="dog.isAdopted" v-bind:value="false"> 
     </label>
-    <p>
+  </p>
+  <p>
     <label>
       <select v-if="sizes"
         v-model="dog.sizeId"
@@ -28,7 +36,7 @@
         </option>
       </select>
     </label>
-    </p>
+  </p>
     <button> {{label || 'Add'}} </button>
   </form>
 </template>
@@ -59,7 +67,7 @@ function copyDog(dog) {
 
 export default {
   props: {
-    onAdd: Function,
+    onSubmit: Function,
     label: String,
     dogToEdit: Object
   }, 

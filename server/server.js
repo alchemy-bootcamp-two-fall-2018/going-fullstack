@@ -25,7 +25,7 @@ app.get('/api/dog_picker', (req, res) => {
       dog_table.name as name,
       dog_table.breed,
       dog_table.weight,
-      dog_table.isAdopted,
+      dog_table.isadopted,
       dog_size_table.id as "sizeId",
       dog_size_table.short_name as size
       FROM dog_table
@@ -45,7 +45,7 @@ app.get('/api/dog_picker/:id', (req, res) => {
       dog_table.name as name,
       dog_table.breed,
       dog_table.weight,
-      dog_table.isAdopted,
+      dog_table.isadopted,
       dog_size_table.id as "sizeId",
       dog_size_table.short_name as size
       FROM dog_table
@@ -62,12 +62,16 @@ app.post('/api/dog_picker', (req, res) => {
   const body = req.body; 
  
   client.query(`
-    INSERT INTO dog_table (name, breed, weight, isAdopted, size_id) 
+    INSERT INTO dog_table (name, breed, weight, isadopted, size_id) 
     VALUES($1, $2, $3, $4, $5)
-    RETURNING id, name, breed, weight, isAdopted, short_name as "shortName";
+    RETURNING id, 
+    name, 
+    breed, 
+    weight, 
+    isadopted as "isAdopted", 
+    size_id as "sizeId";
     `,
-  [body.name, body.breed, body.weight, body.isAdopted, body.sizeId]
-  )
+  [body.name, body.breed, body.weight, body.isAdopted, body.sizeId])
     .then(result => {
       res.json(result.rows[0]); 
     });
