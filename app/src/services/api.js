@@ -23,5 +23,9 @@ export default {
       method: 'DELETE'
     })
       .then(response => response.json());
+  },
+  getManufacturers() {
+    return fetch('/api/manufacturers')
+      .then(response => response.json());
   }
 };

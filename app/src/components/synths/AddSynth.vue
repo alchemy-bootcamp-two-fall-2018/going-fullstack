@@ -18,6 +18,18 @@
       <label>
         Date produced: <input type="number" v-model.number="synth.year" required>
       </label>
+      <label>
+        Manufacturer:
+        <select v-if="synth" v-model="synth.manufacturerId" required>
+          <option value="-1" disabled>Select a brand</option>
+          <option v-for="manufacturer in manufacturers" 
+            :key="manufacturer.id" 
+            :value="manufacturer.id"
+          >
+            {{manufacturer.name}}
+          </option>
+        </select>
+      </label>
       <p>
         <button>Add</button>
       </p>
@@ -26,13 +38,15 @@
 </template>
 
 <script>
+import api from '../../services/api';
 
 function initSynth() {
   return {
     name: '',
     image: '',
     polyphonic: '',
-    year: ''
+    year: '',
+    manufacturerId: ''
   };
 }
 export default {
@@ -41,8 +55,15 @@ export default {
   },
   data() {
     return {
-      synth: initSynth()
+      synth: initSynth(),
+      manufacturers: null
     };
+  },
+  created() {
+    api.getManufacturers()
+      .then(manufacturers => {
+        this.manufacturers = manufacturers;
+      });
   },
   methods: {
     handleSubmit() {

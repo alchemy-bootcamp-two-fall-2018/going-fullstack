@@ -63,11 +63,11 @@ app.delete('/api/synths/:id', (req, res) => {
 app.post('/api/synths', (req, res) => {
   const body = req.body;
   client.query(`
-    INSERT INTO synths (name, manufacturer_id, image)
-    VALUES ($1, $2, $3)
+    INSERT INTO synths (name, manufacturer_id, image, polyphonic, year)
+    VALUES ($1, $2, $3, $4, $5)
     RETURNING id;
   `,
-  [body.name, body.manufacturerId, body.image])
+  [body.name, body.manufacturerId, body.image, body.polyphonic, body.year])
     .then(result => {
       const id = result.rows[0].id;
 
@@ -78,8 +78,7 @@ app.post('/api/synths', (req, res) => {
         synths.image as image,
         synths.polyphonic as polyphonic,
         synths.year as year,
-        manufacturer.id as "manufacturerId",
-        manufacturer.name as manufacturer
+        manufacturer.id as "manufacturerId"
       FROM synths
       JOIN manufacturer
       ON synths.manufacturer_id = manufacturer.id
