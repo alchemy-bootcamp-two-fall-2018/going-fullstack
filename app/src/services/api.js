@@ -28,8 +28,8 @@ export default {
         })
             .then(response => response.json());
     }, 
-    updateGrappler(id, grappler) {
-        return fetch(`/api/data/grapplers${id}`, {
+    updateGrappler(grappler) {
+        return fetch(`/api/data/grapplers/${grappler.id}`, {
             method: 'PUT', 
             headers: {
                 'Content-Type': 'application/json'

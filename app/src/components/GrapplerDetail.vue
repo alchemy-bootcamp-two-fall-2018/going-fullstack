@@ -6,60 +6,71 @@
         <h3>Preference: {{grappler.pref_id}}</h3>
         <button @click="handleDelete">DELETE {{grappler.name}} </button>
 
-        <form @submit.prevent="handleUpdate">
-            <h1> Update {{this.grappler.name}} Information Here
-            </h1>
-            <label> Name:</label>
-            <input v-model="this.grappler.name" required>
-            <label> Preference(must be 1/2):</label>
-            <input v-model="this.grappler.prefId" required>
-            <label> Age:</label>
-            <input v-model="this.grappler.age" type ="number" required>
-            <label> WorldChampion? Yes/No</label>
-            <input v-model="this.grappler.champ" type="checkbox" name="champion" id="champ" value="true">
-            <button>Update</button>
-        </form>
+        <UpdateForm :onUpdate="handleUpdate"
+        :grappler="grappler"
+        />
     </div>
 </template>
 
 <script>
-function copyStudent(grappler){
-    return {
-        name: grappler.name,
-        age: grappler.age, 
-        prefId: grappler.prefId,
-        champ: grappler.champ
-    };
-}
+
 import api from '../services/api';
+import UpdateForm from './UpdateForm.vue';
 export default {
     data() {
         return {
             grappler: null
         };
     }, 
+    components: {
+        UpdateForm
+    },
     created() {
         api.getGrappler(this.$route.params.id)
             .then(grappler => {
                 console.log('banana', grappler);
                 this.grappler = grappler;
             });
-    }, 
+    },
     methods: {
         handleDelete() {
             api.deleteGrappler(this.grappler.id);
         }, 
-
-        handleUpdate() {
-            api.updateGrappler(this.grappler.id);
-            console.log('button fires update method onclick');
-            // api.updateGrappler(this.grappler);
+        handleUpdate(grappler) {
+            console.log('button fires update method onclick', grappler);
+            api.updateGrappler(grappler)
+                .then(updated => {
+                    this.grappler = updated;
+                });
         }
     }
-
 };
 </script>
 
 <style>
+body {
+    background: linear-gradient(307deg, #52f2c8, #5287f2);
+background-size: 400% 400%;
+
+-webkit-animation: AnimationName 0s ease infinite;
+-moz-animation: AnimationName 0s ease infinite;
+animation: AnimationName 0s ease infinite;
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 18%}
+    50%{background-position:100% 83%}
+    100%{background-position:0% 18%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 18%}
+    50%{background-position:100% 83%}
+    100%{background-position:0% 18%}
+}
+@keyframes AnimationName { 
+    0%{background-position:0% 18%}
+    50%{background-position:100% 83%}
+    100%{background-position:0% 18%}
+}
+}
 
 </style>
