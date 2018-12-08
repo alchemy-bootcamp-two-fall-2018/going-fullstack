@@ -55,7 +55,7 @@ app.post('/api/emojis/delete', (req, res) => {
   res.json();
 });
 
-app.post('/api/emojis/update/:id', (req, res) => {
+app.put('/api/emojis/update/:id', (req, res) => {
   const body = req.body;
   client.query(`
     UPDATE emojis

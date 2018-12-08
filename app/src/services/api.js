@@ -33,7 +33,7 @@ export default {
 
   updateEmoji(update, id) {
     return fetch(`/api/emojis/update/${id}`, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
