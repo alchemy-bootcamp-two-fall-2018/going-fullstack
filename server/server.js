@@ -25,6 +25,18 @@ console.log('I am the server file');
 //     });
 // });
 
+app.get('/api/categories', (req, res) => {
+  client.query(`
+    SELECT id, name, short_name as "shortName"
+    FROM categories
+    ORDER BY name;
+  `)
+    .then(result => {
+      res.json(result.rows);
+    });
+});
+
+
 app.get('/api/articles', (req, res) => {
   client.query(`
     SELECT

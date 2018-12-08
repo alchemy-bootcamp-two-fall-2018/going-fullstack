@@ -40,8 +40,8 @@ export default {
     return {
       article: initArticle(),
       category: null
-      };
-    },
+    };
+  },
   created() {
     this.category = api.getCategories();
   },
