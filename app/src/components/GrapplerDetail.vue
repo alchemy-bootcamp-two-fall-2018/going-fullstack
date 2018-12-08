@@ -49,28 +49,8 @@ export default {
 
 <style>
 body {
-    background: linear-gradient(307deg, #52f2c8, #5287f2);
-background-size: 400% 400%;
+  background-image: linear-gradient(to right bottom, #06d4f6, #00b7ff, #0095ff, #006aff, #6612eb);
 
--webkit-animation: AnimationName 0s ease infinite;
--moz-animation: AnimationName 0s ease infinite;
-animation: AnimationName 0s ease infinite;
-
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 18%}
-    50%{background-position:100% 83%}
-    100%{background-position:0% 18%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 18%}
-    50%{background-position:100% 83%}
-    100%{background-position:0% 18%}
-}
-@keyframes AnimationName { 
-    0%{background-position:0% 18%}
-    50%{background-position:100% 83%}
-    100%{background-position:0% 18%}
-}
 }
 
 </style>

@@ -36,9 +36,6 @@ export default {
         handleSubmit() {
             console.log('step 1 from update form', this.grapplerToUpdate);
             this.onUpdate(this.grapplerToUpdate); 
-            // .then(() => {
-            //     this.grappler = { name: '', age: '', prefId: '', champion:'' };
-            // });
         }
     }
 
