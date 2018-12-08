@@ -13,19 +13,19 @@ app.use(express.json());
 
 console.log('I am the server file');
 
-app.get('/api/article_category_table', (req, res) => {
+// app.get('/api/articles', (req, res) => {
 
-  client.query(`
-    SELECT id, name, short_name as "shortName"
-    FROM article_category_table
-    ORDER BY name;
-  `)
-    .then(result => {
-      res.json(result.rows);
-    });
-});
+//   client.query(`
+//     SELECT id, name, short_name as "shortName"
+//     FROM article_category_table
+//     ORDER BY name;
+//   `)
+//     .then(result => {
+//       res.json(result.rows);
+//     });
+// });
 
-app.get('/api/article', (req, res) => {
+app.get('/api/articles', (req, res) => {
   client.query(`
     SELECT
       article.id,
@@ -43,7 +43,7 @@ app.get('/api/article', (req, res) => {
     });
 });
 
-app.get('/api/article_category_table/:id', (req, res) => {
+app.get('/api/articles/:id', (req, res) => {
 
   client.query(`
     SELECT * FROM article_category_table WHERE id = $1
@@ -54,7 +54,7 @@ app.get('/api/article_category_table/:id', (req, res) => {
     });
 });
 
-app.post('/api/article', (req, res)=> {
+app.post('/api/articles', (req, res)=> {
   const body = req.body;
 
   client.query(`
@@ -73,7 +73,7 @@ app.post('/api/article', (req, res)=> {
           author_id as "authorId",
           article.views as views
         FROM article
-        JOINT article_category_table
+        JOIN article_category_table
         ON article.track_id = track.id
         WHERE article.id = $1;
       `,

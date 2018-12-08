@@ -7,7 +7,7 @@ export default {
   },
 
   getArticle(id) {
-    return fetch(`/api/articles/${id}`)
+    return fetch(`/api/articles${id}`)
       .then(response => response.json());
   },
 
@@ -24,7 +24,7 @@ export default {
   },
 
   deleteArticle(id) {
-    return fetch(`/api/articles/${id}`, {
+    return fetch(`/api/articles${id}`, {
       method: 'DELETE'
     })
       .then(response => response.json());
