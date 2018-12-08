@@ -1,7 +1,7 @@
 <template>
-  <section v-if="guitarist">
+  <section v-if="guitarist" class="detail">
     <div class="name-header">
-      <h2>
+      <h2 class="guitarist-name">
         {{guitarist.name}}
       </h2>
       <EditGuitarist 
@@ -70,6 +70,15 @@ h2, p {
 }
 .delete {
   background-color: red;
-
 }
+.detail {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: space-evenly;
+}
+.guitarist-name {
+  margin-top: 0px;
+}
+
 </style>

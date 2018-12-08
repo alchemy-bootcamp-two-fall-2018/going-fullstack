@@ -1,6 +1,6 @@
 <template>
   <section>
-    <button @click="show = true">Add a New Guitarist</button>
+    <button @click="show = !show">Add a New Guitarist</button>
     <GuitaristForm v-if="show" 
                 :onClose="() => show = false"
                 :onSubmit="handleAdd"/>
@@ -51,6 +51,7 @@ button {
   font-weight: bold;
   background: #6AD58B;
   transition: background 0.3s ease;
+  margin-bottom: 20px;
 }
 button:hover {
   opacity: 1;

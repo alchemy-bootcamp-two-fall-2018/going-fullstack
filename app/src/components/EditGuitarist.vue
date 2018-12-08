@@ -1,6 +1,6 @@
 <template>
   <section>
-    <button @click="show = true">✎ Edit</button>
+    <button @click="show = !show">✎ Edit</button>
     <GuitaristForm v-if="show" :onClose="() => show = false"
                   :onSubmit="handleEdit"
                   :guitaristToEdit="guitarist"
