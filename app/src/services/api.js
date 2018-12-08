@@ -1,22 +1,22 @@
 export default {
   
-  getSuperheroes() {
-    return fetch('/api/superheroes')
+  getHeroes() {
+    return fetch('/api/hero')
       .then(response => response.json());      
   },
 
-  getSuperhero(id) {
-    return fetch(`/api/superheroes/${id}`)
+  getHero(id) {
+    return fetch(`/api/hero/${id}`)
       .then(response => response.json());
   },
 
-  addSuperhero(superhero) {
-    return fetch('/api/superheroes', {
+  addHero(hero) {
+    return fetch('/api/hero', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(superhero)
+      body: JSON.stringify(hero)
     })
       .then(response => response.json());
   },
