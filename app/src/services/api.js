@@ -31,7 +31,7 @@ export default {
 
   updateAnimal(animal) {
     return fetch(`/api/animals/${animal.id}`, {
-      method: 'UPDATE',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },

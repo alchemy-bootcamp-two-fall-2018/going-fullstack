@@ -97,7 +97,7 @@ label {
 }
 
 input, select {
-  width: 150px;
+  width: 300px;
   font-size: 1.05em;
 }
 
