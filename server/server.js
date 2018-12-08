@@ -59,11 +59,11 @@ app.post('/api/racers', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO racer (name, age, team, pr )
+    INSERT INTO racer (name, age, team_id, pr )
     VALUES($1, $2, $3, $4)
     RETURNING *;
   `,
-  [body.name, body.age, body.team, body.pr])
+  [body.name, body.age, body.teamId, body.pr])
     .then(result => {
       res.json(result.rows[0]);
     });

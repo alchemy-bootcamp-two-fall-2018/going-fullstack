@@ -10,9 +10,9 @@
         </p>
         <p>
             <label>Team</label>
-            <select v-model="racer.team" required>
-                <option value="varsity">Varsity</option>
-                <option value="juniorVarsity">Junior Varsity</option>
+            <select v-model="racer.teamId" required>
+                <option value="1">Varsity</option>
+                <option value="2">Junior Varsity</option>
             </select>
         </p>
         <p>
@@ -26,6 +26,7 @@
 <script>
 
 
+
 export default {
     props: {
         onAdd: Function
@@ -35,8 +36,7 @@ export default {
             racer: {
                 name: '',
                 age: '',
-                gender: '',
-                varsity: '',
+                teamId: '',
                 pr: ''
             }
         };

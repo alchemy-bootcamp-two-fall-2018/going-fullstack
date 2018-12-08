@@ -4,7 +4,7 @@ client.query(`
   CREATE TABLE IF NOT EXISTS team (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
-    short_name VARCHAR (10) NOT NULL
+    short_name VARCHAR (256) NOT NULL
   );
 
   CREATE TABLE IF NOT EXISTS racer (
