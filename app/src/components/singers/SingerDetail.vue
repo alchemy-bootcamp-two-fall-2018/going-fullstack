@@ -1,6 +1,9 @@
 <template>
   <section v-if="singer">
     <h2>{{singer.name}}</h2>
+    <EditSinger
+      :singer="singer"
+      :onEdit="handleEdit"/>
     <p class="age">
       Age: {{singer.age}}
     </p>
@@ -16,12 +19,16 @@
 
 <script>
 import api from '../../services/api';
+import EditSinger from './EditSinger';
 
 export default {
   data() {
     return {
       singer: null
     };
+  },
+  components: {
+    EditSinger
   },
   created() {
     api.getSinger(this.$route.params.id)
@@ -30,6 +37,13 @@ export default {
       });
   },
   methods: {
+    handleEdit(singer) {
+      return api.updateSinger(singer)
+        .then(updated => {
+          this.singer = updated;
+        })
+    },
+
     handleDelete() {
       api.deleteSinger(this.singer.id)
         .then(() => {

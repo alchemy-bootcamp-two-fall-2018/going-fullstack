@@ -7,7 +7,7 @@
       <span>
         Genre: 
           <select v-if="genres"
-            v-model="singer.genre_id"
+            v-model="singer.genreId"
             required
           >
             <option value="-1" disabled>Select a Genre</option>
@@ -61,9 +61,9 @@ export default {
     },
     data() {
         return {
-      singer: this.singerToEdit 
-        ? copySinger(this.singerToEdit) 
-        : initSinger(),
+            singer: this.singerToEdit 
+                ? copySinger(this.singerToEdit) 
+                : initSinger(),
       genres: null
         }
     },
@@ -77,7 +77,9 @@ export default {
 </script>
 
 <style>
+
+
     label {
-    display: block;
+        display: block;
     }
 </style>

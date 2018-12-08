@@ -28,6 +28,14 @@ export default {
         .then(response => response.json());
     },
 
+    updateSinger(singer) {
+      return fetch(
+        `/api/singers/${singer.id}`, 
+        getOptions('PUT', singer)
+      )
+        .then(response => response.json());
+    },
+
     getGenres() {
       if(genres) {
         return Promise.resolve(genres);
@@ -61,6 +69,6 @@ export default {
           });
         });
     }
-    
+
   };
 

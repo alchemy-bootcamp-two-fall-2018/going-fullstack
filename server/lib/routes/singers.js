@@ -50,8 +50,6 @@ router
   .post('/', (req, res) => {
     const body = req.body;
     
-    console.log('post in api was called');
-    
     client.query(`
         INSERT INTO singers (name, genre_id, age, summary)
         VALUES($1, $2, $3, $4)
@@ -60,7 +58,6 @@ router
     [body.name, body.genre_id, body.age, body.summary])
       .then(result => {
         const id = result.rows[0].id;
-        console.log(id);
   
         return client.query(`
           SELECT
@@ -80,18 +77,42 @@ router
       .then(result => {
         res.json(result.rows[0]);
       });
+  })
+   
+  .put('/:id', (req, res) => {
+    const body = req.body;
+    client.query(`
+            UPDATE singers
+            SET
+              name = $1,
+              genre_id = $2,
+              age = $3,
+              summary = $4
+            WHERE id = $5
+            RETURNING
+              id,
+              name,
+              age,
+              summary,
+              genre_id as "genreId"       
+        `,
+    [body.name, body.genreId, body.age, body.summary, body.id])
+      .then(result => {
+        res.json(result.rows[0]);
+      });
+  })
+ 
+  .delete('/:id', (req, res) => {
+    res.json(req.params.id); 
+    client.query(`
+        DELETE from singers WHERE id = $1
+    `,
+    [req.params.id])
+      .then(result => {
+        res.json({ removed: result.rowCount === 1 });
+      });
   });
-  
-//   .del('/:id', (req, res) => {
-//     res.json(req.params.id); 
-//     client.query(`
-//         DELETE from singers WHERE id = $1
-//     `,
-//     [req.params.id])
-//       .then(result => {
-//         res.json({ removed: result.rowCount === 1 });
-//       });
-//   });
+
 
 module.exports = router;
 
