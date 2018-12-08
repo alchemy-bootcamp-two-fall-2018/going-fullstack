@@ -30,6 +30,7 @@ app.get('/api/books', (req, res) => {
     SELECT
       books.id,
       books.title as title,
+      books.author as author,
       genre.id as "genreId",
       genre.genre as genre
     FROM books
@@ -57,11 +58,11 @@ app.post('/api/books', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO books (title, author, pages, genre_id)
-    VALUES($1, $2, $3, $4)
-    RETURNING id, title, author, pages, genre_id;
+    INSERT INTO books (title, author, pages, genre, genre_id)
+    VALUES($1, $2, $3, $4, $5)
+    RETURNING id, title, author, pages, genre, genre_id;
   `,
-  [body.title, body.author, body.pages, body.genreId])
+  [body.title, body.author, body.pages, body.genre, body.genreId])
     .then(result => {
       const id = result.rows[0].id;
 
@@ -69,6 +70,7 @@ app.post('/api/books', (req, res) => {
         SELECT
           books.id,
           books.title as title,
+          books.author as author,
           genre.id as "genreId",
           genre.genre as genre
         FROM books
