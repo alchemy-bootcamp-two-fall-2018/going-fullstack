@@ -56,4 +56,9 @@ li {
   text-align: center;
   margin: 5px;
 }
+ h2 {
+    text-align: center;
+    z-index: 1;
+    margin: 0px;
+  }
 </style>

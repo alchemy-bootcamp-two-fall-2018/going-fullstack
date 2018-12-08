@@ -1,13 +1,17 @@
 <template>
   <section v-if="island">
     <div id="detail">
-      <h2>{{island.name}}</h2>
+      <div class="header">
+       <h2>{{island.name}}</h2>
+       <EditIsland
+        v-bind:island="island"
+        v-bind:onEdit="handleEdit"/>
+      </div>
       <img v-bind:src="island.iamge"/>
       <p>Location: {{island.loca}} </p>
       <p>isAmazing: {{island.isAmazing}} </p>
-      <p>rating: {{island.rating}} </p>
+      <p>Rating: {{island.rating}} </p>
       <button @click="handleDelete">Delete</button>
-      <button @click="handleUpdate">Edit</button>
     </div>
   </section>    
 </template>
@@ -21,7 +25,9 @@ export default {
       island: null
     };
 },
-  // not recognizing command created
+components: {
+  EditIsland
+},
   created() {
     api.getIsland(this.$route.params.id)
       .then(island => {

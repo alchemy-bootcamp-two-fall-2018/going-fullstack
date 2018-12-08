@@ -1,106 +1,39 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <label>Name:
-      <input v-model="island.name" require>
-    </label>
-    
-    <label>Location:
-      <input v-model="island.loca" require>
-    </label>
-
-    <label>Image:
-      <input v-model="island.image">
-    </label>
-
-    <label>Is Amazing (T/F):
-      <select v-model="island.isAmazing">
-        <option value="" disabled selected >Select</option>
-        <opiton value="true">True</opiton>
-        <opiton value="false">False</opiton>
-      </select>
-    <p>
-    <label>rating:</label>
-      <select v-if="ratings" 
-        v-model="island.ratingId" require>
-        <option value="-1" disabled>Select rating</option>
-        <option v-for="rating in ratings"
-          v-bind:key="rating.id"
-          v-bind:value="rating.id">
-          {{rating.name}} ({{rating.shortName}})
-        </option>
-      </select>
-    </p>
-    </label>
-
-    <button>Add</button>
-  </form>
+  <section>
+    <button @click="show = true">Add an Island</button>
+    <Modal v-if="show" v-bind:onClose="() => show = false">
+      <AnimalForm v-bind:onSubmit="handleAdd"/>
+    </Modal>
+  </section>
 </template>
 
 <script>
-import islandApi from '../../api';
-
-function initAnimal() {
-  return {
-    name: '',
-    loca: '',
-    imagel: '',
-    isAmazing: '',
-    ratingId: -1,
-  };
-}
-
-
+import IslandForm from './IslandForm';
+import Modal from '../Modal';
 export default {
-   props: {
+  props: {
     onAdd: Function
-   },
+  },
   data() {
     return {
-      island: initIsland(),
-      ratinges: null
+      show: false
     };
   },
-  created() {
-    api.getRatings()
-      .then(ratings => {
-        this.ratings = ratings;
-      });
+  components: {
+    IslandForm,
+    Modal
   },
   methods: {
-    handleSubmit() {
-      this.onAdd(this.island)
-        .then(() => {
-          this.island = initIsland();
-      });
+    handleAdd(island) {
+      return this.onAdd(island)
+        .then(() => this.show = false);
     }
   }
 };
 </script>
 
 <style scoped>
-form {
-    text-align: center;
-    border: 5px solid black;
-    background: white;
-    padding: 40px;
-    height: 300px;
-    width: 400px;
-  }
-  .form-title {
-    margin: 0px;
-    padding-bottom: 20px;
-    font-size: 2em;    
-  }
-  form button {
-    margin: 5px;
-    font-size: 1.2em;
-    border-radius: 5px;
-    border: 1px solid black;
-    padding: 5px;
-  }
-  form button:hover {
-    background: rgb(190, 236, 147);
-  }
+
   input {
     width: 250px;
     height: 20px;
