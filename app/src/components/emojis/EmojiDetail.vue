@@ -10,15 +10,15 @@
 
     <form v-show="edit" @submit.prevent="onUpdate">
       <label>
-        <h4>Name:</h4>
+        Name:
         <input v-model="update.name" required>
       </label>
       <label>
-        <h4>Image URL:</h4>
+        Image URL:
         <input v-model="update.image" required>
       </label>
       <label>
-        <h4>Year Of Birth:</h4>
+        Year Of Birth:
         <input v-model="update.yob" required>
       </label>
       <!-- <label>
@@ -27,7 +27,7 @@
         <input type="radio" value="0" v-model="update.goodness" required>False
       </label> -->
       <label>
-        <h4>Scale:</h4>
+        Scale:
         <select v-model="update.scale">
           <option disabled value="">Select One</option>
           <option value="1">Positive</option>
@@ -77,5 +77,7 @@ export default {
 </script>
 
 <style>
+
+
 
 </style>
