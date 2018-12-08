@@ -6,7 +6,7 @@ const client = require('./db-client');
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.get('api/teams', (req, res) => {
+app.get('/api/teams', (req, res) => {
   client.query (`
     SELECT id, name, short_name as "shortName"
     FROM team
@@ -62,6 +62,7 @@ app.post('/api/racers', (req, res) => {
 const PORT = 3000;
 
 app.listen(PORT, () => {
+  console.log('server running on', PORT);
 });
 
 

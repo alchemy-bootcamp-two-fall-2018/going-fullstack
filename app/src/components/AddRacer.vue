@@ -45,7 +45,6 @@ export default {
     
     methods: {
         handleSubmit() {
-            console.log('banana', this.racer);
             this.onAdd(this.racer)
                 .then(() => {
                     this.racer = { name: '' };

@@ -24,6 +24,7 @@ export default {
     created() {
         api.getRacer(this.$route.params.id)
             .then(racer => {
+                console.log('racer', racer);
                 this.racer = racer;
             });
     }
