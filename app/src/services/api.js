@@ -32,7 +32,7 @@ export default {
       .then(response => response.json());
   },
 
-  updateStudent(guitarist) {
+  updateGuitarist(guitarist) {
     return fetch(`/api/guitarists/${guitarist.id}`, {
       method: 'PUT',
       headers: {

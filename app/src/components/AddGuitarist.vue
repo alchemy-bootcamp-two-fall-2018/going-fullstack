@@ -1,65 +1,32 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-        <input v-model="guitarist.name" placeholder="Name" require>
-        <input v-model="guitarist.type" placeholder="Music Type" require>
-        <input type="number" v-model="guitarist.yob" placeholder="Year of Birth" require>
-        <p>
-        <select v-model="guitarist.alive" class="alive">
-          <option disabled value="">Alive?</option>
-          <option value="true">Alive</option>
-          <option value="false">Deceased</option>
-        </select>
-        
-        <select v-if="guitars" 
-          v-model="guitarist.guitarId" 
-          required>
-          <option value="-1" disabled>Select a Guitar</option>
-          <option v-for="guitar in guitars"
-            :key="guitar.id"
-            :value="guitar.id">
-            {{guitar.brand}} ({{guitar.model}})
-          </option>
-        </select>
-
-    <button>Add</button>
-    </p>
-  </form>
+  <section>
+    <button @click="show = true">Add a New Guitarist</button>
+    <GuitaristForm v-if="show" 
+                :onClose="() => show = false"
+                :onSubmit="handleAdd"/>
+  </section>
 </template>
 
 <script>
-import api from '../services/api';
+import GuitaristForm from './GuitaristForm';
 
-function initGuitarist() {
-  return {
-    name: '',
-    type: '',
-    yob: '',
-    alive: '',
-    guitarId: -1
-  };
-}
 export default {
   props: {
-    onAdd: Function
+    onAdd: Function,
+    onClose: Function
   },
   data() {
     return {
-      guitarist: initGuitarist(),
-      guitars: null
+      show: false
     };
   },
-  created() {
-    api.getGuitars()
-      .then(guitars => {
-        this.guitars = guitars;
-      });
+  components: {
+    GuitaristForm,
   },
   methods: {
-    handleSubmit() {
-      this.onAdd(this.guitarist)
-        .then(() => {
-          this.guitarist = initGuitarist();
-        });
+    handleAdd(guitarist) {
+      return this.onAdd(guitarist)
+        .then(() => this.show = false);
     }
   }
 };

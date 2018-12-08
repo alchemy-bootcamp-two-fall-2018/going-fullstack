@@ -1,7 +1,13 @@
 <template>
   <section v-if="guitarist">
-    <h2>{{guitarist.name}}</h2>
-    <button>✎ Edit</button>
+    <div class="name-header">
+      <h2>
+        {{guitarist.name}}
+      </h2>
+      <EditGuitarist 
+        :guitarist="guitarist"
+        :onEdit="handleEdit"/>
+    </div>
     <p>
       {{guitarist.type}} musician
     </p>
@@ -17,11 +23,16 @@
 
 <script>
 import api from '../services/api';
+import EditGuitarist from './EditGuitarist';
+
 export default {
   data() {
     return {
       guitarist: null
     };
+  },
+  components: {
+    EditGuitarist
   },
   created() {
     api.getGuitarist(this.$route.params.id)
@@ -30,6 +41,12 @@ export default {
       });
   },
   methods: {
+    handleEdit(guitarist) {
+      return api.updateGuitarist(guitarist)
+        .then(updated => {
+          this.guitarist = updated;
+        });
+    },
     handleDelete() {
       api.deleteGuitarist(this.guitarist.id)
         .then(() => {
