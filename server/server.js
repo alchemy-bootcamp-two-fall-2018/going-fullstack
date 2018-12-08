@@ -3,8 +3,6 @@ const app = express();
 const morgan = require('morgan');
 const client = require('./db-client');
 
-// const shortid = require('shortid');
-// const fs = require('fs');
 //enhanced logging
 app.use(morgan('dev'));
 
@@ -12,10 +10,13 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 /* defined routes: METHOD, URLPATH */
+
+
+
 app.get('/api/genres', (req, res) => {
   client.query(`
     SELECT id, title, author, pages, short_name as "shortName"
-    FROM genre;
+    FROM genre
     ORDER BY title;  
   `)
     .then(result => {
@@ -23,27 +24,28 @@ app.get('/api/genres', (req, res) => {
     });
 });
 
+//to do? add ORDER BY title ASC; at end of this query...
 app.get('/api/books', (req, res) => {
   client.query(`
     SELECT
       book.id,
       book.title as title,
       genre.id as "genreId",
-      genre.name as genre
+      genre.genre as genre
     FROM book
     JOIN genre
-    ON book.genre_id = genre.id
-    ORDER BY title ASC;
-  `)
+    ON book.genre_id = genre.id;
+  `)   
     .then(result => {
       res.json(result.rows);
     });
 });
 
+
+
 app.get('/api/books/:id', (req, res) => {
   client.query(`
-    SELECT * 
-FROM books WHERE id = $1;
+    SELECT * FROM book WHERE id = $1;
   `,
   [req.params.id])
     .then(result => {
@@ -61,9 +63,26 @@ app.post('/api/books', (req, res) => {
   `,
   [body.title, body.author, body.pages, body.good])
     .then(result => {
+      const id = result.rows[0].id;
+
+      return client.query(`
+        SELECT
+          book.id,
+          book.title as title,
+          genre.id as "genreId",
+          genre.genre as genre
+        FROM book
+        JOIN genre
+        ON book.genre_id = genre.id
+        WHERE book.id = $1;
+      `,
+      [id]);
+    })
+    .then(result => {
       res.json(result.rows[0]);
     });
 });
+
 /* end defined routes*/
 
 /* configure and start the server */
