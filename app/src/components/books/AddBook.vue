@@ -14,7 +14,9 @@
       </p>
       <p>
         <label>Genre:</label>
-        <select v-if="genres" v-model="book.genreId" required>
+        <select v-if="genres" 
+              v-model="book.genreId"
+              required>
           <option value="-1" disabled>Select a Genre</option>
           <option v-for="genre in genres"
             :key="genre.id"

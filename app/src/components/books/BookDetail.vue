@@ -3,8 +3,8 @@
     <h2>Book: {{book.title}}</h2>
     <p>Author: {{book.author}}</p>
     <p>Pages: {{book.pages}}</p>
+    <p>Genre: {{book.genre}}</p>
   </section>
-
 </template>
 
 <script>

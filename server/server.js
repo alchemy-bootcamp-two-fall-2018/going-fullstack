@@ -15,9 +15,9 @@ app.use(express.json());
 
 app.get('/api/genres', (req, res) => {
   client.query(`
-    SELECT id, title, author, pages, short_name as "shortName"
+    SELECT id, genre, short_name as "shortName"
     FROM genre
-    ORDER BY title;  
+    ORDER BY genre;  
   `)
     .then(result => {
       res.json(result.rows);
@@ -28,13 +28,13 @@ app.get('/api/genres', (req, res) => {
 app.get('/api/books', (req, res) => {
   client.query(`
     SELECT
-      book.id,
-      book.title as title,
+      books.id,
+      books.title as title,
       genre.id as "genreId",
       genre.genre as genre
-    FROM book
+    FROM books
     JOIN genre
-    ON book.genre_id = genre.id;
+    ON books.genre_id = genre.id;
   `)   
     .then(result => {
       res.json(result.rows);

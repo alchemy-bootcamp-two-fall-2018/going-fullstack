@@ -1,7 +1,7 @@
 <template>
   <li>
     <RouterLink :to="`/books/${book.id}`">
-      {{book.title}} </RouterLink>
+      {{book.title}}</RouterLink>
       by {{book.author}}
   </li>
 </template>
