@@ -106,7 +106,7 @@ app.put('/api/dog_picker/:id', (req, res) => {
       name = $1,
       breed = $2,
       weight = $3,
-      isaAdopted = $4
+      isAdopted = $4
     WHERE id = $5
     RETURNING 
       id, 
