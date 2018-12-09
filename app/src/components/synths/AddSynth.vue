@@ -6,7 +6,7 @@
       </label>
       <br>
       <label>
-        Image url: <input v-model="synth.image">
+        Image url: <input v-model="synth.image" required>
       </label>
       <br>
       <label>
@@ -18,8 +18,8 @@
       <label>
         Date produced: 
         <input type="number" 
-          v-model.number="synth.year" 
-          onKeyPress="if(this.value.length == 4) return false;" 
+          v-model.number="synth.year" min="1950" max="2020"
+          onKeyUp="if(this.value.length === 4) return false;" 
           required
         >
       </label>

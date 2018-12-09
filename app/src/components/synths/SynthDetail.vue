@@ -1,6 +1,5 @@
 <template>
   <section v-if="synth">
-    <RouterLink :to="`/synths`"><h3>Back</h3></RouterLink>
     <h2>{{synth.name}}</h2>
     <p>
       <span v-if="synth.polyphonic === true">Polyphonic</span>
@@ -10,20 +9,31 @@
       Date produced: {{synth.year}}
     </p>
     <p>
+      Brand: <ManufacturerDisplay :manufacturerId="synth.manufacturerId"/>
+    </p>
+    <p>
       <img :src="synth.image">
     </p>
-    <button @click="handleDelete">Delete</button>
+    <RouterLink :to="`/synths`"><h3>Back</h3></RouterLink>
+    <p id="buttons">
+      <button @click="handleDelete">Delete</button>
+      <button>Edit</button>
+    </p>
   </section>
 </template>
 
 <script>
 import api from '../../services/api.js';
+import ManufacturerDisplay from '../manufacturers/ManufacturerDisplay';
 
 export default {
   data() {
     return {
       synth: null
     };
+  },
+  components: {
+    ManufacturerDisplay
   },
   created() {
     api.getSynth(this.$route.params.id)
@@ -45,5 +55,18 @@ export default {
 <style scoped>
 img {
   width: auto;
+}
+p#buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
+a {
+  text-decoration: underline;
+}
+p {
+  margin: 0;
+}
+h3 {
+  font-size: 20px;
 }
 </style>

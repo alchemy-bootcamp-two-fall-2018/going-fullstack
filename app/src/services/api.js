@@ -1,3 +1,5 @@
+let manufacturers = null;
+
 export default {
   getSynths() {
     return fetch('/api/synths')
@@ -23,8 +25,17 @@ export default {
     })
       .then(response => response.json());
   },
-  getManufacturers() {
-    return fetch('/api/manufacturers')
-      .then(response => response.json());
+  getManufacturers() { // Now includes caching
+    if(manufacturers) {
+      return Promise.resolve(manufacturers);
+    }
+    else {
+      return fetch('/api/manufacturers')
+        .then(response => response.json())
+        .then(fetchedManufacturers => {
+          manufacturers = fetchedManufacturers;
+          return manufacturers;
+        });
+    }
   }
 };
