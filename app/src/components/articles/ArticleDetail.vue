@@ -1,15 +1,15 @@
 <template>
   <section v-if="article">
 
-    <h2>{{article.title}}</h2>
+    <h2>{{articles.title}}</h2>
     <p>
-      By {{article.author}}
+      By {{articles.author}}
     </p>
     <p>
-      Views:{{article.views}}
+      Views:{{articles.views}}
     </p>
     <p>
-      Category: {{article.category}}
+      Category: {{articles.category}}
     </p>
   </section>
 </template>
@@ -28,15 +28,15 @@ export default {
       .then(article => {
         this.article = article;
       });
-  },
-  methods: {
-    handleDelete() {
-      api.deleteArticle(this.article.id)
-        .then(() => {
-          this.$router.push('/articles');
-        });
-    }
   }
+  // methods: {
+  //   handleDelete() {
+  //     api.deleteArticle(this.article.id)
+  //       .then(() => {
+  //         this.$router.push('/articles');
+  //       });
+  //   }
+  // }
 };
 </script>
 

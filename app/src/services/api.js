@@ -7,7 +7,7 @@ export default {
   },
 
   getArticle(id) {
-    return fetch(`/api/articles${id}`)
+    return fetch(`/api/articles/${id}`)
       .then(response => response.json());
   },
 
@@ -31,8 +31,11 @@ export default {
   },
 
   getCategories() {
-    fetch('/api/categories')
-      .then(response => response.json());
+    return {
+      us: 'US',
+      world: 'World',
+      local: 'Local'
+    };
   }
 
 };

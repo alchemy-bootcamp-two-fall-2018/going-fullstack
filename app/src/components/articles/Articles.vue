@@ -3,38 +3,36 @@
     <h2>Articles</h2>
 
     <AddArticle :onAdd="handleAdd"/>
+    <ArticleList :articles="articles"/>
 
-    <ul v-if="articles">
-      <li v-for="article in articles" :key="article.id">
-        {{article.title}}
-      </li>
-    </ul>
   </section>
 </template>
 
 <script>
 import api from '../../services/api.js';
 import AddArticle from './AddArticle';
+import ArticleList from './ArticleList';
 
 
 export default {
   data() {
     return {
       articles: null,
-      // error: null
+      error: null
     };
   },
   components: {
-    AddArticle
+    AddArticle,
+    ArticleList
   },
   created() {
     api.getArticles()
       .then(articles => {
         this.articles = articles;
+      })
+      .catch(err => {
+        this.error = err;
       });
-    // .catch(err => {
-    //   this.error = err;
-    // });
   },
   methods: {
     handleAdd(article) {
