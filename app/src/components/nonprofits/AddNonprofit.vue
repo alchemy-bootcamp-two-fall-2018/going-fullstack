@@ -23,12 +23,12 @@
      <p>
       <label>In PDX Metro Area?</label>
       <select v-if="metropolitans" 
-        v-model="nonprofit.metropolitan" 
+        v-model="nonprofit.metropol" 
         required
       >
         <option value="-1" disabled>Select A Response</option>
         <option v-for="metropolitan in metropolitans"
-          :key="metropolitan.id"
+          :key="metropolitanm,mjj  .id"
           :value="metropolitan.id"
         >
           {{metropolitan.name}}

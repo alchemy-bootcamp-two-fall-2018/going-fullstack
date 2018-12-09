@@ -7,14 +7,14 @@
 
 <script>
 export default {
-    props:{
-        nonprofit: null
-    },
-    computed: {
-        formattedMetro() {
-            return new Metro(this.nonprofit.metropolitan).toString();
-        }
+  props:{
+    nonprofit: null
+  },
+  computed: {
+    formattedMetro() {
+      return new Metro(this.nonprofit.metropolitan).toString();
     }
+  }
 };
 </script>
 
