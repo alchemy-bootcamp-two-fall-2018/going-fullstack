@@ -83,7 +83,7 @@ app.post('/api/dog_picker', (req, res) => {
   const body = req.body; 
  
   client.query(`
-    INSERT INTO dog_table (name, breed, weight, isaAdopted, size_id) 
+    INSERT INTO dog_table (name, breed, weight, isAdopted, size_id) 
     VALUES($1, $2, $3, $4, $5)
     RETURNING id, 
     name, 
