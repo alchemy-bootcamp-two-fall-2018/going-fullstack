@@ -6,17 +6,14 @@ router
   .get('/', (req, res) => {
     client.query(`
       SELECT 
-        synths.id, 
-        synths.name as name,
-        synths.image as image,
-        synths.polyphonic as polyphonic,
-        synths.year as year,
-        manufacturer.id as "manufacturerId",
-        manufacturer.name as manufacturer
+        id, 
+        name,
+        image,
+        polyphonic,
+        year,
+        manufacturer_id as "manufacturerId"
       FROM synths
-      JOIN manufacturer
-      ON synths.manufacturer_id = manufacturer.id
-      ORDER BY id ASC;
+      ORDER BY id;
     `)
       .then(result => {
         res.json(result.rows);
@@ -25,7 +22,15 @@ router
 
   .get('/:id', (req, res) => {
     client.query(`
-    SELECT * FROM synths WHERE id = $1;
+    SELECT
+      id, 
+      name,
+      image,
+      polyphonic,
+      year,
+      manufacturer_id as "manufacturerId"
+    FROM synths 
+    WHERE id = $1;
   `,
     [req.params.id])
       .then(result => {
@@ -48,27 +53,15 @@ router
     client.query(`
     INSERT INTO synths (name, manufacturer_id, image, polyphonic, year)
     VALUES ($1, $2, $3, $4, $5)
-    RETURNING id;
+    RETURNING
+      id, 
+      name,
+      image,
+      polyphonic,
+      year,
+      manufacturer_id as "manufacturerId";
   `,
     [body.name, body.manufacturerId, body.image, body.polyphonic, body.year])
-      .then(result => {
-        const id = result.rows[0].id;
-
-        return client.query(`
-      SELECT 
-        synths.id, 
-        synths.name as name,
-        synths.image as image,
-        synths.polyphonic as polyphonic,
-        synths.year as year,
-        manufacturer.id as "manufacturerId"
-      FROM synths
-      JOIN manufacturer
-      ON synths.manufacturer_id = manufacturer.id
-      WHERE synths.id = $1;
-  `,
-        [id]);
-      })
       .then(result => {
         res.json(result.rows[0]);
       });
