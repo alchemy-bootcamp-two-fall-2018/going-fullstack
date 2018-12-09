@@ -8,7 +8,7 @@ export default new VueRouter ({
   routes: [
     { path: '/', component: Home }, 
     { path: '/islands', component: Islands },
-    { path: '/islands', component: IslandDetail },
+    { path: '/islands/:id', component: IslandDetail },
     { path: '*', redirect: '/' }
   ]
 }); 

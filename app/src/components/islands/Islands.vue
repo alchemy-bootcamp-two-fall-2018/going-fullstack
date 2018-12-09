@@ -1,6 +1,6 @@
 <template>
   <section class="islands">
-    <h2> Island List </h2>
+    <h2>Island List</h2>
     <AddIsland v-bind:onAdd="handleAdd"/>
     <IslandList v-bind:islands="islands"/>
   </section>

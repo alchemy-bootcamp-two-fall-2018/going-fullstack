@@ -6,11 +6,11 @@
     </p>
     <p>
       <label>Location:</label>
-      <input v-model="island.loca" require>
+      <input v-model="island.loca">
     </p>
     <p>
       <label>Image:</label>
-      <input v-model="animal.image">
+      <input v-model="island.image">
     </p>
     <p>
       <label>isAmazing (T/F):</label>
@@ -23,18 +23,18 @@
     <p>
     <label>Rating:</label>
       <select v-if="ratings" 
-        v-model="animal.ratingId"
-        required
+        v-model="island.ratingId"
       >
-        <option value="-1" disabled>Select a Rating</option>
-        <option v-for="rating in ratings"
-          v-bind:key="rating.id"
-          v-bind:value="rating.id"
-        >
-          {{rating.name}} ({{rating.shortName}})
-        </option>
+      <option value="-1" disabled>Select a Rating</option>
+      <option v-for="rating in ratings"
+        v-bind:key="rating.id"
+        v-bind:value="rating.id"
+      >
+        {{rating.name}} ({{rating.shortName}})
+      </option>
       </select>
     </p>
+
     <button>{{label || 'Add'}}</button>
   </form>
 </template>
@@ -104,4 +104,7 @@ form button {
     border: 1px solid black;
     padding: 5px;
   }
+label {
+  display: block;
+}
 </style>

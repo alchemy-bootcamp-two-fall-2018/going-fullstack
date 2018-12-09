@@ -2,14 +2,16 @@
   <section>
     <button @click="show = true">Add an Island</button>
     <Modal v-if="show" v-bind:onClose="() => show = false">
-      <AnimalForm v-bind:onSubmit="handleAdd"/>
+      <h2>Add Island</h2>
+      <IslandForm v-bind:onSubmit="handleAdd"/>
     </Modal>
   </section>
 </template>
 
 <script>
-import IslandForm from './IslandForm';
-import Modal from '../Modal';
+import IslandForm from './IslandForm.vue';
+import Modal from '../Modal.vue';
+
 export default {
   props: {
     onAdd: Function

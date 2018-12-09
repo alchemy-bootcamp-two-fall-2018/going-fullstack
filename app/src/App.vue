@@ -1,9 +1,10 @@
 <template>
   <div class="app">
     <header>
+      <h1>Welcome to the AMAZING ISLANDS app!</h1>
       <nav>
-        <RouterLink to="/"> Home </RouterLink>
-        <RouterLink to="/islands"> Islands </RouterLink>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/islands">Islands</RouterLink>
       </nav>
   </header>
   <main>
@@ -13,31 +14,44 @@
 </template>
 
 <script>
-export default {
-  
-};
+export default {};
 </script>
 
-<style scoped>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style>
 header {
   background: lightseagreen;
+  color: rgb(248, 244, 9);
   display: flex;
+  flex-direction: column;
   align-content: center;
   padding: 10px;
+  border: black;
 }
-
 img {
-  width: 50%;
-  height: auto;
+  width: 100%;
+  height: auto; 
 }
+ p, h1, h2, h3, label, a {
+    font-family: avenir; 
+  }
+  nav a {
+    text-decoration: none;
+    color: black;
+    margin: 5px;
+    border: 4px blue;
+    padding: 3px;
+    background: white;
+    border-radius: 5px;
+  }
+  nav a:hover {
+    background: rgb(224, 153, 19);
+    color: white;
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 3em;
+    margin: 5px;
+  }
 main {
   margin: 10px;
   padding: 10px;
