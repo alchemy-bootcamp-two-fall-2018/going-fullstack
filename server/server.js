@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const client = require('./db-client');
+const synths = require('./lib/routes/synths');
 
 app.use(morgan('dev'));
 
@@ -17,6 +18,8 @@ app.get('/api/manufacturers', (req, res) => {
       res.json(result.rows);
     });
 });
+
+app.use(synths);
 
 app.get('/api/synths', (req, res) => {
   client.query(`
