@@ -6,6 +6,13 @@ import router from './router';
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
+// focus input when Modal pops up
+Vue.directive('focus', {
+  inserted(el) {
+    el.focus();
+  }
+});
+
 new Vue({
   router,
   render: h => h(App)

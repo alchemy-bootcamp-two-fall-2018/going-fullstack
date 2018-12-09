@@ -1,100 +1,36 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <fieldset>
-      <label>
-        Synth name: <input v-model="synth.name" required>
-      </label>
-      <br>
-      <label>
-        Image url: <input v-model="synth.image" required>
-      </label>
-      <br>
-      <label>
-        Polyphonic?
-          Yes:<input type="radio" name="poly" v-model="synth.polyphonic" v-bind:value="true" required>
-          No:<input type="radio" name="poly" v-model="synth.polyphonic" v-bind:value="false">
-      </label>
-      <br>
-      <label>
-        Date produced: 
-        <input type="number" 
-          v-model.number="synth.year" min="1950" max="2020"
-          onKeyUp="if(this.value.length === 4) return false;" 
-          required
-        >
-      </label>
-      <label>
-        Manufacturer:
-        <select v-if="synth" v-model="synth.manufacturerId" required>
-          <option value="-1" disabled>Select a brand</option>
-          <option v-for="manufacturer in manufacturers" 
-            :key="manufacturer.id" 
-            :value="manufacturer.id"
-          >
-            {{manufacturer.name}}
-          </option>
-        </select>
-      </label>
-      <p>
-        <button>Add</button>
-      </p>
-    </fieldset>
-  </form>
+  <section>
+    <button @click="show = true">Add a new synth</button>
+    <Modal v-if="show" :onClose="() => show = false">
+      <SynthForm :onEdit="handleAdd"/>
+    </Modal>
+  </section>
 </template>
 
 <script>
 import api from '../../services/api';
+import SynthForm from './SynthForm';
+import Modal from '../shared/Modal';
 
-function initSynth() {
-  return {
-    name: '',
-    image: '',
-    polyphonic: '',
-    year: '',
-    manufacturerId: ''
-  };
-}
 export default {
-  props: {
-    onAdd: Function
-  },
+  props: {},
   data() {
     return {
-      synth: initSynth(),
-      manufacturers: null
+      show: false
     };
   },
-  created() {
-    api.getManufacturers()
-      .then(manufacturers => {
-        this.manufacturers = manufacturers;
-      });
+  components: {
+    SynthForm,
+    Modal
   },
   methods: {
-    handleSubmit() {
-      this.onAdd(this.synth)
-        .then(() => {
-          this.synth = initSynth();
+    handleAdd(synth) {
+      return api.addSynth(synth)
+        .then(saved => {
+          this.$router.push(`/synths/${saved.id}`);
+          // if not push to detail then remove ^
         });
     }
   }
 };
 </script>
-
-<style>
-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-h4 {
-  margin: 0;
-}
-button {
-  background-color: cyan;
-  border-radius: 8px;
-}
-button:hover {
-  background-color: violet;
-}
-</style>
