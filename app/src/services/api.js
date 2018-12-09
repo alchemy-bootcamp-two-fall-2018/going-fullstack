@@ -1,8 +1,8 @@
 let manufacturers = null;
 
-const getPostOptions = data => {
+const getOptions = (method, data) => {
   return {
-    method: 'POST',
+    method,
     headers: {
       'Content-Type': 'application/json'
     },
@@ -20,7 +20,13 @@ export default {
       .then(response => response.json());
   },
   addSynth(synth) {
-    return fetch('/api/synths', getPostOptions(synth))
+    return fetch('/api/synths', getOptions('POST', synth))
+      .then(response => response.json());
+  },
+  updateSynth(synth) {
+    return fetch(`/api/synths/${synth.id}`,
+      getOptions('PUT', synth)
+    )
       .then(response => response.json());
   },
   deleteSynth(id) {
@@ -43,7 +49,7 @@ export default {
     }
   },
   addManufacturer(manufacturer) {
-    return fetch('/api/manufacturers', getPostOptions(manufacturer))
+    return fetch('/api/manufacturers', getOptions('POST', manufacturer))
       .then(response => response.json())
       .then(saved => {
         manufacturers.push(saved);

@@ -1,6 +1,10 @@
 <template>
   <section v-if="synth">
     <h2>{{synth.name}}</h2>
+    <div id="buttons">
+      <EditSynth :onEdit="handleEdit" :synth="synth"/>
+      <button @click="handleDelete">Delete</button>
+    </div>
     <p>
       <span v-if="synth.polyphonic === true">Polyphonic</span>
       <span v-else>Monophonic</span>
@@ -9,22 +13,20 @@
       Date produced: {{synth.year}}
     </p>
     <p>
+      <span>{{synth.manufacturerId}}</span>
       Brand: <ManufacturerDisplay :manufacturerId="synth.manufacturerId"/>
     </p>
     <p>
       <img :src="synth.image">
     </p>
     <RouterLink :to="`/synths`"><h3>Back</h3></RouterLink>
-    <p id="buttons">
-      <button @click="handleDelete">Delete</button>
-      <button>Edit</button>
-    </p>
   </section>
 </template>
 
 <script>
 import api from '../../services/api.js';
 import ManufacturerDisplay from '../manufacturers/ManufacturerDisplay';
+import EditSynth from './EditSynth';
 
 export default {
   data() {
@@ -33,7 +35,8 @@ export default {
     };
   },
   components: {
-    ManufacturerDisplay
+    ManufacturerDisplay,
+    EditSynth
   },
   created() {
     api.getSynth(this.$route.params.id)
@@ -47,6 +50,10 @@ export default {
         .then(() => {
           this.$router.push('/synths');
         });
+    },
+    handleEdit(synth) {
+      return api.updateSynth(synth)
+        .then(updated => this.synth = updated);
     }
   }
 };
@@ -56,7 +63,7 @@ export default {
 img {
   width: auto;
 }
-p#buttons {
+div#buttons {
   display: flex;
   justify-content: space-evenly;
 }

@@ -8,10 +8,10 @@ router
       SELECT 
         id, 
         name,
+        manufacturer_id as "manufacturerId",
         image,
         polyphonic,
-        year,
-        manufacturer_id as "manufacturerId"
+        year
       FROM synths
       ORDER BY id;
     `)
@@ -25,10 +25,10 @@ router
       SELECT
         id, 
         name,
+        manufacturer_id as "manufacturerId",
         image,
         polyphonic,
-        year,
-        manufacturer_id as "manufacturerId"
+        year
       FROM synths 
       WHERE id = $1;
   `,
@@ -56,12 +56,37 @@ router
       RETURNING
         id, 
         name,
+        manufacturer_id as "manufacturerId",
         image,
         polyphonic,
-        year,
-        manufacturer_id as "manufacturerId";
+        year;
   `,
     [body.name, body.manufacturerId, body.image, body.polyphonic, body.year])
+      .then(result => {
+        res.json(result.rows[0]);
+      });
+  })
+  
+  .put('/:id', (req, res) => {
+    const body = req.body;
+    client.query(`
+      UPDATE synths
+      SET
+        name = $1,
+        manufacturer_id = $2,
+        image = $3,
+        polyphonic = $4,
+        year = $5
+      WHERE id = $6
+      RETURNING
+        id, 
+        name,
+        manufacturer_id as "manufacturerId",
+        image,
+        polyphonic,
+        year;
+    `,
+    [body.name, body.manufacturerId, body.image, body.polyphonic, body.year, body.id])
       .then(result => {
         res.json(result.rows[0]);
       });

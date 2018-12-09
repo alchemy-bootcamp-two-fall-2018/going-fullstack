@@ -55,14 +55,17 @@ function initSynth() {
     manufacturerId: ''
   };
 }
+
 export default {
   props: {
     onEdit: Function,
-    label: String
+    label: String,
+    synthToEdit: Object
   },
   data() {
     return {
-      synth: initSynth(),
+      // Object.assign is like concat for objects
+      synth: this.synthToEdit ? Object.assign({}, this.synthToEdit) : initSynth(),
       manufacturers: null
     };
   },
@@ -85,10 +88,7 @@ export default {
 
 <style>
 form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 h4 {
   margin: 0;
@@ -96,16 +96,12 @@ h4 {
 button {
   background-color: cyan;
   border-radius: 8px;
-  margin: 5px 5px 0px 0px;
 }
 button:hover {
   background-color: violet;
 }
 select {
   background: white;
-}
-label {
-  margin-right: 10px;
 }
 fieldset {
   border: 2px solid transparent;

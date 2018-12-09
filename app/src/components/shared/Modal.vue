@@ -47,7 +47,7 @@ div.content {
 }
 .close {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 15px;
+  right: 15px;
 }
 </style>
