@@ -27,7 +27,6 @@ export default {
   created() {
     api.getBooks()
       .then(books => {
-      // console.log(books);
         this.books = books;
       })
       .catch(err => {

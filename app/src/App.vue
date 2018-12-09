@@ -4,6 +4,7 @@
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/books">Books</RouterLink>
+        <RouterLink to="/genres">Genres</RouterLink>
       </nav>
     </header>
 
