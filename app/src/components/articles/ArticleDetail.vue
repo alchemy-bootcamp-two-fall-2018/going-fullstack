@@ -1,15 +1,15 @@
 <template>
   <section v-if="article">
 
-    <h2>{{articles.title}}</h2>
+    <h2>{{article.title}}</h2>
     <p>
-      By {{articles.author}}
+      By {{article.author}}
     </p>
     <p>
-      Views:{{articles.views}}
+      Views:{{article.views}}
     </p>
     <p>
-      Category: {{articles.category}}
+      Category: {{article.category}}
     </p>
   </section>
 </template>
