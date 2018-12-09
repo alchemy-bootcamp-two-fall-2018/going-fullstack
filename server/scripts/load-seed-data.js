@@ -1,6 +1,6 @@
 const client = require('../db-client');
-const synths = require('./synths.json');
-const manufacturers = require('./manufacturers');
+const synths = require('./synths-data.json');
+const manufacturers = require('./manufacturers-data');
 
 // console.log(synths);
 

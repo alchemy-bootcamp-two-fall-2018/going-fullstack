@@ -40,9 +40,7 @@ router
   `,
     [req.params.id])
       .then(result => {
-      // console.log(result);
         res.json({ removed: result.rowCount === 1 });
-      // res.json(result.rows[0]);
       });
   })
 
