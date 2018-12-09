@@ -49,11 +49,11 @@ export default {
   },
 
   addGenre(genre) {
-    return fetch('./api/genres', getOptions('POST', genre))
+    return fetch('/api/genres', getOptions('POST', genre))
       .then(response => response.json())
       .then(saved => {
-        this.getGenres.push(saved);
-        this.sort((a, b) => {
+        genres.push(saved);
+        genres.sort((a, b) => {
           if(a.genre > b.genre) return 1;
           if(a.genre < b.genre) return -1;
           return 0;
