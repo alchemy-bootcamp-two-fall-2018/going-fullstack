@@ -25,11 +25,11 @@ console.log('I am the server file');
 //     });
 // });
 
-app.get('/api/categories', (req, res) => {
+app.get('/api/articles', (req, res) => {
   client.query(`
-    SELECT id, name, short_name as "shortName"
-    FROM categories
-    ORDER BY name;
+    SELECT id, title, views 
+    FROM article
+    ORDER BY title;
   `)
     .then(result => {
       res.json(result.rows);
@@ -58,7 +58,7 @@ app.get('/api/articles', (req, res) => {
 app.get('/api/articles/:id', (req, res) => {
 
   client.query(`
-    SELECT * FROM article_category_table WHERE id = $1
+    SELECT * FROM article WHERE id = $1
   `,
   [req.params.id])
     .then(result => {

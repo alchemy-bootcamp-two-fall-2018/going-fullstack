@@ -12,7 +12,8 @@ client.query(`
   CREATE TABLE IF NOT EXISTS article (
     id SERIAL PRIMARY KEY,
     title VARCHAR(256) NOT NULL,
-    author_id INTEGER NOT NULL REFERENCES article_category_table(id),
+    author VARCHAR(256) NOT NULL,
+    category VARCHAR(256) NOT NULL REFERENCES article_category_table(name),
     is_clickbait BOOLEAN NOT NULL,
     views INTEGER
     );

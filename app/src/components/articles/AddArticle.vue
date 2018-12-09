@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import api from '../../services/api.js';
+// import api from '../../services/api.js';
 
 function initArticle() {
   return {
@@ -42,9 +42,9 @@ export default {
       category: null
     };
   },
-  created() {
-    this.category = api.getCategories();
-  },
+  // created() {
+  //   this.category = api.getCategories();
+  // },
   methods: {
     handleSubmit() {
       this.onAdd(this.article)
@@ -52,7 +52,7 @@ export default {
           this.article = initArticle();
         });
     }
-  }
+  },
 };
 </script>
 

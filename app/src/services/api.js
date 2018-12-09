@@ -21,21 +21,21 @@ export default {
     })
       .then(response => response.json());
     
-  },
-
-  deleteArticle(id) {
-    return fetch(`/api/articles${id}`, {
-      method: 'DELETE'
-    })
-      .then(response => response.json());
-  },
-
-  getCategories() {
-    return {
-      us: 'US',
-      world: 'World',
-      local: 'Local'
-    };
   }
+
+  // deleteArticle(id) {
+  //   return fetch(`/api/articles${id}`, {
+  //     method: 'DELETE'
+  //   })
+  //     .then(response => response.json());
+  // },
+
+  // getCategories() {
+  //   return {
+  //     us: 'US',
+  //     world: 'World',
+  //     local: 'Local'
+  //   };
+  // }
 
 };
