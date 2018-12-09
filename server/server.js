@@ -31,7 +31,7 @@ app.get('/api/synths', (req, res) => {
     FROM synths
     JOIN manufacturer
     ON synths.manufacturer_id = manufacturer.id
-    ORDER BY year ASC;
+    ORDER BY id ASC;
   `)
     .then(result => {
       res.json(result.rows);

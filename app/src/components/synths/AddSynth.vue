@@ -16,7 +16,12 @@
       </label>
       <br>
       <label>
-        Date produced: <input type="number" v-model.number="synth.year" required>
+        Date produced: 
+        <input type="number" 
+          v-model.number="synth.year" 
+          onKeyPress="if(this.value.length == 4) return false;" 
+          required
+        >
       </label>
       <label>
         Manufacturer:

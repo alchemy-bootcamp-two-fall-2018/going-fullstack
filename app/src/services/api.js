@@ -18,7 +18,6 @@ export default {
       .then(response => response.json());
   },
   deleteSynth(id) {
-    console.log(id);
     return fetch(`/api/synths/${id}`, {
       method: 'DELETE'
     })
