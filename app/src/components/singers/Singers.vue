@@ -46,10 +46,11 @@ export default {
 <style lang="postcss" scoped>
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
 
-h2 {
-    font-family: 'PT Sans Narrow', sans-serif;
-    font-size: 2.4em;
+.singers {
+  color: #567568;
+  padding: 20px;
 }
+
 
 </style>
 

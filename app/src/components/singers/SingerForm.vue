@@ -1,11 +1,11 @@
 <template>
     <form @submit.prevent="onSubmit(singer)">
-      <span>
-        Name: 
+      <label>
+        <span>Name: </span>
           <input v-model="singer.name" require>
-      </span>
-      <span>
-        Genre: 
+      </label>
+      <label>
+        <span>Genre: </span>
           <select v-if="genres"
             v-model="singer.genreId"
             required
@@ -18,15 +18,16 @@
             {{genre.name}}
             </option>
             </select>
-      </span>
-      <span>
-        Age: 
+      </label>
+      <br/>
+      <label>
+        <span>Age: </span>
           <input type=number  v-model="singer.age">
-      </span>
-      <span>
-        Summary: 
-        <input v-model="singer.summary">
-      </span>
+      </label>
+      <label>
+        <span>Summary: </span>
+        <textarea v-model="singer.summary"></textarea>
+      </label>
     <button>{{label || 'Add'}}</button>
   </form>
 </template>
@@ -79,7 +80,15 @@ export default {
 <style>
 
 
-    label {
-        display: block;
-    }
+
+label {
+    display: flex;
+    padding: 3px;
+}
+
+label span {
+    display: inline-block;
+    width: 60px;
+}
+
 </style>

@@ -8,26 +8,20 @@
 <style>
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
 
-  .home-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'PT Sans Narrow', sans-serif;
-  }
+.home-page {
+  color: #567568;
+  padding: 20px;
+}
 
-  .singers-link {
-    background: lightgoldenrodyellow;
-    padding: 20px;
-    border: 1px solid darkgoldenrod;
-  }
+.home-page a {
+  text-decoration: none;
+  color: #4a314d;
+}
 
-  .singers-link a {
-    text-decoration: none;
-    font-weight: 600;
-  }
+.home-page a:hover {
+  color: #d6ac57;
+}
 
-  .singers-link a:hover {
-    color: darkgoldenrod;
-  }
+
 
 </style>

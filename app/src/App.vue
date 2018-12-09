@@ -1,13 +1,16 @@
 <template>
   <div class="app">
     <header>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/singers">A List of Singers</RouterLink>
-        <RouterLink to="/genres">Genre Admin</RouterLink>
-      </nav>
+      <div class="logo">
+        <h1><RouterLink to="/">SINGERS</RouterLink></h1>
+      </div>
+      <div class="menu">
+        <ul class="nav">
+          <li><RouterLink to="/singers">Singers List</RouterLink></li>
+          <li><RouterLink to="/genres">Genre Admin</RouterLink></li>
+        </ul>
+      </div>
     </header>
-
     <main>
       <RouterView></RouterView>
     </main>
@@ -22,30 +25,53 @@ export default {};
 <style>
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
 
-header {
-  height: 75px;
-  background: lightseagreen;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+body {
   font-family: 'PT Sans Narrow', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #d5dfe5;
 }
 
-header img {
-  height: 100%;
+header {
+  display: flex;
+  justify-content: space-between;
+  background: #567568;
+  margin: 0;
+  padding: 10px;
+  height: 50px;
 }
 
-nav a {
+header a {
+  color: #d5dfe5;
   text-decoration: none;
-  color: white;
-  margin: 3px;
-  padding: 3px;
-  border: 1px solid white;
 }
+
+header a:hover {
+  color: #d6ac57;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
 
 main {
-  padding: 8px;
+  background: #d5dfe5;
 }
+
+.app {
+  margin: 0;
+}
+
+.nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
 
 
 </style>

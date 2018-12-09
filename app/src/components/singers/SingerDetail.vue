@@ -1,9 +1,7 @@
 <template>
-  <section v-if="singer">
+  <section class="detail-list" v-if="singer">
+    <p class="singers-link"><RouterLink to="/singers">◀ back to the list</RouterLink></p>
     <h2>{{singer.name}}</h2>
-    <EditSinger
-      :singer="singer"
-      :onEdit="handleEdit"/>
     <p class="age">
       Age: {{singer.age}}
     </p>
@@ -13,7 +11,12 @@
     <p class="summary">
       {{singer.summary}}
     </p>
-     <button @click=handleDelete>Delete</button>
+    <p class="buttons">
+     <EditSinger
+      :singer="singer"
+      :onEdit="handleEdit"/>
+     <button class="unicode" @click=handleDelete>🗑 Delete</button>
+    </p>
   </section>
 </template>
 
@@ -55,35 +58,50 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
-
-section {
-    font-family: 'PT Sans Narrow', sans-serif;
-    margin: 0;
-    padding: 0;
-}
 
 h2 {
-    width: 20%;
-    text-align: center;
-    background: lightgoldenrodyellow;
-    border: 1px solid darkgoldenrod;
-    margin-bottom: 10px;
-    padding: 5px;
+  font-size: 2em;
+  color: #d6ac57;
+  text-shadow: 2px 2px #3d3a09;
+  margin-bottom: 0;
 }
 
+
+
+a:hover
+
 .age {
-    margin-top: 0px;
-    font-size: .9em;
+  margin: 0;
+  padding: 0;
 }
 
 .genre {
-    font-size: 1.2em;
+  color: #567568;
+  font-size: 1.3em;
 }
 
 .summary {
-    color: #AAAAAA;
-    font-size: 1.2em;
+  color: #4a314d;
+  font-size: 1.1em;
+}
+
+.detail-list {
+  padding: 20px;
+}
+
+.unicode {
+  margin: 5px;
+  width: 10em;
+  height: 2em;
+}
+
+.singers-link a {
+  color: #567568;
+  text-decoration: none;
+}
+
+.singers-link a:hover {
+  color: #d6ac57;
 }
 
 </style>

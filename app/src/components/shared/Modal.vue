@@ -38,19 +38,17 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:rgb(129, 121, 5);
+  background-color: rgba(86, 117, 104, .9);
 }
-
 .content {
   position: relative;
-  background: lightgoldenrodyellow;
+  background: #d5dfe5;
   padding: 40px;
 }
-
 .close {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
 }
 
 </style>

@@ -23,28 +23,30 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
 
 ul {
-    margin-top: 30px;
     padding: 0;
-    font-family: 'PT Sans Narrow', sans-serif;
-}
-
-li {
-    list-style-type: none;
-    margin: 20px;
-}
-
-.list {
+    margin: 0;
 }
 
 .singer-name {
-    font-size: 1.1em;
-    font-weight: 600;
-    margin: 0;
+    font-size: 1.5em;
+    margin-bottom: 0px;
 }
 
 .singer-genre {
-    font-size: .8em;
     margin: 0;
+}
+
+.list ul {
+    list-style-type: none;
+}
+
+.list a {
+  text-decoration: none;
+  color: #4a314d;
+}
+
+.list a:hover {
+  color: #d6ac57;
 }
 
 </style>
