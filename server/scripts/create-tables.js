@@ -1,19 +1,20 @@
 const client = require('../db-client');
 
 client.query(`
-  CREATE TABLE IF NOT EXISTS metropolitans (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(256) NOT NULL,
-  );
 
   CREATE TABLE IF NOT EXISTS nonprofits (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL, 
-    category VARCHAR(256) NOT NULL,
-    city VARCHAR(256) NOT NULL,
+    category_id VARCHAR(256) NOT NULL NOT NULL REFERENCES (categories(id))
+    city VARCHAR(32) NOT NULL,
     description VARCHAR(256),
     employees NUMERIC,
-    metro_id BOOLEAN NOT NULL REFERENCES (metropolitans(id)),
+    metropol BOOLEAN,
+  );
+  CREATE TABLE IF NOT EXISTS categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL,
+    short_name VARCHAR(256) NOT NULL,
   );
 `)
   .then(

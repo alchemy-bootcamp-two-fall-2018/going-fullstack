@@ -1,6 +1,6 @@
 const pg = require('pg');
 const Client = pg.Client;
-const databaseUrl = 'postgres://postgres:1234@localhost:5432/nonprofit';
+const databaseUrl = 'postgres://postgres:1234@localhost:5432/organizations';
 const client = new Client(databaseUrl);
 
 client.connect()

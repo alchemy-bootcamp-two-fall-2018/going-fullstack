@@ -10,6 +10,7 @@
     "start": "nodemon server.js",
     "create-tables": "node scripts/create-tables.js",
     "drop-tables": "node scripts/drop-tables.js",
+    "recreate-tables": "npm run drop-tables && npm run create-tables",
     "load-seed-data": "node scripts/load-seed-data.js",
     "db-load-all": "npm run recreate-tables && npm run load-seed-data"
   },
