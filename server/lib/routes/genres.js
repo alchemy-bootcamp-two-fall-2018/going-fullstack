@@ -4,10 +4,10 @@ const router = Router();
 const client = require('../../db-client');
 
 router
-  .get('/api/genres', (req, res) => {
+  .get('/', (req, res) => {
     client.query(`
       SELECT id, genre, short_name as "shortName"
-      FROM track;
+      FROM genre;
     `)
       .then(result => { 
         res.json(result.rows);
