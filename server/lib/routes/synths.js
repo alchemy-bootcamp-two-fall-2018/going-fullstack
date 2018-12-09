@@ -22,15 +22,15 @@ router
 
   .get('/:id', (req, res) => {
     client.query(`
-    SELECT
-      id, 
-      name,
-      image,
-      polyphonic,
-      year,
-      manufacturer_id as "manufacturerId"
-    FROM synths 
-    WHERE id = $1;
+      SELECT
+        id, 
+        name,
+        image,
+        polyphonic,
+        year,
+        manufacturer_id as "manufacturerId"
+      FROM synths 
+      WHERE id = $1;
   `,
     [req.params.id])
       .then(result => {
@@ -40,7 +40,7 @@ router
 
   .delete('/:id', (req, res) => {
     client.query(`
-    DELETE FROM synths WHERE id = $1;
+      DELETE FROM synths WHERE id = $1;
   `,
     [req.params.id])
       .then(result => {
@@ -51,15 +51,15 @@ router
   .post('/', (req, res) => {
     const body = req.body;
     client.query(`
-    INSERT INTO synths (name, manufacturer_id, image, polyphonic, year)
-    VALUES ($1, $2, $3, $4, $5)
-    RETURNING
-      id, 
-      name,
-      image,
-      polyphonic,
-      year,
-      manufacturer_id as "manufacturerId";
+      INSERT INTO synths (name, manufacturer_id, image, polyphonic, year)
+      VALUES ($1, $2, $3, $4, $5)
+      RETURNING
+        id, 
+        name,
+        image,
+        polyphonic,
+        year,
+        manufacturer_id as "manufacturerId";
   `,
     [body.name, body.manufacturerId, body.image, body.polyphonic, body.year])
       .then(result => {
