@@ -53,6 +53,8 @@ export default {
 </script>
 
 <style>
-
+h2 {
+  text-decoration: underline black; 
+}
 </style>
 

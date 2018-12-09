@@ -2,7 +2,7 @@
   <section> 
     <RouterLink id= "dogs" to="/dogs"> View Dogs </RouterLink>
     <h2> Welcome to Dogs App! </h2>
-    <img src="https://www.hondenverzekeringvergelijker.nl/wp-content/uploads/2015/12/Goedkope-hondenverzekering.jpg">
+    <img class="responsive" src="https://www.hondenverzekeringvergelijker.nl/wp-content/uploads/2015/12/Goedkope-hondenverzekering.jpg">
   </section>
 </template>
 
@@ -17,6 +17,9 @@ img {
   height: 100%;
   margin: auto; 
   border: 5px solid grey; 
+  border-radius: 15%;
+  display: flex;
+  justify-content: center;
 }
 h2 {
   text-align: center;
@@ -38,5 +41,9 @@ h2 {
   border: 1px solid black;
   font: white;
   background-color: grey;
+}
+.responsive {
+  width: 100%;
+  height: auto;
 }
 </style>
