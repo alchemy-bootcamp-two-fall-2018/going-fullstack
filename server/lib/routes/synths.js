@@ -1,10 +1,10 @@
-const express = require('express');
+// const express = require('express');
 const client = require('../../db-client');
-const Router = express.Router;
+const Router = require('express').Router;
 const router = Router(); // eslint-disable-line new-cap
 
 router
-  .get('/api/synths', (req, res) => {
+  .get('/', (req, res) => {
     client.query(`
       SELECT 
         synths.id, 
@@ -24,7 +24,7 @@ router
       });
   })
 
-  .get('/api/synths/:id', (req, res) => {
+  .get('/:id', (req, res) => {
     client.query(`
     SELECT * FROM synths WHERE id = $1;
   `,
@@ -34,7 +34,7 @@ router
       });
   })
 
-  .delete('/api/synths/:id', (req, res) => {
+  .delete('/:id', (req, res) => {
     client.query(`
     DELETE FROM synths WHERE id = $1;
   `,
@@ -44,7 +44,7 @@ router
       });
   })
 
-  .post('/api/synths', (req, res) => {
+  .post('/', (req, res) => {
     const body = req.body;
     client.query(`
     INSERT INTO synths (name, manufacturer_id, image, polyphonic, year)
