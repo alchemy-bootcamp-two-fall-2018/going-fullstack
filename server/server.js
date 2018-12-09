@@ -28,7 +28,7 @@ console.log('I am the server file');
 app.get('/api/categories', (req, res) => {
   client.query(`
     SELECT id, name, short_name as "shortName"
-    FROM "categories"
+    FROM categories
     ORDER BY name;
   `)
     .then(result => {

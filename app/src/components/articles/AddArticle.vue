@@ -27,7 +27,7 @@ function initArticle() {
   return {
     title: '',
     author: '',
-    category: 'us',
+    category: 'us', //use category id
     views: ''
   };
 }
