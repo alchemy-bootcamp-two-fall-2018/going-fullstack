@@ -1,4 +1,4 @@
-// const fs = require('fs');
+const fs = require('fs');
 
 const pg = require('pg');
 
@@ -14,7 +14,7 @@ client.query(`
     SELECT title, artist, pages, good FROM books;
 `)
   .then(results => {
-    false.writeFileSync(
+    fs.writeFileSync(
       'book.json',
       JSON.stringify(results.rows, true, 2)
     );

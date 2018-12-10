@@ -18,5 +18,10 @@ export default {
       body: JSON.stringify(book)
     })
       .then(response => response.json());
+  },
+
+  getGenres() {
+    return fetch('/api/genres')
+      .then(response => response.json());
   }
 };
