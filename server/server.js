@@ -24,7 +24,7 @@ app.get('/api/dog_size_table', (req, res) => {
     }); 
 }); 
 
-app.post('/api/dog_size_table', (res, req) => {
+app.post('/api/dog_size_table', (req, res) => {
   const body = req.body;
 
     client.query(`
