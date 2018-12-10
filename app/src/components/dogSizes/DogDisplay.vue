@@ -1,7 +1,11 @@
 <template>
-  <span v-if="size">
-    {{size.name}}
-  </span>
+<ul>
+  <li class="dog-size">
+    <span v-if="size">
+      {{size.name}}
+    </span>
+  </li>
+</ul>
 </template>
 
 <script>
@@ -25,6 +29,5 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <ul v-if="dogs">
+  <ul style="list-style-type: none;" class="grid-container" v-if="dogs">
     <Dog v-for="dog in sortedDogs"
     :key="dog.id"
     :dog="dog"/>
@@ -32,6 +32,12 @@ export default {
 };
 </script>
 
-<style>
-  
+<style scoped>
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin: 0;
+  padding: 0;
+  grid-gap: 20px; 
+}
 </style>

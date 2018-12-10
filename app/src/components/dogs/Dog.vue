@@ -17,6 +17,18 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+li {
+  border: 1px solid black;
+  position: relative;
+  display: flex;
+  align-items:center;
+  height: 200px; 
+  background-color: lightgrey;
+  list-style-type: none;
+}
+li:hover {
+  box-shadow: 5px 5px 5px black; ; 
+  background: lightcoral;
+}
 </style>

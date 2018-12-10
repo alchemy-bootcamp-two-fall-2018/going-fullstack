@@ -1,7 +1,6 @@
 <template>
   <section class="dogs">
     <h2> Dogs </h2>
-    
     <AddDogs :onAdd="handleAdd"/>
     <DogList :dogs="dogs"/>
   </section>
@@ -45,6 +44,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 </style>

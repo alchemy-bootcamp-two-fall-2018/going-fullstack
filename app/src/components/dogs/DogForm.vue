@@ -16,9 +16,13 @@
     </label>
   </p>
   <p>
-    <label> Is Adopted?
-      <input type="radio" v-model="dog.isAdopted" v-bind:value="true" required> True/False
-      <input type="radio" v-model="dog.isAdopted" v-bind:value="false"> 
+    <label> Is Adopted? True
+      <span>
+      <input type="radio" v-model="dog.isAdopted" v-bind:value="true" required> 
+      </span>
+      <span>
+      <input type="radio" v-model="dog.isAdopted" v-bind:value="false"> False
+      </span> 
     </label>
   </p>
   <p>
@@ -93,8 +97,13 @@ export default {
 label {
   display: block; 
 }
-input, select {
-  width: 150px;
-  font-size: 1.05em;
+button {
+  margin: 10px;
+  padding: 1.5em 1.5em 1em 1.5em;
+  text-align: center;
+}
+input {
+  padding-bottom: 6px;
+  padding-top: 3px;
 }
 </style>
