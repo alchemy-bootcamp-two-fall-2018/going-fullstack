@@ -18,6 +18,9 @@ export default {
 </script>
 
 <style scoped>
+ul {
+  list-style-type: none; 
+}
 li {
   border: 1px solid black;
   align-items:center;

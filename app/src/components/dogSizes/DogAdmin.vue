@@ -40,9 +40,5 @@ export default {
 };
 </script>
 
-<style scoped>
-h2 {
-  text-decoration:underline;
-  text-align: left;
-}
+<style>
 </style>
