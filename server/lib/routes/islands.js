@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
       islands.is_amazing as "isAmazing",
       rating.id as "ratingId",
       rating.name as rating
-    FROM island
+    FROM islands
     JOIN rating
     ON islands.rating_id = rating.id
     ORDER BY name ASC;
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
       islands.loca as loca,
       islands.image as image,
       is_amazing as "isAmazing",
-      rating_id as "ratingId",
+      rating.id as "ratingId",
       rating.name as rating
     FROM islands
     JOIN rating

@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS rating (
   short_name VARCHAR(4) NOT NULL
 );
 
-  CREATE TABLE IF NOT EXISTS island (
+  CREATE TABLE IF NOT EXISTS islands) (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
     loca VARCHAR(256),
