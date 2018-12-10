@@ -26,6 +26,13 @@ export default {
     //   .then(response => response.json());
     return {
       edu: 'Education',
-    }
+      you: 'Youth',
+      dv: 'Domestic Violence',
+      art: 'Arts',
+      ani: 'Animals',
+      env: 'Environment',
+      tec: 'Technology',
+      pub: 'Public Benefit'
+    };
   }
 };

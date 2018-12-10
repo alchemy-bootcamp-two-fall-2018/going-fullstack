@@ -13,7 +13,7 @@ client.query (`
     results => {
       fs.writeFileSync(
         'nonprofits.json',
-        JSON.stringify(results.rows, true, 3)
+        JSON.stringify(results.rows, true, 2)
       );
     },
     err => console.log(err)

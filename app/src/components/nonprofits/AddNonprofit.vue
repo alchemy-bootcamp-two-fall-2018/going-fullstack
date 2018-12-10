@@ -5,10 +5,6 @@
       <input v-model="nonprofit.name" require>
     </p>
     <p>
-      <label>Category:</label>
-      <input v-model="nonprofit.category">
-    </p>
-    <p>
       <label>City:</label>
       <input v-model="nonprofit.city">
     </p>
@@ -20,18 +16,31 @@
       <label>Number of Employees:</label>
       <input type="number" v-model="nonprofit.employees">
     </p>
-     <p>
+    <!-- <p>
       <label>In PDX Metro Area?</label>
       <select v-if="metropolitans" 
         v-model="nonprofit.metropol" 
-        required
-      >
+        required>
         <option value="-1" disabled>Select A Response</option>
         <option v-for="metropolitan in metropolitans"
           :key="metropolitan.id"
           :value="metropolitan.id"
         >
           {{metropolitan.name}}
+        </option>
+      </select>
+    </p> -->
+    <p>
+      <label>Category:</label>
+      <select v-if="categories" 
+        v-model="nonprofit.category" 
+        required
+      >
+        <option v-for="(display, key) in nonprofits"
+          :key="key"
+          :value="key"
+        >
+          {{display}}
         </option>
       </select>
     </p>
@@ -49,8 +58,8 @@ function initNonprofit() {
     city: '',
     description: '',
     employees: 0,
-    metropolitans: true,
-    category: ''
+    metropol: true,
+    category: 'edu'
   };
 }
 
@@ -61,14 +70,15 @@ export default {
   data() {
     return {
       nonprofit: initNonprofit(),
-      metropolitans: null
+      categories: null
     };
   },
   created() {
-    api.getMetropolitans()
-      .then(metropolitans => {
-        this.metropolitans = metropolitans;
-      });
+    // api.getMetropolitans()
+    //   .then(metropolitans => {
+    //     this.metropolitans = metropolitans;
+    //   });
+    this.categories = api.getCategories();
   },
   methods: {
     handleSubmit() {
@@ -81,7 +91,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
 label {
   display: block;
@@ -89,6 +99,6 @@ label {
 
 input, select {
   width: 150px;
-  font-size: 1.05em;
+  font-size: 1em;
 }
 </style>

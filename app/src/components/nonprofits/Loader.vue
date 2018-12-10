@@ -13,7 +13,7 @@ export default {
 </script>
 
 <style>
-  .loader {
+.loader {
   position: absolute;
   display: flex;
   align-items: center;

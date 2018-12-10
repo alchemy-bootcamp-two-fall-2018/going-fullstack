@@ -20,7 +20,6 @@ app.get('/api/nonprofits', (req, res) => {
     .then(result => {
       res.json(result.rows);
     });
-
 });
 
 app.get('/api/nonprofits/:id', (req, res) => {
@@ -39,7 +38,7 @@ app.post('/api/nonprofits', (req, res) => {
   client.query(`
     INSERT INTO nonprofits (name, city, description, employees, metropol, category)
     VALUES($1, $2, $3, $4, $5, $6)
-    RETURNING id, name, city, description, employees, metropol, category;
+    RETURNING *;
   `,
   [body.name, body.city, body.description, body.employees, body.metropol, body.category])
     .then(result => {

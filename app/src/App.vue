@@ -17,7 +17,7 @@ export default {};
 
 <style scoped>
 header {
-  height: 75px;
+  height: 85px;
   background: lime;
   display: flex;
   align-items: center;
@@ -32,5 +32,10 @@ nav a {
 }
 main {
   padding: 8px;
+}
+img {
+  height: 50px;
+  width: 70px;
+  padding: 10px;
 }
 </style>
