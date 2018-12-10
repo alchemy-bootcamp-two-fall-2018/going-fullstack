@@ -1,3 +1,5 @@
+Source for hands image: https://www.foundationlist.org/wp-content/uploads/2015/03/Nonprofit-Image.jpg
+
 # app
 
 ## Project setup

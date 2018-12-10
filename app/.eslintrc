@@ -1,6 +1,6 @@
 {
   "settings": {
-    "html/xml-extensions": [".html"],  // consider .html files as XML
+    "html/xml-extensions": [".html"]
   },
   
   "extends": [

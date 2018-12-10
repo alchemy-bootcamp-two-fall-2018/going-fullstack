@@ -21,8 +21,11 @@ export default {
       .then(response => response.json());
   },
   
-  getMetropolitans() {
-    return fetch('./api/metropolitans')
-      .then(response => response.json());
+  getCategories() {
+    // return fetch('./api/metropolitans')
+    //   .then(response => response.json());
+    return {
+      edu: 'Education',
+    }
   }
 };

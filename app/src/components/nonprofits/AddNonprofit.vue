@@ -28,7 +28,7 @@
       >
         <option value="-1" disabled>Select A Response</option>
         <option v-for="metropolitan in metropolitans"
-          :key="metropolitanm,mjj  .id"
+          :key="metropolitan.id"
           :value="metropolitan.id"
         >
           {{metropolitan.name}}
@@ -45,11 +45,12 @@ import api from '../../services/api';
 function initNonprofit() {
   return {
     name: '',
-    category: '',
+    //category: '',
     city: '',
     description: '',
     employees: 0,
-    metropolitans: true
+    metropolitans: true,
+    category: ''
   };
 }
 

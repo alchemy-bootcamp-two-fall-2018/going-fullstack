@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <header>
-      <img alt="Vue logo" src="./assets/logo.png">
+      <img alt="sharing hands logo" src="./assets/hands.jpg">
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/nonprofits">Nonprofits</RouterLink>
@@ -15,12 +15,22 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 header {
   height: 75px;
   background: lime;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+  margin: 3px;
+  padding: 3px;
+  border: 1px solid black;
+}
+main {
+  padding: 8px;
 }
 </style>

@@ -25,6 +25,12 @@
     "eslint": "^5.9.0",
     "eslint-plugin-html": "^5.0.0",
     "eslint-plugin-vue": "^5.0.0-0",
+    "postcss": "^7.0.6",
+    "postcss-cli": "^6.0.1",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-nested": "^4.1.0",
+    "postcss-simple-vars": "^5.0.1",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {

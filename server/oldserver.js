@@ -23,12 +23,13 @@ app.get('/api/nonprofits', (req, res) => {
     SELECT
       nonprofit.id,
       nonprofit.name as name,
-      nonprofit.category as "category",
+      
       nonprofit.city as "city"
       nonprofit.description as "description",
       nonprofit.employees as "employees",
       metropolitans.id = "metroId",
-      metropolitans.name as metropolitan
+      metropolitans.name as metropolitan,
+      nonprofit.category as "category",
     FROM nonprofits
     JOIN metropolitans
     ON nonprofit.metro_id = metropolitans.id;
@@ -51,11 +52,11 @@ app.post('/api/nonprofits', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO nonprofit (name, category, city, description, employees, metro_id)
+    INSERT INTO nonprofit (name, city, description, employees, metropol, category)
     VALUES($1, $2, $3, $4, $5)
-    RETURNING id, name, category, city, description, employees, metro_id;
+    RETURNING id, name, city, description, employees, metropol, category;
   `,
-  [body.name, body.category, body.city, body.description, body.employees, body.metropolitan])
+  [body.name, body.city, body.description, body.employees, body.metropol, body.category])
     .then(result => {
       const id = result.rows[0].id;
 

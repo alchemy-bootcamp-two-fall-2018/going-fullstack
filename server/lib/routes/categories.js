@@ -1,4 +1,4 @@
-module.exports = [
-  { name: 'Yes ' },
-  { name: 'No' },
-];
+// module.exports = [
+//   { name: 'Yes ' },
+//   { name: 'No' },
+// ];
