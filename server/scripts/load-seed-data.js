@@ -1,20 +1,31 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/guitarists';
+const client = require('../db-client');
 const guitarists = require('../data/guitarists.json');
+const guitars = require('./guitars');
 
-const client = new Client(databaseUrl);
-
-client.connect()
+Promise.all(
+  guitars.map(guitar => {
+    return client.query(`
+      INSERT INTO guitar (brand, model)
+      VALUES ($1, $2);
+    `,
+    [guitar.brand, guitar.model]);
+  })
+)
   .then(() => {
     return Promise.all(
       guitarists.map(guitarist => {
-        console.log(guitarist.alive);
         return client.query(`
-          INSERT INTO guitarists (name, type, yob, alive)
-          VALUES ($1, $2, $3, $4);
+          INSERT INTO guitarists (name, guitar_id, yob, type, alive)
+          SELECT 
+            $1 as name, 
+            id as guitar_id,
+            $2 as yob,
+            $4 as type,
+            $5 as alive
+          FROM guitar
+          WHERE model = $3;
         `,
-        [guitarist.name, guitarist.type, guitarist.yob, guitarist.alive]);
+        [guitarist.name, guitarist.yob, guitarist.guitar, guitarist.type, guitarists.alive]);
       })
     );
   })

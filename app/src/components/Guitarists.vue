@@ -1,8 +1,10 @@
 <template>
     <section class="guitarists">
       <h2>Guitarists</h2>
+      <div class="wrapper">
       <AddGuitarist :onAdd="handleAdd"/>
       <GuitaristList :guitarists="guitarists"/>
+      </div>
   </section>
 </template>
 
@@ -71,5 +73,9 @@ p {
 }
 h2 {
   font-size: 50px;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 </style>

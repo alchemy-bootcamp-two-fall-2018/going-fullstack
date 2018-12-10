@@ -1,41 +1,32 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-        <input v-model="guitarist.name" placeholder="Name" require>
-        <input v-model="guitarist.type" placeholder="Music Type" require>
-        <input type="number" v-model="guitarist.yob" placeholder="Year of Birth" require>
-        <select v-model="guitarist.alive">
-          <option disabled value="">Please select one</option>
-          <option value="true">Alive</option>
-          <option value="false">Deceased</option>
-        </select>
-    <button>Add</button>
-  </form>
+  <section>
+    <button @click="show = !show">Add a New Guitarist</button>
+    <GuitaristForm v-if="show" 
+                :onClose="() => show = false"
+                :onSubmit="handleAdd"/>
+  </section>
 </template>
 
 <script>
-function initGuitarist() {
-  return {
-    name: '',
-    type: '',
-    yob: '',
-    alive: ''
-  };
-}
+import GuitaristForm from './GuitaristForm';
+
 export default {
   props: {
-    onAdd: Function
+    onAdd: Function,
+    onClose: Function
   },
   data() {
     return {
-      guitarist: initGuitarist()
+      show: false
     };
   },
+  components: {
+    GuitaristForm,
+  },
   methods: {
-    handleSubmit() {
-      this.onAdd(this.guitarist)
-        .then(() => {
-          this.guitarist = initGuitarist();
-        });
+    handleAdd(guitarist) {
+      return this.onAdd(guitarist)
+        .then(() => this.show = false);
     }
   }
 };
@@ -60,6 +51,7 @@ button {
   font-weight: bold;
   background: #6AD58B;
   transition: background 0.3s ease;
+  margin-bottom: 20px;
 }
 button:hover {
   opacity: 1;
@@ -68,6 +60,9 @@ button:hover {
   color: white;
 }
 select {
-  margin-right: 20px;
+  margin-right: 10px;
+}
+.alive {
+  margin-left: 10px;
 }
 </style>
