@@ -7,11 +7,11 @@ app.use(morgan('dev'));
 
 app.use(express.json()); 
 
-// const getShortName = n => n
-//   .toLowerCase()
-//   .slice(0, 10)
-//   .trim()
-//   .replace(/[^a-z]/ig, '-');
+const getShortName = n => n
+  .toLowerCase()
+  .slice(0, 10)
+  .trim()
+  .replace(/[^a-z]/ig, '-');
 
 app.get('/api/dog_size_table', (req, res) => {
   client.query(`
@@ -25,22 +25,22 @@ app.get('/api/dog_size_table', (req, res) => {
 }); 
 
 app.post('/api/dog_size_table', (res, req) => {
-  const body = req.body; 
+  const body = req.body;
 
-  client.query(`
+    client.query(`
     INSERT INTO dog_size_table (name, short_name)
     VALUES ($1, $2)
     RETURNING 
-    id
-    name
+    id, 
+    name, 
     short_name as "shortName";
     `,
-    [body.name, body.shortName]
+    [body.name, getShortName(body.name)]
     )
       .then(result => {
         res.json(result.rows[0]);
       });
-});
+  });
 
 app.get('/api/dog_picker', (req, res) => {
   client.query(`
