@@ -4,7 +4,7 @@
       {{book.title}}
     </RouterLink>
 
-    <GenreDisplay :genreId="genre.genreId" />
+    <GenreDisplay :genreId="book.genreId" />
   </li>
 </template>
 

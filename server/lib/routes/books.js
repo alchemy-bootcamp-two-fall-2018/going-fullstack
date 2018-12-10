@@ -22,13 +22,13 @@ router
   
   .get('/:id', (req, res) => {
     client.query(`
-      SELECT 
+      SELECT
         id,
         title,
         author,
         pages,
-        genre_id as "genreID", 
-      FROM books 
+        genre_id as "genreId"
+      FROM books
       WHERE id = $1;
     `,
     [req.params.id])
