@@ -56,16 +56,28 @@ function initSynth() {
   };
 }
 
+function copySynth(synth) {
+  return {
+    id: synth.id,
+    name: synth.name,
+    image: synth.image,
+    polyphonic: synth.polyphonic,
+    year: synth.year,
+    manufacturerId: synth.manufacturerId
+  };
+}
+
 export default {
   props: {
-    onEdit: Function,
+    onSubmit: Function,
     label: String,
     synthToEdit: Object
   },
   data() {
     return {
-      // Object.assign is like concat for objects
-      synth: this.synthToEdit ? Object.assign({}, this.synthToEdit) : initSynth(),
+      synth: this.synthToEdit 
+        ? copySynth(this.synthToEdit)
+        : initSynth(),
       manufacturers: null
     };
   },
@@ -77,7 +89,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.onEdit(this.synth)
+      this.onSubmit(this.synth)
         .then(() => {
           this.synth = initSynth();
         });

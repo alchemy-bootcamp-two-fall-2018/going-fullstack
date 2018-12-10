@@ -2,8 +2,6 @@ const client = require('../db-client');
 const synths = require('./synths-data.json');
 const manufacturers = require('./manufacturers-data');
 
-// console.log(synths);
-
 Promise.all(
   manufacturers.map(manufacturer => {
     return client.query(`
@@ -16,7 +14,6 @@ Promise.all(
   .then(() => {
     return Promise.all(
       synths.map(synth => {
-        // console.log(synth);
         return client.query(`
           INSERT INTO synths (name, manufacturer_id, image, polyphonic, year)
           SELECT

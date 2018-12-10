@@ -13,7 +13,6 @@
       Date produced: {{synth.year}}
     </p>
     <p>
-      <span>{{synth.manufacturerId}}</span>
       Brand: <ManufacturerDisplay :manufacturerId="synth.manufacturerId"/>
     </p>
     <p>

@@ -3,7 +3,7 @@
     <button @click="show = true"  class="edit-btn">Edit</button>
     <Modal v-if="show" :onClose="() => show = false">
       <SynthForm 
-        :onEdit="handleEdit"
+        :onSubmit="handleEdit"
         :synthToEdit="synth"
         label="Update"
       />
@@ -32,7 +32,10 @@ export default {
   methods: {
     handleEdit(synth) {
       return this.onEdit(synth)
-        .then(() => this.show = false);
+        .then(() => {
+          this.show = false,
+          this.$router.go();
+        });
     }
   }
 };

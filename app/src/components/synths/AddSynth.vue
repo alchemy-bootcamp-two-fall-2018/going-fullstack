@@ -2,7 +2,7 @@
   <section>
     <button @click="show = true">Add a new synth</button>
     <Modal v-if="show" :onClose="() => show = false">
-      <SynthForm :onEdit="handleAdd"/>
+      <SynthForm :onSubmit="handleAdd"/>
     </Modal>
   </section>
 </template>
@@ -28,7 +28,6 @@ export default {
       return api.addSynth(synth)
         .then(saved => {
           this.$router.push(`/synths/${saved.id}`);
-          // if not push to detail then remove ^
         });
     }
   }

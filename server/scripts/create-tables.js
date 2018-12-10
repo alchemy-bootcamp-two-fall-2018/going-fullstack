@@ -23,7 +23,3 @@ client.query(`
   .then(() => {
     client.end();
   });
-
-//,
-//polyphonic BOOLEAN,
-//year INT
