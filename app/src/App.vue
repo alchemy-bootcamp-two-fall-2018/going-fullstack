@@ -5,6 +5,7 @@
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/synths">Synths</RouterLink>
+        <RouterLink to="/manufacturers">Brands</RouterLink>
       </nav>
     </header>
 
@@ -20,16 +21,12 @@ export default {};
 </script>
 
 <style>
-html {
-  margin-top: -5vh;
-}
 .app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 nav {
   display: flex;

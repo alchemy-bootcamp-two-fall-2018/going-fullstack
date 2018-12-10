@@ -1,74 +1,35 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <fieldset>
-      <label>
-        Synth name: <input v-model="synth.name" required>
-      </label>
-      <br>
-      <label>
-        Image url: <input v-model="synth.image">
-      </label>
-      <br>
-      <label>
-        Polyphonic?
-          Yes:<input type="radio" name="poly" v-model="synth.polyphonic" v-bind:value="true" required>
-          No:<input type="radio" name="poly" v-model="synth.polyphonic" v-bind:value="false">
-      </label>
-      <br>
-      <label>
-        Date produced: <input type="number" v-model.number="synth.year" required>
-      </label>
-      <p>
-        <button>Add</button>
-      </p>
-    </fieldset>
-  </form>
+  <section>
+    <button @click="show = true">Add a new synth</button>
+    <Modal v-if="show" :onClose="() => show = false">
+      <SynthForm :onSubmit="handleAdd"/>
+    </Modal>
+  </section>
 </template>
 
 <script>
+import api from '../../services/api';
+import SynthForm from './SynthForm';
+import Modal from '../shared/Modal';
 
-function initSynth() {
-  return {
-    name: '',
-    image: '',
-    polyphonic: '',
-    year: ''
-  };
-}
 export default {
-  props: {
-    onAdd: Function
-  },
+  props: {},
   data() {
     return {
-      synth: initSynth()
+      show: false
     };
   },
+  components: {
+    SynthForm,
+    Modal
+  },
   methods: {
-    handleSubmit() {
-      this.onAdd(this.synth)
-        .then(() => {
-          this.synth = initSynth();
+    handleAdd(synth) {
+      return api.addSynth(synth)
+        .then(saved => {
+          this.$router.push(`/synths/${saved.id}`);
         });
     }
   }
 };
 </script>
-
-<style>
-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-h4 {
-  margin: 0;
-}
-button {
-  background-color: cyan;
-  border-radius: 8px;
-}
-button:hover {
-  background-color: violet;
-}
-</style>

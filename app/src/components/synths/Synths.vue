@@ -43,19 +43,5 @@ export default {
 </script>
 
 <style>
-ul {
-  list-style: none;
-  padding-left: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-h3 {
-  margin-bottom: 0;
-}
-img {
-  width: 150px;
-}
-p {
-  margin: 0;
-}
+
 </style>

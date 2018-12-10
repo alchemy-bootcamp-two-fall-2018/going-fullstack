@@ -1,21 +1,21 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/synthesizers';
+const client = require('../db-client');
 
-const client = new Client(databaseUrl);
+client.query(`
+  CREATE TABLE IF NOT EXISTS manufacturer (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL,
+    short_name VARCHAR(8) NOT NULL
+  );
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS synths (
-        name VARCHAR(256) NOT NULL,
-        image VARCHAR(256),
-        polyphonic BOOLEAN,
-        year INT,
-        id SERIAL PRIMARY KEY
-      );
-    `);
-  })
+  CREATE TABLE IF NOT EXISTS synths (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL,
+    image VARCHAR(256),
+    polyphonic BOOLEAN,
+    year INT,
+    manufacturer_id INTEGER NOT NULL REFERENCES manufacturer(id)
+  );
+`)
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)
