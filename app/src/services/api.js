@@ -20,7 +20,6 @@ export default {
       .then(response => response.json()); 
   },
   addDogs(dog) {
-    console.log('api', dog); 
     return fetch('/api/dog_picker', getOptions('POST', dog))
       .then(response => response.json());
   },

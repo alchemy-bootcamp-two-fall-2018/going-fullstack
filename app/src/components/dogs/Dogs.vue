@@ -25,7 +25,6 @@ export default {
     this.error = null;
     api.getDogs()
       .then(dogs => {
-        console.log(dogs);
         this.dogs = dogs;
       })
       .catch(err => {
@@ -34,7 +33,6 @@ export default {
   }, 
   methods: {
     handleAdd(dog) {
-      console.log('vue', dog); 
       return api.addDogs(dog)
         .then(saved => {
           this.dogs.push(saved); 
