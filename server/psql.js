@@ -16,7 +16,7 @@ client.query(`
   .then(
     results => {
       fs.writeFileSync(
-        'island.json',
+        'islands.json',
         JSON.stringify(results.rows, true, 2)
       );
     },
