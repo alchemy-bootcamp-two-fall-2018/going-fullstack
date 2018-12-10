@@ -20,7 +20,6 @@ export default {
 <style scoped>
 li {
   border: 1px solid black;
-  position: relative;
   display: flex;
   align-items:center;
   height: 200px; 
