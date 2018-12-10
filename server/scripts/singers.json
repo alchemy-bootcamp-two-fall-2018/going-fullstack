@@ -1,25 +1,49 @@
 [
     {
       "name": "Kristin Hersh",
-      "genre": "Alternative",
+      "genre": "alt",
       "age": 52,
       "summary": "Founder of Throwing Muses and 50FootWave"
     },
     {
       "name": "David Lee Roth",
-      "genre": "Rock",
+      "genre": "rock",
       "age": 58,
       "summary": "Lead singer of Van Halen, when it was good"
     },
     {
       "name": "Lordes",
-      "genre": "Pop",
+      "genre": "pop",
       "age": "22",
       "summary": "Older than her years, she's reinventing the pop diva"
     },
     {
+      "name": "Tom Waits",
+      "genre": "alt",
+      "age": "68",
+      "summary": "One of the most unique voices in music"
+    },
+    {
+      "name": "Madonna",
+      "genre": "pop",
+      "age": "60",
+      "summary": "The material girl, constantly re-inventing herself"
+    },
+    {
+      "name": "Dave Gahan",
+      "genre": "alt",
+      "age": "56",
+      "summary": "The voice of Depeche Mode, one of the 80's finest"
+    },
+    {
+      "name": "Kim Gordon",
+      "genre": "alt",
+      "age": "65",
+      "summary": "Do not make her angry"
+    },
+    {
       "name": "Justin Timberlake",
-      "genre": "Pop",
+      "genre": "pop",
       "age": "37",
       "summary": "You know who this is"
     }

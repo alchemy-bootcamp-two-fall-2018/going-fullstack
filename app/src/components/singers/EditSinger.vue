@@ -1,8 +1,12 @@
 <template>
   <section>
-    <button @click="show = true">Add a Singer</button>
+    <button class="unicode" @click="show = true">✎ Edit</button>
     <Modal v-if="show" :onClose="() => show = false">
-      <SingerForm :onSubmit="handleAdd"/>
+      <SingerForm 
+      :onSubmit="handleEdit"
+      :singerToEdit="singer"
+      label="Update"
+      />
       </Modal>
   </section>
 </template>
@@ -13,7 +17,8 @@ import Modal from '../shared/Modal';
 
 export default {
   props: {
-    onAdd: Function
+    onEdit: Function,
+    singer: Object
   },
   data() {
     return {
@@ -25,8 +30,8 @@ export default {
     Modal
   },
   methods: {
-    handleAdd(singer) {
-      return this.onAdd(singer)
+    handleEdit(singer) {
+      return this.onEdit(singer)
         .then(() => this.show = false);
       }
     }
@@ -36,5 +41,10 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
 
+.unicode {
+  margin: 5px;
+  width: 10em;
+  height: 2em;
+}
 
 </style>

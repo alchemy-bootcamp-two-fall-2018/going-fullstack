@@ -1,12 +1,19 @@
 <template>
   <div class="app">
+    <div class="photo">
+      <img src="http://www.happyvideonetwork.com/wp-content/uploads/2016/07/maxresdefault-9.jpg">
+    </div>
     <header>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/singers">A List of Singers</RouterLink>
-      </nav>
+      <div class="logo">
+        <h1><RouterLink to="/">THE SINGER DATABASE</RouterLink></h1>
+      </div>
+      <div class="menu">
+        <ul class="nav">
+          <li><RouterLink to="/singers">Singers List</RouterLink></li>
+          <li><RouterLink to="/genres">Genre Admin</RouterLink></li>
+        </ul>
+      </div>
     </header>
-
     <main>
       <RouterView></RouterView>
     </main>
@@ -21,30 +28,71 @@ export default {};
 <style>
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
 
-header {
-  height: 75px;
-  background: lightseagreen;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+body {
   font-family: 'PT Sans Narrow', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #d5dfe5;
 }
 
-header img {
-  height: 100%;
+img {
+  text-align: center;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
 }
 
-nav a {
+header {
+  display: flex;
+  justify-content: space-between;
+  background: #567568;
+  margin: 0;
+  padding: 20px;
+  height: 50px;
+}
+
+header a {
+  color: #d5dfe5;
   text-decoration: none;
-  color: white;
-  margin: 3px;
-  padding: 3px;
-  border: 1px solid white;
+}
+
+header a:hover {
+  color: #d6ac57;
+}
+
+h1 {
+  letter-spacing: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+h1 a {
+    color: #d6ac57;
+}
+
+h1 a:hover {
+  color: #d5dfe5;
 }
 
 main {
-  padding: 8px;
+  background: #d5dfe5;
 }
+
+.app {
+  margin: 0;
+  background: #567568;
+}
+
+.nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
 
 
 </style>
