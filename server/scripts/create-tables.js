@@ -17,10 +17,6 @@ client.query(`
     isAdopted boolean
     );
   `)
-  .then(
-    () => console.log('create tables complete'),
-    err => console.log(err)
-  )
   .then(() => {
     client.end(); 
   }); 

@@ -20,7 +20,6 @@ client.query(`
         JSON.stringify(results.rows, true, 2)
       );
     },
-    err => console.log(err)
   )
   .then(() => {
     client.end(); 
