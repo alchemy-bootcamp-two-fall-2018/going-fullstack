@@ -5,7 +5,7 @@
     {{dog.name}} is a type of {{dog.breed}}.
   </p> 
   <p> 
-    {{dog.name}} weighs {{dog.weight}} lbs.
+    {{dog.name}} is {{dog.size}} that weighs {{dog.weight}} lbs.
   </p>
   <p>
    It is {{dog.isadopted}} that {{dog.name}} was adopted into a great family! 
@@ -52,9 +52,11 @@ export default {
 }; 
 </script>
 
-<style>
+<style scoped>
 h2 {
-  text-decoration: underline black; 
+  text-decoration: underline black;
+  text-align: left; 
 }
+
 </style>
 

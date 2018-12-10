@@ -39,5 +39,6 @@ export default {
   margin: 0;
   padding: 0;
   grid-gap: 20px; 
+  list-style-type: none; 
 }
 </style>

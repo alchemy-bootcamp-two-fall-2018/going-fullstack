@@ -40,11 +40,9 @@ export default {
 };
 </script>
 
-<style>
-ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  list-style-type: none;
-  grid-gap: 50px 100px; 
+<style scoped>
+h2 {
+  text-decoration:underline;
+  text-align: left;
 }
 </style>
