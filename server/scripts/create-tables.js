@@ -1,18 +1,13 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/superheroes';
-const client = new Client(databaseUrl);
+const client = require('../db-client');
 
-client.connect()
-  .then(() => {
-    return client.query(`
-      CREATE TABLE IF NOT EXISTS superheroes (
-        name VARCHAR(256) NOT NULL,
-        age INT,
-        id SERIAL PRIMARY KEY
-      );
-    `);
-  })
+client.query(`
+  CREATE TABLE IF NOT EXISTS hero (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL,
+    age INTEGER,
+    ability VARCHAR(50)
+  );
+`)
   .then(
     () => console.log('create tables complete'),
     err => console.log(err)

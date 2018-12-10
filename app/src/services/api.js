@@ -5,8 +5,8 @@ export default {
       .then(response => response.json());      
   },
 
-  getSuperhero(name) {
-    return fetch(`/api/superheroes/${name}`)
+  getSuperhero(id) {
+    return fetch(`/api/superheroes/${id}`)
       .then(response => response.json());
   },
 
@@ -19,5 +19,5 @@ export default {
       body: JSON.stringify(superhero)
     })
       .then(response => response.json());
-  }
+  },
 };

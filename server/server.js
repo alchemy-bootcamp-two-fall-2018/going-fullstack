@@ -1,28 +1,33 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const pg = require('pg');
+const client = require('./db-client');
 
 app.use(morgan('dev'));
 app.use(express.json());
 
-const Client = pg.Client;
-const dbUrl = 'postgres://localhost:5432/superheroes';
-const client = new Client(dbUrl);
-client.connect();
+// const Client = pg.Client;
+// const dbUrl = 'postgres://localhost:5432/superheroes';
+// const client = new Client(dbUrl);
+// client.connect();
 
 app.get('/api/superheroes', (req, res) => {
   client.query(`
-    SELECT name, age FROM superheroes;
+    SELECT 
+      hero.id, 
+      hero.name,
+      hero.age,
+      hero.ability
+    FROM hero
   `)
     .then(result => {
       res.json(result.rows);
     });
 });
 
-app.get('/api/superheroes/:name', (req, res) => {
+app.get('/api/superheroes/:id', (req, res) => {
   client.query(`
-    SELECT * FROM superheroes WHERE name = $1;
+    SELECT * FROM hero WHERE id = $1;
   `,
   [req.params.id])
     .then(result => {
@@ -34,11 +39,11 @@ app.post('/api/superheroes', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO superheroes (name, age, id)
+    INSERT INTO hero (name, age, ability)
     VALUES($1, $2, $3)
-    RETURNING name, age, id;
+    RETURNING *;
   `,
-  [body.name, body.age])
+  [body.name, body.age, body.ability])
     .then(result => {
       res.json(result.rows[0]);
     });
