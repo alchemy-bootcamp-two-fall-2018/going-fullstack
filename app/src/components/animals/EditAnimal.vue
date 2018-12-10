@@ -1,11 +1,14 @@
 <template>
-  <section>
-    <button @click="show = true">Add New Animal</button>
+  <span>
+    <button @click="show = true">✎ Edit</button>
     <Modal v-if="show" v-bind:onClose="() => show = false">
-      <h2>Add Animal</h2>
-      <AnimalForm v-bind:onSubmit="handleAdd"/>
+      <AnimalForm
+        v-bind:onSubmit="handleEdit"
+        v-bind:animalToEdit="animal"
+        label="Update"
+      />
     </Modal>
-  </section>
+  </span>
 </template>
 
 <script>
@@ -14,20 +17,24 @@ import Modal from '../Modal';
 
 export default {
   props: {
-    onAdd: Function
+    onEdit: Function,
+    animal: Object
   },
+
   data() {
     return {
       show: false
     };
   },
+
   components: {
     AnimalForm,
     Modal
   },
+
   methods: {
-    handleAdd(animal) {
-      return this.onAdd(animal)
+    handleEdit(animal) {
+      return this.onEdit(animal)
         .then(() => this.show = false);
     }
   }
@@ -35,28 +42,19 @@ export default {
 </script>
 
 <style scoped>
-  label {
-    margin: 10px;
-  }
-
   button {
+    margin-bottom: 20px;
     padding: 5px;
-    border: 1px solid black;
-    border-radius: 5px;
     font-size: 0.8em;
-    font-family: avenir; 
+    border-radius: 5px;
+    border: 1px solid black;
     cursor: pointer;
   }
 
   button:hover {
     background: black;
     color: white;
-    font-weight: bold;
-    font-size: 1.1em;
-    padding: 10px;
-  }
-
-  h2 {
-    margin: none;
+    font-size: 0.9em;
+    font-weight: 500;
   }
 </style>

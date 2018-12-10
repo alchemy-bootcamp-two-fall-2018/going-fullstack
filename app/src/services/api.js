@@ -1,3 +1,5 @@
+let sizes = null;
+
 export default {
   getAnimals() {
     return fetch('/api/animals')
@@ -27,9 +29,9 @@ export default {
       .then(response => response.json());
   },
 
-  updateAnimal(animal, id) {
-    return fetch(`api/animals/${id}`, {
-      method: 'UPDATE',
+  updateAnimal(animal) {
+    return fetch(`/api/animals/${animal.id}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -39,7 +41,16 @@ export default {
   },
 
   getSizes() {
-    return fetch('/api/sizes')
-      .then(response => response.json());
+    if(sizes) {
+      return Promise.resolve(sizes);
+    }
+    else {
+      return fetch('/api/sizes')
+        .then(response => response.json())
+        .then(fetchedSizes => {
+          sizes = fetchedSizes;
+          return sizes;
+        });
+    }
   }
 };

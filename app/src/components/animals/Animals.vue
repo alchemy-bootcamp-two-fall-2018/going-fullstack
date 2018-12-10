@@ -18,10 +18,12 @@ export default {
       error: null
     };
   },
+
   components: {
     AddAnimal,
     AnimalList
   },
+
   created() {
     api.getAnimals()
       .then(animals => {
@@ -31,6 +33,7 @@ export default {
         this.error = err;
       });
   },
+
   methods: {
     handleAdd(animal) {
       animal.weight = parseInt(animal.weight);
@@ -59,20 +62,24 @@ export default {
     text-align: center;
     margin: 5px 5px;
   }
+
   h3 {
     text-align: center;
     z-index: 1;
     margin: 0px;
   }
+
   .info {
     background: rgba(255, 255, 255, 0.8);
     margin-top: 0px;
   }
+
   ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
+
   li img {
     position: absolute;
     top: 0; 
@@ -82,8 +89,8 @@ export default {
     z-index: -1;
     object-fit: cover;
   }
+
   section {
     text-align: center;
   }
-
 </style>

@@ -1,7 +1,14 @@
 <template>
   <section v-if="animal">
     <div id="detail">
-      <h2>{{animal.name}}</h2>
+      <div class="header">
+        <h2>{{animal.name}}</h2>
+        <EditAnimal
+          v-bind:animal="animal"
+          v-bind:onEdit="handleEdit"
+        />
+      </div>
+
       <img v-bind:src="animal.image"/>
       <p>
         <span>Weight:</span> {{animal.weight}} pounds
@@ -12,20 +19,24 @@
       <p>
         <span>Mammal:</span> {{animal.mammal}}
       </p>
-      <button @click="handleDelete">Delete 🗑️</button>
-      <button @click="handleUpdate">Edit ✎</button>
+
+      <button @click="handleDelete">🗑️ Delete</button>
     </div>
   </section>
 </template>
 
 <script>
 import api from '../../services/api';
+import EditAnimal from './EditAnimal';
 
 export default {
   data() {
     return {
       animal: null
     };
+  },
+  components: {
+    EditAnimal
   },
   created() {
     api.getAnimal(this.$route.params.id)
@@ -34,17 +45,19 @@ export default {
       });
   },
   methods: {
-    handleDelete() {
-      api.deleteAnimal(this.animal.id)
-        .then(() => {
+    handleEdit(animal) {
+      return api.updateAnimal(animal)
+        .then(updated => {
+          console.log('updated animal', updated);
+          this.aniaml = updated;
           this.$router.push('/animals');
         });
     },
 
-    handleUpdate() {
-      api.updateAnimal(this.animal.id)
+    handleDelete() {
+      api.deleteAnimal(this.animal.id)
         .then(() => {
-          this.$router.push();
+          this.$router.push('/animals');
         });
     }
   }
@@ -56,26 +69,36 @@ export default {
     border: 2px solid black;
     text-align: center;
   }
+
   section img {
     max-width: 300px;
     box-shadow: 2px 2px 2px black;
   }
+  
   .detail {
     border: 1px solid black;
     width: 600px;
   }
 
   button {
-    padding-bottom: 10px;
+    padding: 5px 5px 25px 5px;
     height: 25px;
     margin: 5px;
     font-size: 0.8em;
     border-radius: 5px;
     border: 1px solid black;
     cursor: pointer;
+    margin-bottom: 20px;
   }
+
+  button:hover {
+    background: black;
+    color: white;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+
   span {
     font-weight: bold;
   }
-
 </style>
