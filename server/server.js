@@ -37,8 +37,8 @@ app.post('/api/emojis', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO emojis (name, image, yob, goodness)
-    VALUES($1, $2, $3, $4)
+    INSERT INTO emojis (name, image, yob, goodness, scales_id)
+    VALUES($1, $2, $3, $4, 3)
     RETURNING id, name, image, yob, goodness;
   `,
   [body.name, body.image, body.yob, body.goodness])
@@ -47,15 +47,15 @@ app.post('/api/emojis', (req, res) => {
     });
 });
 
-app.post('/api/emojis/delete', (req, res) => {
+app.delete('/api/emojis/delete/:id', (req, res) => {
   client.query(`
     DELETE FROM emojis WHERE id = $1
   `,
-  [req.body.id]);
+  [req.params.id]);
   res.json();
 });
 
-app.post('/api/emojis/update/:id', (req, res) => {
+app.put('/api/emojis/update/:id', (req, res) => {
   const body = req.body;
   client.query(`
     UPDATE emojis
