@@ -97,13 +97,5 @@ export default {
 label {
   display: block; 
 }
-button {
-  margin: 10px;
-  padding: 1.5em 1.5em 1em 1.5em;
-  text-align: center;
-}
-input {
-  padding-bottom: 6px;
-  padding-top: 3px;
-}
+
 </style>

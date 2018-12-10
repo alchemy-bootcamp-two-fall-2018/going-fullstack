@@ -40,9 +40,9 @@ nav a {
   position: relative;
 }
 nav a:hover {
-  border: 1px solid black;
-  font: white;
-  background-color: grey;
+  color:white;
+  background:lightblue;
+   -webkit-text-stroke: 1px black;
 }
 main {
   padding: 8px;

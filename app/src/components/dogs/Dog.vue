@@ -32,6 +32,6 @@ li {
 }
 li:hover {
   box-shadow: 5px 5px 5px black; ; 
-  background: lightcoral;
+  background:lightblue;
 }
 </style>

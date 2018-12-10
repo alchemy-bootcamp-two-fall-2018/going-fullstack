@@ -39,8 +39,9 @@ h2 {
   margin: 3px;
   padding: 3px;
   border: 1px solid black;
-  font: white;
-  background-color: grey;
+  color:white;
+  background:lightblue;
+   -webkit-text-stroke: 1px black;
 }
 .responsive {
   width: 100%;
