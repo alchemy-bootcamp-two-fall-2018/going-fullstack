@@ -9,6 +9,8 @@ router
       SELECT
         id,
         title,
+        author,
+        pages,
         genre_id as "genreId"
       FROM books;
     `)
@@ -23,6 +25,8 @@ router
       SELECT 
         id,
         title,
+        author,
+        pages,
         genre_id as "genreID", 
       FROM books 
       WHERE id = $1;

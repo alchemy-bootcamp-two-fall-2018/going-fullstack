@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import GenreDisplay from '../genres/GenreDisplay';
+import GenreDisplay from '../genres/GenreDisplay.vue';
 
 export default {
   props: {

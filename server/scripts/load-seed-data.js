@@ -1,13 +1,13 @@
 const client = require('../db-client');
-const books = require('./books.json');
-const genres = require('../../server/lib/routes/genres');
+const books = require('./books.json');                 
+const genres = require('./book-genre.js');
 
 Promise.all(
   genres.map(genre => {
     return client.query(`
       INSERT INTO genre (genre, short_name)
       VALUES ($1, $2);
-    `,
+    `, 
     [genre.genre, genre.shortName]);
   })
 )

@@ -9,7 +9,7 @@
 
 <script>
 import api from '../../services/api';
-import GenreDisplay from '../genres/GenreDisplay';
+import GenreDisplay from '../genres/GenreDisplay.vue';
 
 export default {
   data() {
