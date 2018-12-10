@@ -20,11 +20,12 @@ export default {
 <style scoped>
 li {
   border: 1px solid black;
-  display: flex;
   align-items:center;
   height: 200px; 
   background-color: lightgrey;
   list-style-type: none;
+  width:100%;
+  text-align: center;
 }
 li:hover {
   box-shadow: 5px 5px 5px black; ; 
