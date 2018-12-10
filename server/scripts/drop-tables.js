@@ -9,7 +9,8 @@ const client = new Client(databaseUrl);
 client.connect()
   .then(() => {
     return client.query(`
-      DROP TABLE IF EXISTS articles_table;
+      DROP TABLE IF EXISTS article;
+      DROP TABLE IF EXISTS article_category_table;
     `);
   })
   .then(

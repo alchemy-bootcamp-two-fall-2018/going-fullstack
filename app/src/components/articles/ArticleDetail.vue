@@ -9,7 +9,7 @@
       Views:{{article.views}}
     </p>
     <p>
-      Clickbait: {{article.isClickbait}}
+      Category: {{article.category}}
     </p>
   </section>
 </template>
@@ -28,6 +28,14 @@ export default {
       .then(article => {
         this.article = article;
       });
+  },
+  methods: {
+    handleDelete() {
+      api.deleteArticle(this.article.id)
+        .then(() => {
+          this.$router.push('/articles');
+        });
+    }
   }
 };
 </script>

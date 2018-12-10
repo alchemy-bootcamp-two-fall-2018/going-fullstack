@@ -1,26 +1,36 @@
-const pg = require('pg');
-const Client = pg.Client;
-const databaseUrl = 'postgres://localhost:5432/news_articles';
-const articles = require('../data/articles.json');
 
-const client = new Client(databaseUrl);
+const client = require ('../db-client');
+const articles = require('./articles.json');
+const categories = require('./categories');
 
-client.connect()
+Promise.all(
+  categories.map(category => {
+    return client.query(`
+      INSERT INTO article_category_table (name, short_name)
+      VALUES ($1, $2);
+    `,
+    [category.name, category.shortName]);
+  })
+)
   .then(() => {
-    // "Promise all" does a parallel execution of async tasks
     return Promise.all(
       articles.map(article => {
         return client.query(`
-          INSERT INTO articles_table (title, author, views)
-          VALUES ($1, $2, $3);
+          INSERT INTO article (title, author_id, views)
+          SELECT
+            $1 as title,
+            id as author_id,
+            $2 as views
+          FROM article_category_table
+          WHERE short_name = $3;
         `,
-        [article.title, article.author, article.views]);
+        [article.title, article.views, article.author]);
       })
     );
   })
   .then(
     () => console.log('seed data load complete'),
-    // err => console.log(err)
+    err => console.log(err)
   )
   .then(() => {
     client.end();

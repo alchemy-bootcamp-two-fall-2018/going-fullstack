@@ -3,19 +3,22 @@
     "title": "Biden thinks he's the most qualified to run for president",
     "views": 1000,
     "isClickbait": false,
-    "author": "Ezra Klein"
+    "author": "Ezra Klein",
+    "category": "US"
   },
   {
     "title": "France suspends planned tax increase after riots",
     "views": 500,
     "isClickbait": false,
-    "author": "Jane C. Timm"
+    "author": "Jane C. Timm",
+    "category": "World"
   },
   {
     "title": "Mueller expected to file Flynn sentencing memo",
     "views": 500000,
     "isClickbait": true,
-    "author": "Jonathan Allen"
+    "author": "Jonathan Allen",
+    "category": "US"
   }
 
 ]
