@@ -1,20 +1,21 @@
-const pg = require('pg');
-const Client = pg.Client;
-const dataBaseUrl = 'postgres://localhost:5432/champions';
-const client = new Client(dataBaseUrl);
+const client = require('../db-client.js');
+client.query(`
+    CREATE TABLE IF NOT EXISTS pref (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(256) NOT NULL,
+        short_name VARCHAR(6) NOT NULL
+    );
 
-client.connect() 
-    .then(() => {
-        return client.query(`
-        CREATE TABLE IF NOT EXISTS grapplers (
-            id SERIAL PRIMARY KEY, 
-            name VARCHAR(256) NOT NULL, 
-            age INTEGER,
-            champ BOOLEAN);
+    CREATE TABLE IF NOT EXISTS grapplers (
+        id SERIAL PRIMARY KEY, 
+        name VARCHAR(256) NOT NULL, 
+        age INTEGER,
+        champ BOOLEAN, 
+        pref_id INTEGER NOT NULL REFERENCES pref(id)
+        );
 
-        `);
-    })
-    .then(console.log('new table has been created'), 
+        `)
+    .then(console.log('Both new tables has been created'), 
         err => console.log(err)
     )
     .then(() =>{

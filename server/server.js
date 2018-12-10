@@ -1,25 +1,36 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const pg = require('pg');
-
+const client = require('../server/db-client');
 //morgan logging 
 app.use(morgan('dev'));
 
 //use the express framework for this file 
 app.use(express.json());
 
-const Client = pg.Client;
-const dbUrl = 'postgres://localhost:5432/champions';
-const client = new Client(dbUrl);
-client.connect();
 
 // start defining the REQUEST and RESPONSE methods
 // get all the data and convert it into useable JS text aka from JSON to normal stuff
+app.get('/api/scripts/pref', (req, res) => {
+    client.query(`
+    SELECT id, name, short_name as "shortName
+    FROM pref`)
+        .then (result => {
+            res.json(result.rows);
+        });
+});
 
 app.get('/api/data/grapplers', (req, res) => {
     client.query(`
-    SELECT id, name, age, champ FROM grapplers;
+    SELECT
+        grapplers.id,
+        grapplers.name,
+        grapplers.age,
+        grapplers.champ,
+        pref.name as "prefName"
+    FROM grapplers
+    JOIN pref
+    ON grapplers.pref_id = pref.id
     `)
         .then(result => {
             res.json(result.rows);
@@ -35,20 +46,65 @@ app.get('/api/data/grapplers/:id', (req, res) => {
             res.json(result.rows[0]);
         });
 });
+app.delete('/api/data/grapplers/:id', (req, res) => {
+
+    console.log('you have deleted from DB', req, res);
+
+    client.query (`
+    DELETE FROM grapplers WHERE id = $1;`, 
+    [req.params.id])
+        .then(result => {
+            res.json({ removed: result.rowCount === 1 });
+        });
+});
+
+app.put('/api/data/grapplers/:id', (req, res) => {
+    console.log('You have updated grapplers from DB');
+    const body = req.body;
+    client.query (`
+        UPDATE grapplers
+        SET
+            name = $1, 
+            age = $2,
+            champ = $3, 
+            pref_id = $4 
+        WHERE id = $5
+        RETURNING id, name, age, champ, pref_id as "prefId";`,
+
+    [body.name, body.age, body.champ, body.prefId, body.id])
+        .then(result => {
+            res.json(result.rows[0]);
+        });
+});
 
 app.post('/api/data/grapplers', (req, res) => {
     const body = req.body;
     client.query (`
-    INSERT INTO grapplers (name, age, champ)
-    VALUES($1, $2, $3)
+    INSERT INTO grapplers (name, age, champ, pref_id)
+    VALUES($1, $2, $3, $4)
     RETURNING id, name, age, champ;`,
-    [body.name, body.age, body.champ])
+    [body.name, body.age, body.champ, body.prefId])
+        .then(result => {
+            const id = result.rows[0].id;
+            return client.query(`
+                SELECT
+                    grapplers.id,
+                    grapplers.name as name,
+                    grapplers.age as age,
+                    grapplers.champ as champ,
+                    pref.id as "prefId",
+                    pref.name as pref
+                FROM grapplers
+                JOIN pref
+                ON grapplers.pref_id = pref.id
+                WHERE grapplers.id = $1;
+             `,
+            [id]);
+        })
         .then(result => {
             res.json(result.rows[0]);
         });
-    //const grappler = req.body;    
 });
-
 // set place for port to be used 
 
 const PORT = 3000;
