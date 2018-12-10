@@ -1,6 +1,6 @@
 const client = require('../db-client');
 const books = require('./books.json');
-const genres = require('./genres');
+const genres = require('../../server/lib/routes/genres');
 
 Promise.all(
   genres.map(genre => {
