@@ -42,12 +42,13 @@ app.get('/api/articles', (req, res) => {
     SELECT
       article.id,
       article.title as title,
-      article.author_id as "authorId",
+      article.author as author,
       article.views as views,
-      article.is_clickbait as "isClickbait"
+      article.is_clickbait as "isClickbait",
+      article.category as category
     FROM article
     JOIN article_category_table
-    ON article.author_id = article_category_table.id
+    ON article.author = article_category_table.id
     ORDER BY views DESC, name ASC;
   `)
     .then(result => {
@@ -70,11 +71,11 @@ app.post('/api/articles', (req, res)=> {
   const body = req.body;
 
   client.query(`
-    INSERT INTO article (title, author_id, views, is_clickbait)
-    VALUES ($1, $2, $3, $4)
+    INSERT INTO article (title, author, views, is_clickbait, category)
+    VALUES ($1, $2, $3, $4, $5)
     RETURNING id;
   `,
-  [body.title, body.author_id, body.views])
+  [body.title, body.author, body.views, body.category])
     .then(result => {
       const id = result.rows[0].id;
 
@@ -82,7 +83,7 @@ app.post('/api/articles', (req, res)=> {
         SELECT
           article.id,
           article.title as title,
-          author_id as "authorId",
+          article.author as author,
           article.views as views
         FROM article
         JOIN article_category_table
