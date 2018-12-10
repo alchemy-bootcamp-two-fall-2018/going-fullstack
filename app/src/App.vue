@@ -37,6 +37,7 @@ nav a {
   margin: 3px;
   padding: 3px;
   border: 1px solid black;
+  position: relative;
 }
 nav a:hover {
   border: 1px solid black;
