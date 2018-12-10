@@ -18,6 +18,30 @@
       "summary": "Older than her years, she's reinventing the pop diva"
     },
     {
+      "name": "Tom Waits",
+      "genre": "alt",
+      "age": "68",
+      "summary": "One of the most unique voices in music"
+    },
+    {
+      "name": "Madonna",
+      "genre": "pop",
+      "age": "60",
+      "summary": "The material girl, constantly re-inventing herself"
+    },
+    {
+      "name": "Dave Gahan",
+      "genre": "alt",
+      "age": "56",
+      "summary": "The voice of Depeche Mode, one of the 80's finest"
+    },
+    {
+      "name": "Kim Gordon",
+      "genre": "alt",
+      "age": "65",
+      "summary": "Do not make her angry"
+    },
+    {
       "name": "Justin Timberlake",
       "genre": "pop",
       "age": "37",
