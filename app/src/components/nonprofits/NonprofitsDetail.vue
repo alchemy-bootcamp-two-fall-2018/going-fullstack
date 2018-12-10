@@ -29,7 +29,7 @@ export default {
     };
   },
   created() {
-    console.lof('need detail for', this.$route.params.id);
+    console.log('need detail for', this.$route.params.id);
     api.getNonprofit(this.$route.params.id)
       .then(nonprofit => {
         this.nonprofit = nonprofit;

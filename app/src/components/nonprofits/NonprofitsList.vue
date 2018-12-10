@@ -1,16 +1,16 @@
 <template>
   <ul v-if="nonprofits">
-    <!--<Nonprofit v-for="nonprofit in sortedNonprofits" 
+    <!-- <Nonprofit v-for="nonprofit in sortedNonprofits" 
       :key="nonprofit.id"
-      :nonprofit="nonprofit"/>-->
-  <li v-for="nonprofit in nonprofits" :key="nonprofit.id">
-    <RouterLink :to="`/nonprofits/${nonprofit.id}`">{{nonprofit.name}}</RouterLink>
-  </li>
+      :nonprofit="nonprofit"/> -->
+    <li v-for="nonprofit in nonprofits" :key="nonprofit.id">
+      <RouterLink :to="`/nonprofits/${nonprofit.id}`">{{nonprofit.name}}</RouterLink>
+    </li>
   </ul>
 </template>
 
 <script>
-//import Nonprofit from './Nonprofit';
+//import Nonprofit from './Nonprofits';
 
 export default {
   props: {

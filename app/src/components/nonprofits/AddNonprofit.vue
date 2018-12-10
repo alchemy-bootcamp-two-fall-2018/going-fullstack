@@ -36,7 +36,7 @@
         v-model="nonprofit.category" 
         required
       >
-        <option v-for="(display, key) in nonprofits"
+        <option v-for="(display, key) in categories"
           :key="key"
           :value="key"
         >
