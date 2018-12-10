@@ -2,7 +2,7 @@
     <form @submit.prevent="onSubmit(singer)">
       <label>
         <span>Name: </span>
-          <input v-model="singer.name" require>
+          <input v-model="singer.name" autofocus require>
       </label>
       <label>
         <span>Genre: </span>

@@ -1,7 +1,7 @@
 <template>
   <section class="home-page">
-    <h2>Welcome to The Singer List</h2>
-    <p class="singers-link"><RouterLink to="/singers">Take a look at the singers</RouterLink></p>
+    <h2>Welcome to The Database</h2>
+    <p class="singers-link"><RouterLink to="/singers">Take a look at the singers ▶</RouterLink></p>
   </section>
 </template>
 

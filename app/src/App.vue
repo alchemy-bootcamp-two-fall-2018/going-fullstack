@@ -1,8 +1,11 @@
 <template>
   <div class="app">
+    <div class="photo">
+      <img src="http://www.happyvideonetwork.com/wp-content/uploads/2016/07/maxresdefault-9.jpg">
+    </div>
     <header>
       <div class="logo">
-        <h1><RouterLink to="/">SINGERS</RouterLink></h1>
+        <h1><RouterLink to="/">THE SINGER DATABASE</RouterLink></h1>
       </div>
       <div class="menu">
         <ul class="nav">
@@ -32,12 +35,21 @@ body {
   background: #d5dfe5;
 }
 
+img {
+  text-align: center;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   background: #567568;
   margin: 0;
-  padding: 10px;
+  padding: 20px;
   height: 50px;
 }
 
@@ -51,10 +63,18 @@ header a:hover {
 }
 
 h1 {
+  letter-spacing: 10px;
   margin: 0;
   padding: 0;
 }
 
+h1 a {
+    color: #d6ac57;
+}
+
+h1 a:hover {
+  color: #d5dfe5;
+}
 
 main {
   background: #d5dfe5;
@@ -62,6 +82,7 @@ main {
 
 .app {
   margin: 0;
+  background: #567568;
 }
 
 .nav {

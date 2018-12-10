@@ -9,7 +9,7 @@
         </ul>
 
         <form @submit.prevent="handleAdd">
-            <input v-model="genreName">
+            <input v-model="genreName" autofocus>
             <button>Add Genre</button>
         </form>
     </section>
