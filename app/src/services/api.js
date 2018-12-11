@@ -1,6 +1,12 @@
 export default {
+
   getCampgrounds() {
     return fetch('/api/campgrounds')
+      .then(response => response.json());
+  },
+
+  getCampground(id) {
+    return fetch(`/api/campgrounds/${id}`)
       .then(response => response.json());
   },
 
@@ -13,6 +19,12 @@ export default {
       body: JSON.stringify(campground)
     })
       .then(response => response.json());
+  },
+
+  getForest() {
+    return {
+      
+    };
   }
 };
 // *

@@ -1,22 +1,26 @@
 [
   {
   "name": "Shady Cove Campground",
-  "forest": "forest",
-  "seasonDates": "1/1"
-  },
-  {
+  "forest": "Willamette National Forest",
+  "sites": "13",
+  "rvwaste": false
+},
+{
   "name": "Elk Creek Campground",
-  "forest": "forest",
-  "seasonDates": "1/1"
-  },
-  {
+  "forest": "Wallowa-Whitman National Forest",
+  "sites": "10",
+  "rvwaste": false
+},
+{
   "name": "House Rock Campground",
-  "forest": "forest",
-  "seasonDates": "1/1"
-  },
-  {
+  "forest": "Willamette National Forest",
+  "sites": "17",
+  "rvwaste": false
+},
+{
   "name": "Trout Creek Campground",
-  "forest": "forest",
-  "seasonDates": "1/1"
+  "forest": "Willamette National Forest",
+  "sites": "23",
+  "rvwaste": false
   }
 ]
