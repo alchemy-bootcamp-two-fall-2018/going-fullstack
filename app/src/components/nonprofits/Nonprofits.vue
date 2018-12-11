@@ -1,0 +1,48 @@
+<template>
+  <section class="nonprofits">
+    <h2>Nonprofits</h2>
+    <AddNonprofit :onAdd="handleAdd"/>
+    <NonprofitsList :nonprofits="nonprofits"/>
+  </section>
+</template>
+
+<script>
+import api from '../../services/api';
+import AddNonprofit from './AddNonprofit';
+import NonprofitsList from './NonprofitsList';
+
+export default {
+  data() {
+    return {
+      nonprofits: null,
+      error: null
+    };
+  },
+  components: {
+    AddNonprofit,
+    NonprofitsList
+  },
+  created() {
+    api.getNonprofits()
+      .then(nonprofits => {
+        this.nonprofits = nonprofits;
+      })
+      .catch(err => {
+        this.error = err;
+      });
+  },
+  methods: {
+    handleAdd(nonprofit) {
+      return api.addNonprofit(nonprofit)
+        .then(saved => {
+          this.nonprofits.push(saved);
+        });
+    }
+  }
+  
+};
+</script>
+
+<style lang="postcss" scoped>
+
+</style>

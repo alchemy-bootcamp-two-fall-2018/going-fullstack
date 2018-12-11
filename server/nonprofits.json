@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Test Org",
+    "city": "Eugene",
+    "description": null,
+    "employees": null,
+    "metropol": null,
+    "category": null
+  },
+  {
+    "name": "Pacific University",
+    "city": "Forest Grove",
+    "description": "A fine school",
+    "employees": "1500",
+    "metropol": null,
+    "category": "Education"
+  },
+  {
+    "name": "Boys and Girls Aid Society of Oregon",
+    "city": "Portland",
+    "description": "A fine society",
+    "employees": "750",
+    "metropol": null,
+    "category": "Youth"
+  },
+  {
+    "name": "Free Geek",
+    "city": "Portland",
+    "description": "A fine organization",
+    "employees": "200",
+    "metropol": null,
+    "category": "Education"
+  },
+  {
+    "name": "Bradley Angle",
+    "city": "Portland",
+    "description": "A very fine organization",
+    "employees": "210",
+    "metropol": null,
+    "category": "Domestic Violence"
+  },
+  {
+    "name": "Portland Art Museum",
+    "city": "Portland",
+    "description": "A fine museum",
+    "employees": "500",
+    "metropol": null,
+    "category": "Arts"
+  },
+  {
+    "name": "Bandon Brewing Company Foundation",
+    "city": "Bandon",
+    "description": "A fine foundation",
+    "employees": "75",
+    "metropol": null,
+    "category": "Public Benefit"
+  },
+  {
+    "name": "Wiggly Tails Dog Rescue",
+    "city": "Eugene",
+    "description": "A fine rescue",
+    "employees": "10",
+    "metropol": null,
+    "category": "Animals"
+  },
+  {
+    "name": "Oregon Performing Arts Foundation",
+    "city": "Mount Vernon",
+    "description": "A fine arts foundation",
+    "employees": "125",
+    "metropol": null,
+    "category": "Arts"
+  },
+  {
+    "name": "One Planet Community Land Trust",
+    "city": "Eugene",
+    "description": "A fine land trust",
+    "employees": "25",
+    "metropol": null,
+    "category": "Environment"
+  },
+  {
+    "name": "Champoeg Cemetery Association",
+    "city": "Champoeg",
+    "description": "A fine cemetery association",
+    "employees": "24",
+    "metropol": null,
+    "category": "Public Benefit"
+  },
+  {
+    "name": "Bend Fire Community Assistance Program",
+    "city": "Bend",
+    "description": "A fine fire victim assistance program",
+    "employees": "5",
+    "metropol": null,
+    "category": "Public Benefit"
+  },
+  {
+    "name": "Women Who Code - Portland",
+    "city": "Portland",
+    "description": "A fine tech networking organization",
+    "employees": "1",
+    "metropol": null,
+    "category": "Technology"
+  },
+  {
+    "name": "Pacific University",
+    "city": "Forest Grove",
+    "description": "A fine school",
+    "employees": "1500",
+    "metropol": null,
+    "category": "Education"
+  },
+  {
+    "name": "Boys and Girls Aid Society of Oregon",
+    "city": "Portland",
+    "description": "A fine society",
+    "employees": "750",
+    "metropol": null,
+    "category": "Youth"
+  },
+  {
+    "name": "Free Geek",
+    "city": "Portland",
+    "description": "A fine organization",
+    "employees": "200",
+    "metropol": null,
+    "category": "Education"
+  },
+  {
+    "name": "Bradley Angle",
+    "city": "Portland",
+    "description": "A very fine organization",
+    "employees": "210",
+    "metropol": null,
+    "category": "Domestic Violence"
+  },
+  {
+    "name": "Portland Art Museum",
+    "city": "Portland",
+    "description": "A fine museum",
+    "employees": "500",
+    "metropol": null,
+    "category": "Arts"
+  },
+  {
+    "name": "Bandon Brewing Company Foundation",
+    "city": "Bandon",
+    "description": "A fine foundation",
+    "employees": "75",
+    "metropol": null,
+    "category": "Public Benefit"
+  },
+  {
+    "name": "Wiggly Tails Dog Rescue",
+    "city": "Eugene",
+    "description": "A fine rescue",
+    "employees": "10",
+    "metropol": null,
+    "category": "Animals"
+  },
+  {
+    "name": "Oregon Performing Arts Foundation",
+    "city": "Mount Vernon",
+    "description": "A fine arts foundation",
+    "employees": "125",
+    "metropol": null,
+    "category": "Arts"
+  },
+  {
+    "name": "One Planet Community Land Trust",
+    "city": "Eugene",
+    "description": "A fine land trust",
+    "employees": "25",
+    "metropol": null,
+    "category": "Environment"
+  },
+  {
+    "name": "Champoeg Cemetery Association",
+    "city": "Champoeg",
+    "description": "A fine cemetery association",
+    "employees": "24",
+    "metropol": null,
+    "category": "Public Benefit"
+  },
+  {
+    "name": "Bend Fire Community Assistance Program",
+    "city": "Bend",
+    "description": "A fine fire victim assistance program",
+    "employees": "5",
+    "metropol": null,
+    "category": "Public Benefit"
+  },
+  {
+    "name": "Women Who Code - Portland",
+    "city": "Portland",
+    "description": "A fine tech networking organization",
+    "employees": "1",
+    "metropol": null,
+    "category": "Technology"
+  }
+]

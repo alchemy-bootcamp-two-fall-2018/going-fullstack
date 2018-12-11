@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Pacific University",
+    
+    "city": "Forest Grove",
+    "description": "A fine school",
+    "employees": 1500,
+    "metropolitan": true,
+    "category": "Education"
+  },
+  {
+    "name": "Boys and Girls Aid Society of Oregon",
+    
+    "city": "Portland",
+    "description": "A fine society",
+    "employees": 750,
+    "metropolitan": true,
+    "category": "Youth"
+  },
+  {
+    "name": "Free Geek",
+    
+    "city": "Portland",
+    "description": "A fine organization",
+    "employees": 200,
+    "metropolitan": true,
+    "category": "Education"
+  },
+  {
+    "name": "Bradley Angle",
+    
+    "city": "Portland",
+    "description": "A very fine organization",
+    "employees": 210,
+    "metropolitan": true,
+    "category": "Domestic Violence"
+  },
+  {
+    "name": "Portland Art Museum",
+    
+    "city": "Portland",
+    "description": "A fine museum",
+    "employees": 500,
+    "metropolitan": true,
+    "category": "Arts"
+  },
+  {
+    "name": "Bandon Brewing Company Foundation",
+    
+    "city": "Bandon",
+    "description": "A fine foundation",
+    "employees": 75,
+    "metropolitan": false,
+    "category": "Public Benefit"
+  },
+  {
+    "name": "Wiggly Tails Dog Rescue",
+    
+    "city": "Eugene",
+    "description": "A fine rescue",
+    "employees": 10,
+    "metropolitan": false,
+    "category": "Animals"
+  },
+  {
+    "name": "Oregon Performing Arts Foundation",
+    
+    "city": "Mount Vernon",
+    "description": "A fine arts foundation",
+    "employees": 125,
+    "metropolitan": false,
+    "category": "Arts"
+  },
+  {
+    "name": "One Planet Community Land Trust",
+   
+    "city": "Eugene",
+    "description": "A fine land trust",
+    "employees": 25,
+    "metropolitan": false,
+    "category": "Environment"
+  },
+  {
+    "name": "Champoeg Cemetery Association",
+    
+    "city": "Champoeg",
+    "description": "A fine cemetery association",
+    "employees": 24,
+    "metropolitan": false,
+    "category": "Public Benefit"
+  },
+  {
+    "name": "Bend Fire Community Assistance Program",
+    
+    "city": "Bend",
+    "description": "A fine fire victim assistance program",
+    "employees": 5,
+    "metropolitan": false,
+    "category": "Public Benefit"
+  },
+  {
+    "name": "Women Who Code - Portland",
+    
+    "city": "Portland",
+    "description": "A fine tech networking organization",
+    "employees": 1,
+    "metropolitan": true,
+    "category": "Technology"
+  }
+]
