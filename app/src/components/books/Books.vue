@@ -10,8 +10,8 @@
 
 <script>
 import api from '../../services/api';
-import AddBook from './AddBook';
-import BookList from './BookList';
+import AddBook from './AddBook.vue';
+import BookList from './BookList.vue';
 
 export default {
   data() {
@@ -27,7 +27,6 @@ export default {
   created() {
     api.getBooks()
       .then(books => {
-      // console.log(books);
         this.books = books;
       })
       .catch(err => {

@@ -42,7 +42,7 @@ function initBook() {
     title: '',
     author: '',
     pages: '',
-    genre: '',
+    // genre: '',
     genreId: -1,
     good: Boolean,
   };
