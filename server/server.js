@@ -11,7 +11,7 @@ app.use(express.json());
 // const client = new Client(dbUrl);
 // client.connect();
 
-app.get('/api/superheroes', (req, res) => {
+app.get('/api/hero', (req, res) => {
   client.query(`
     SELECT 
       hero.id, 
@@ -25,7 +25,7 @@ app.get('/api/superheroes', (req, res) => {
     });
 });
 
-app.get('/api/superheroes/:id', (req, res) => {
+app.get('/api/hero/:id', (req, res) => {
   client.query(`
     SELECT * FROM hero WHERE id = $1;
   `,
@@ -35,7 +35,7 @@ app.get('/api/superheroes/:id', (req, res) => {
     });
 });
 
-app.post('/api/superheroes', (req, res) => {
+app.post('/api/hero', (req, res) => {
   const body = req.body;
 
   client.query(`
@@ -45,10 +45,24 @@ app.post('/api/superheroes', (req, res) => {
   `,
   [body.name, body.age, body.ability])
     .then(result => {
+      const id = result.rows[0].id;
+
+      return client.query(`
+        SELECT
+          hero.id,
+          hero.name as name,
+          hero.age as age, 
+          hero.ability as ability
+        FROM hero
+        WHERE hero.id = $1;
+      `,
+      [id]);
+    })
+    .then(result => {
       res.json(result.rows[0]);
     });
 });
-
+  
 const PORT = 3000;
 
 app.listen(PORT, () => {

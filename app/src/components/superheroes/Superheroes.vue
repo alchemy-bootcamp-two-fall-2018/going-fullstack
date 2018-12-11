@@ -2,7 +2,7 @@
   <section>
     <h2>Superheroes</h2>
     <AddSuperhero :onAdd="handleAdd"/>
-    <SuperheroList :superheroes="superheroes"/>    
+    <SuperheroList :superheroes="heroes"/>    
   </section>
 </template>
 
@@ -14,7 +14,7 @@ import SuperheroList from './SuperheroList';
 export default {
   data() {
     return {
-      superheroes: null,
+      heroes: null,
       error: null
     };
   },
@@ -23,19 +23,19 @@ export default {
     SuperheroList
   },
   created() {
-    api.getSuperheroes()
-      .then(superheroes => {
-        this.superheroes = superheroes;
+    api.getHeroes()
+      .then(heroes => {
+        this.heroes = heroes;
       })
       .catch(err => {
         this.error = err;
       });
   },
   methods: {
-    handleAdd(superhero) {
-      return api.addSuperhero(superhero)
+    handleAdd(hero) {
+      return api.addHero(hero)
         .then(saved => {
-          this.superheroes.push(saved);
+          this.heroes.push(saved);
         });
     }
   } 

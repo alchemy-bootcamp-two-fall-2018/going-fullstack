@@ -2,8 +2,8 @@ const client = require('../db-client');
 const superheroes = require('./superheroes.json');
 
 // client.connect()
-//   .then(() => {
-return Promise.all(
+// .then(() => {
+Promise.all(
   superheroes.map(hero => {
     return client.query(`
           INSERT INTO hero (name, age, ability)
@@ -12,7 +12,6 @@ return Promise.all(
     [hero.name, hero.age, hero.ability]);
   })
 )
-
   .then(
     () => console.log('seed data load complete'),
     err => console.log(err)

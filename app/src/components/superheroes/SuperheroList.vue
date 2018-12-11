@@ -1,7 +1,7 @@
 <template>
   <ul v-if="superheroes">
     <li v-for="superhero in superheroes" :key="superhero.name">
-      <RouterLink :to="`/superheroes/${superhero.name}`">{{student.name}}</RouterLink>
+      <RouterLink :to="`/superheroes/${superhero.name}`">{{superhero.name}}</RouterLink>
     </li>
   </ul>
 </template>
