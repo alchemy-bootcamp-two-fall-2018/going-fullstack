@@ -20,5 +20,15 @@ export default {
     getTeams() {
         return fetch ('/api/teams')
             .then(response => response.json());
+    },
+    upDateRacer(racer) {
+        return fetch(`/api/racers/${racer.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(racer)
+        })
+            .then(response => response.json()); 
     }
 };

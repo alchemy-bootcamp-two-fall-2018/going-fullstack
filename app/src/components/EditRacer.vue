@@ -1,9 +1,10 @@
 <template>
     <section>
-        <button @click="show = true"> Add a New Racer</button>
-        <RacerForm v-if="show"
-            :onClose="() => show = false"
-            :onSubmit="handleAdd"/>
+        <button @click="show = !show"> ✎ Edit</button>
+        <RacerForm v-if="show" :onClose="() => show = false"
+            :onSubmit="handleEdit"
+            :racerToEdit="racer"
+            :label="'Update'"/>
     </section>
 </template>
 
@@ -12,9 +13,8 @@ import RacerForm from './RacerForm';
 
 export default {
     props: {
-        onAdd: Function,
-        onClose: Function
-
+        onEdit: Function,
+        racer: Object
     },
     data() {
         return {
@@ -25,8 +25,8 @@ export default {
         RacerForm
     },
     methods: {
-        handleAdd(racer) {
-            return this.onAdd(racer)
+        handleEdit(racer) {
+            return this.onEdit(racer)
                 .then(() => this.show = false);
         }
     }

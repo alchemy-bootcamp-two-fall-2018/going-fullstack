@@ -68,6 +68,24 @@ app.post('/api/racers', (req, res) => {
       res.json(result.rows[0]);
     });
 });
+
+app.put('/api/racers/:id', (req, res) => {
+  const body = req.body;
+  client.query(`
+    UPDATE racer
+    SET 
+      name = $1, 
+      age = $2, 
+      team_id = $3, 
+      pr = $4
+    WHERE id = $5
+    RETURNING *;
+  `,
+  [body.name, body.age, body.teamId, body.pr])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
+});
  
 const PORT = 3000;
 

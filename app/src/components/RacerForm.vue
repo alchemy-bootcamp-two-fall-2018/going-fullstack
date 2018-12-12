@@ -20,6 +20,7 @@
             <input v-model="racer.pr" required>
         </p>
         <button> {{label || 'Add'}} </button>
+    </form>
 </template>
 
 <script>
@@ -48,8 +49,8 @@ function copyRacer(racer) {
 export default {
     props: {
         onSubmit: Function,
-        racerToEdit: Object
-    
+        racerToEdit: Object,
+        label: String
     },
     data() {
         return {
