@@ -1,9 +1,9 @@
 <template>
     <div v-if="grappler">
         <h2> Name: {{grappler.name}}</h2>
-        <h3> Age:{{grappler.age}}</h3>
-        <h3>Championship Status: {{grappler.champ}}</h3>
-        <h3>Preference: {{grappler.prefId}}</h3>
+        <p> Age:{{grappler.age}}</p>
+        <p>Championship Status: {{grappler.champ}}</p>
+        <p>Preference: {{grappler.prefId}}</p>
 
 
         <button @click="handleDelete">DELETE {{grappler.name}} </button>
@@ -56,7 +56,10 @@ export default {
 <style>
 body {
   background-image: linear-gradient(to right bottom, #06d4f6, #00b7ff, #0095ff, #006aff, #6612eb);
+    }
 
-}
+    p {
+        font-size: 20px
+    }
 
 </style>
