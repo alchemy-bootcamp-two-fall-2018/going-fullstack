@@ -1,56 +1,34 @@
 <template>
-    <form @submit.prevent="handleSubmit">
-        <p>
-            <label>Name</label>
-            <input v-model="racer.name" required>
-        </p>
-         <p>
-            <label>Age</label>
-            <input type="number" v-model="racer.age" required>
-        </p>
-        <p>
-            <label>Team</label>
-            <select v-model="racer.teamId" required>
-                <option value="1">Varsity</option>
-                <option value="2">Junior Varsity</option>
-            </select>
-        </p>
-        <p>
-            <label>PR</label>
-            <input v-model="racer.pr" required>
-        </p>
-        <button> Add </button>
-    </form>
+    <section>
+        <button @click="!show"> Add a New Racer</button>
+        <RacerForm v-if="show"
+            :onClose="() => show = false"
+            :onSubmit="handleAdd"/>
+    </section>
 </template>
 
 <script>
-
-
+import RacerForm from './RacerForm';
 
 export default {
     props: {
-        onAdd: Function
+        onAdd: Function,
+        onClose: Function
+
     },
     data() {
         return {
-            racer: {
-                name: '',
-                age: '',
-                teamId: '',
-                pr: ''
-            }
+            show: false
         };
     },
-   
-    
+    components: {
+        RacerForm
+    },
     methods: {
-        handleSubmit() {
-            this.onAdd(this.racer)
-                .then(() => {
-                    this.racer = { name: '' };
-                });
+        handleAdd(racer) {
+            return this.onAdd(racer)
+                .then(() => this.show = false);
         }
-
     }
 };
 </script>
