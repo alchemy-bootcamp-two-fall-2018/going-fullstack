@@ -3,8 +3,15 @@
         <form @submit.prevent="handleSubmit">
             <label> Name:</label>
             <input v-model="grappler.name" required>
+
             <label> Preference(must be 1/2):</label>
-            <input v-model="grappler.prefId" required>
+            <select v-model="grappler.prefId">
+                <option value="1">NO-GI</option>
+                <option value="2">GI</option>
+            </select>
+
+
+
             <label> Age:</label>
             <input v-model="grappler.age" type ="number" required>
             <label> WorldChampion? Yes/No</label>

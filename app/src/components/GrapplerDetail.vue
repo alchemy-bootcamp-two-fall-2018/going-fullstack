@@ -3,7 +3,9 @@
         <h2> Name: {{grappler.name}}</h2>
         <h3> Age:{{grappler.age}}</h3>
         <h3>Championship Status: {{grappler.champ}}</h3>
-        <h3>Preference: {{grappler.pref_id}}</h3>
+        <h3>Preference: {{grappler.prefId}}</h3>
+
+
         <button @click="handleDelete">DELETE {{grappler.name}} </button>
 
         <UpdateForm :onUpdate="handleUpdate"
@@ -34,8 +36,12 @@ export default {
     },
     methods: {
         handleDelete() {
-            api.deleteGrappler(this.grappler.id);
+            api.deleteGrappler(this.grappler.id)
+                .then(() => {
+                    this.$router.push('/grapplers');
+                });
         }, 
+
         handleUpdate(grappler) {
             console.log('button fires update method onclick', grappler);
             api.updateGrappler(grappler)
