@@ -16,15 +16,17 @@ Promise.all(
     return Promise.all(
       articles.map(article => {
         return client.query(`
-          INSERT INTO article (title, author_id, views)
+          INSERT INTO article (title, author, views, is_clickbait, category)
           SELECT
             $1 as title,
-            id as author_id,
-            $2 as views
+            id as author,
+            $2 as views,
+            $3 as is_clickbait,
+            $4 as category
           FROM article_category_table
-          WHERE short_name = $3;
+          WHERE short_name = $5;
         `,
-        [article.title, article.views, article.author]);
+        [article.title, article.author, article.views, article.isClickbait, article.category]);
       })
     );
   })

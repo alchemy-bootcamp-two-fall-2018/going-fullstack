@@ -4,21 +4,21 @@
     "views": 1000,
     "isClickbait": false,
     "author": "Ezra Klein",
-    "category": "US"
+    "category": "us"
   },
   {
     "title": "France suspends planned tax increase after riots",
     "views": 500,
     "isClickbait": false,
     "author": "Jane C. Timm",
-    "category": "World"
+    "category": "world"
   },
   {
     "title": "Mueller expected to file Flynn sentencing memo",
     "views": 500000,
     "isClickbait": true,
     "author": "Jonathan Allen",
-    "category": "US"
+    "category": "us"
   }
 
 ]

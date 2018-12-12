@@ -1,7 +1,7 @@
 <template>
   <ul v-if="articles">
     <li v-for="article in articles" :key="article.id">
-      <RouterLink :to="`/articles/${articles.id}`">{{article.title}}</RouterLink>
+      <RouterLink :to="`/articles/${article.id}`">{{article.title}}</RouterLink>
     </li>
   </ul>
 </template>
@@ -9,7 +9,7 @@
 <script>
 export default {
   props: {
-    students: null
+    articles: null
   }
 };
 </script>
