@@ -21,7 +21,7 @@ export default {
         return fetch ('/api/teams')
             .then(response => response.json());
     },
-    upDateRacer(racer) {
+    updateRacer(racer) {
         return fetch(`/api/racers/${racer.id}`, {
             method: 'PUT',
             headers: {

@@ -81,7 +81,7 @@ app.put('/api/racers/:id', (req, res) => {
     WHERE id = $5
     RETURNING *;
   `,
-  [body.name, body.age, body.teamId, body.pr])
+  [body.name, body.age, body.teamId, body.pr, body.id])
     .then(result => {
       res.json(result.rows[0]);
     });

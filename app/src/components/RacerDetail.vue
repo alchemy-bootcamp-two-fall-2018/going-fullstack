@@ -4,6 +4,7 @@
             <EditRacer
                 :racer="racer"
                 :onEdit="handleEdit"
+                
                 />
         </div>
         <h2>{{racer.name}}</h2>
