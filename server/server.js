@@ -72,14 +72,14 @@ app.post('/api/racers', (req, res) => {
 app.put('/api/racers/:id', (req, res) => {
   const body = req.body;
   client.query(`
-  UPDATE racer
-  SET 
-  name = $1, 
-  age = $2, 
-  team_id = $3, 
-  pr = $4
-  WHERE id = $5
-  RETURNING *;
+    UPDATE racer
+    SET 
+      name = $1, 
+      age = $2, 
+      team_id = $3, 
+      pr = $4
+    WHERE id = $5
+    RETURNING *;
   `,
   [body.name, body.age, body.teamId, body.pr, body.id])
     .then(result => {
@@ -87,18 +87,17 @@ app.put('/api/racers/:id', (req, res) => {
     });
 });
 app.delete('/api/racers/:id', (req, res) => {
-  const body = req.body;
+  // const body = req.body;
   client.query(`
     DELETE FROM racer
     WHERE id = $1;
   `,
-  [body.id])
+  [req.params.id])
     .then(result => {
-      res.json({ remove:result.rows[0] });
+      res.json({ remove:result.rowCount });
     });
 });
 
- 
 const PORT = 3000;
 
 app.listen(PORT, () => {
