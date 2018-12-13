@@ -26,10 +26,10 @@ export default {
     return {
       island: null
     };
-},
-components: {
-  EditIsland
-},
+  },
+  components: {
+    EditIsland
+  },
   created() {
     api.getIsland(this.$route.params.id)
       .then(island => {
@@ -44,11 +44,11 @@ components: {
           this.island = updated;
           this.$router.push('/islands');
         });
-  },
-  handleDelete() {
-    api.deleteIsland(this.island.id)
-      .then(() => {
-        this.$router.push('/islands');
+    },
+    handleDelete() {
+      api.deleteIsland(this.island.id)
+        .then(() => {
+          this.$router.push('/islands');
         });
     }
   }

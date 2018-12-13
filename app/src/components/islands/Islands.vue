@@ -12,7 +12,7 @@ import AddIsland from './AddIsland.vue';
 import IslandList from './IslandList.vue';
 
 export default {
-    data() {
+  data() {
     return {
       islands: null,
     };
