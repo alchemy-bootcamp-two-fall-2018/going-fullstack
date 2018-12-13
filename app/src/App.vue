@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <img alt="Vue logo" src="./assets/logo.png">
+      <img alt="Vue logo" src="https://vignette.wikia.nocookie.net/gameideas/images/f/f4/MVDC.jpg/revision/latest?cb=20130318194948">
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/superheroes">Superheroes</RouterLink>
@@ -27,5 +27,9 @@ export default {};
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+img {
+  width: 500px;
 }
 </style>
