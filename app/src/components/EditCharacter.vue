@@ -2,6 +2,7 @@
     <CharacterForm 
         :onSubmit="handleEdit"
         :characterToEdit="character"
+        label="Update"
          />
 </template>
 
@@ -17,12 +18,9 @@ export default {
     },
     methods: {
         handleEdit(character) {
+            // console.log(character);
             return this.onEdit(character);
         }
     }
 };
 </script>
-
-<style>
-
-</style>

@@ -26,7 +26,8 @@ app.get('/api/characters', (req, res) => {
 app.get('/api/houses', (req, res) => {
   client.query(`
     SELECT id, name 
-    FROM houses;
+    FROM houses
+    ORDER BY name;
   `)
     .then(result => {
       res.json(result.rows);
@@ -37,11 +38,11 @@ app.get('/api/characters/:id', (req, res) => {
   client.query(`
     SELECT 
       characters.id,
-      characters.name,
+      characters.name as name,
       houses.id as "housesId",
       houses.name as house,
-      characters.alive,
-      characters.age
+      characters.alive as alive,
+      characters.age as age
     FROM characters 
     JOIN houses 
     ON characters.houses_id = houses.id
@@ -66,11 +67,11 @@ app.post('/api/characters', (req, res) => {
       return client.query(`
         SELECT 
           characters.id,
-          characters.name,
-          characters.houses_id as "housesId",
+          characters.name as name,
+          houses.id as "housesId",
           houses.name as house,
-          characters.alive,
-          characters.age
+          characters.alive as alive,
+          characters.age as age
         FROM characters
         JOIN houses 
         ON characters.houses_id = houses.id
@@ -88,11 +89,12 @@ app.delete('/api/characters/:id', (req, res) => {
   `, [req.params.id]).then(result => {
     res.json({ removed: result.rowCount === 1 });
   });
-})
+});
 
-  .put('/api/characters/:id', (req, res) => {
-    const body = req.body;
-    client.query(`
+app.put('/api/characters/:id', (req, res) => {
+  const body = req.body;
+  console.log('this is body', body);
+  client.query(`
     UPDATE characters
     SET 
       name = $1,
@@ -107,13 +109,11 @@ app.delete('/api/characters/:id', (req, res) => {
       alive,
       age;
   `, 
-    [body.name, body.housesId, body.alive, body.age, body.id])
-      .then(result => {
-        console.log('this is the result', result);
-        res.json(result.rows[0]);
-      });
-  });
-
+  [body.name, body.housesId, body.alive, body.age, req.params.id])
+    .then(result => {
+      res.json(result.rows[0]);
+    });
+});
 
 // this should go at the bottom //
 const PORT = 3000;

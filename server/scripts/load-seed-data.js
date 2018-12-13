@@ -3,12 +3,12 @@ const characters = require('../data/characters.json');
 const houses = require('./houses.js');
 
 Promise.all(
-  houses.map(house => {
+  houses.map(houses => {
     return client.query(`
       INSERT INTO houses (name)
       VALUES ($1);
     `,
-    [house.name]);
+    [houses.name]);
   })
 )
   .then(() => {

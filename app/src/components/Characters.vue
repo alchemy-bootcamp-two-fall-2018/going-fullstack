@@ -26,10 +26,11 @@ export default {
         AddCharacter
     },
     created() {
-        api.getCharacters().then(characters => {
-            this.characters = characters;
-        }).catch(err => 
-            console.log(err));
+        api.getCharacters()
+            .then(characters => {
+                this.characters = characters;
+            }).catch(err => 
+                console.log(err));
     },
     methods: {
         handleAdd(character) {

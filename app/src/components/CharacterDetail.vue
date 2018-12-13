@@ -3,6 +3,7 @@
         <h1>{{character.name}}</h1>
         <ul>
             <li>House: {{character.house}}</li>
+            <li>HouseId: {{character.housesId}}</li>
             <li>Age: {{character.age}}</li>
             <li>Alive? {{character.alive}}</li>
         </ul>
@@ -32,9 +33,8 @@ export default {
                     this.$router.push('/characters'));
         },
         handleEdit(character) {
-            return api.updateCharacter(character)
-                .then(updated => {this.character = updated;
-                });
+            return api.updateCharacter(character, this.$route.params.id)
+                .then(updated => this.character = updated);
         }
     },
     created() {

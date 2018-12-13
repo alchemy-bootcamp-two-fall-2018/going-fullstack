@@ -33,12 +33,13 @@ function initCharacter() {
         name: '',
         housesId: '',
         alive: '',
-        age: '',
+        age: null,
     };
 }
 
 function copyCharacter(character) {
     return {
+        id: character.id,
         name: character.name,
         house: character.housesId,
         alive: character.alive,
@@ -63,7 +64,8 @@ export default {
     created() {
         api.getHouses()
             .then(houses => {
-                this.houses = houses;});
+                this.houses = houses;
+            });
     }
 };
 </script>
