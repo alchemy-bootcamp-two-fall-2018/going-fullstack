@@ -28,6 +28,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+li {
+    list-style: none;
+}
 
 </style>
