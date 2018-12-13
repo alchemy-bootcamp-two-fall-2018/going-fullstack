@@ -92,23 +92,24 @@ app.delete('/api/characters/:id', (req, res) => {
 
   .put('/api/characters/:id', (req, res) => {
     const body = req.body;
-    console.log('\n\n\nthis is body', body);
     client.query(`
     UPDATE characters
     SET 
       name = $1,
-      house = $2,
+      houses_id = $2,
       alive = $3,
       age = $4
     WHERE id = $5
     RETURNING 
-      charactername
-      house.name,
+      id,
+      name,
+      houses_id as "housesId",
       alive,
       age;
   `, 
-    [body.name, body.house, body.alive, body.age, req.params.id])
+    [body.name, body.housesId, body.alive, body.age, body.id])
       .then(result => {
+        console.log('this is the result', result);
         res.json(result.rows[0]);
       });
   });
