@@ -32,7 +32,7 @@ export default {
             .then(response => response.json()); 
     },
     deleteRacer(id) {
-        return fetch (`/api/racer/${id}`, {
+        return fetch (`/api/racers/${id}`, {
             method: 'DELETE'
         })
             .then(response => response.json());
