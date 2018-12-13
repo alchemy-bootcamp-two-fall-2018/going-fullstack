@@ -1,6 +1,17 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <input v-model="superhero.name">
+    <p>
+      <label>Name:</label>
+      <input v-model="superhero.name">
+    </p>
+    <p>
+      <label>Age:</label>
+      <input v-model="superhero.name">
+    </p>
+    <p>
+      <label>Ability:</label>
+      <input v-model="superhero.name">
+    </p>
     <button>Add</button>
   </form>
 </template>
