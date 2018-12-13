@@ -23,13 +23,11 @@
     <p>
     <label>Rating:</label>
       <select v-if="ratings" 
-        v-model="island.ratingId"
-      >
+        v-model="island.ratingId">
       <option value="-1" disabled>Select a Rating</option>
       <option v-for="rating in ratings"
-        v-bind:key="rating.id"
-        v-bind:value="rating.id"
-      >
+        :key="rating.id"
+        :value="rating.id">
         {{rating.name}} ({{rating.shortName}})
       </option>
       </select>

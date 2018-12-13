@@ -46,6 +46,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const body = req.body;
+  console.log('BANANANAN\n\n\n', body);
 
   client.query(`
     INSERT INTO islands (name, loca, image, is_amazing, rating_id)
