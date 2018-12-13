@@ -14,10 +14,10 @@ app.use(express.json());
 app.get('/api/hero', (req, res) => {
   client.query(`
     SELECT 
-      hero.id, 
-      hero.name,
-      hero.age,
-      hero.ability
+      id, 
+      name,
+      age,
+      ability
     FROM hero
   `)
     .then(result => {
