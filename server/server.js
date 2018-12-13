@@ -87,7 +87,6 @@ app.put('/api/racers/:id', (req, res) => {
     });
 });
 app.delete('/api/racers/:id', (req, res) => {
-  // const body = req.body;
   client.query(`
     DELETE FROM racer
     WHERE id = $1;
