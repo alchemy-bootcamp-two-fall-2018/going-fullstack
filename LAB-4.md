@@ -10,7 +10,7 @@ Complete:
 
 ## Lab
 
-### Transational FullStack 
+### Transactional FullStack 
 
 Final Lab needs to handle:
 
