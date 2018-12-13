@@ -13,8 +13,7 @@ export default {
   data() {
     return {
       superhero: {
-        name: '',
-        age: ''
+        name: ''
       }
     };
   },
@@ -22,7 +21,7 @@ export default {
     handleSubmit() {
       this.onAdd(this.superhero)
         .then(() => {
-          this.superhero = { name: '', age: '' };
+          this.superhero = { name: '' };
         });
     }
   }

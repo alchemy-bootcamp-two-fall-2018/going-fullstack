@@ -1,6 +1,8 @@
 <template>
   <section v-if="hero">
     <h2>{{hero.name}}</h2>
+    <p>{{hero.age}}</p>
+    <p>{{hero.ability}}</p>
   </section>
 </template>
 
