@@ -36,6 +36,7 @@ export default {
         handleAdd(character) {
             return api.addCharacter(character).then(saved => {
                 this.characters.push(saved);
+                this.$router.push(`/characters/${saved.id}`);
             });
         }
     }
