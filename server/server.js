@@ -59,7 +59,7 @@ app.post('/api/characters', (req, res) => {
     INSERT INTO characters(name, houses_id, alive, age)
     VALUES ($1, $2, $3, $4)
     RETURNING id;
-  `,
+    `, 
   [body.name, body.housesId, body.alive, body.age])
     .then(result => {
       const id = result.rows[0].id;
@@ -67,8 +67,7 @@ app.post('/api/characters', (req, res) => {
         SELECT 
           characters.id,
           characters.name,
-          characters.houses_id,
-          houses.id as "housesId",
+          characters.houses_id as "housesId",
           houses.name as house,
           characters.alive,
           characters.age
@@ -89,7 +88,31 @@ app.delete('/api/characters/:id', (req, res) => {
   `, [req.params.id]).then(result => {
     res.json({ removed: result.rowCount === 1 });
   });
-});
+})
+
+  .put('/api/characters/:id', (req, res) => {
+    const body = req.body;
+    console.log('\n\n\nthis is body', body);
+    client.query(`
+    UPDATE characters
+    SET 
+      name = $1,
+      house = $2,
+      alive = $3,
+      age = $4
+    WHERE id = $5
+    RETURNING 
+      charactername
+      house.name,
+      alive,
+      age;
+  `, 
+    [body.name, body.house, body.alive, body.age, req.params.id])
+      .then(result => {
+        res.json(result.rows[0]);
+      });
+  });
+
 
 // this should go at the bottom //
 const PORT = 3000;

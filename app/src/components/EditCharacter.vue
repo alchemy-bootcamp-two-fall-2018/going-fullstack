@@ -17,7 +17,6 @@ export default {
     },
     methods: {
         handleEdit(character) {
-            console.log(character);
             return this.onEdit(character);
         }
     }

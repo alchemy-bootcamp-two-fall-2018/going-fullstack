@@ -1,7 +1,7 @@
 <template>
     <section>
         <h1>Characters</h1>
-        <AddCharacter :onSubmit="handleAdd" />
+        <AddCharacter :onAdd="handleAdd" />
         <ul v-if="characters">
             <li v-for="character in characters" 
             :key="character.id">
