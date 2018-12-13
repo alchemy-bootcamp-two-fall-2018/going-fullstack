@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
   `)
     .then(result => {
       res.json(result.rows);
-  });
+    });
 });
 
 router.get('/:id', (req, res) => {
@@ -53,11 +53,11 @@ router.post('/', (req, res) => {
     VALUES($1, $2, $3, $4, $5)
     RETURNING id;
 `,
-[body.name, body.loca, body.image, body.isAmazing, body.ratingId])
-  .then(result => {
-    const id = result.rows[0].id;
+  [body.name, body.loca, body.image, body.isAmazing, body.ratingId])
+    .then(result => {
+      const id = result.rows[0].id;
 
-    return client.query(` 
+      return client.query(` 
     SELECT
       islands.id,
       islands.name as name,
@@ -71,17 +71,17 @@ router.post('/', (req, res) => {
     ON islands.rating_id = rating.id
     WHERE islands.id = $1;
     `,
-    [id]);
-  })
-  .then(result => {
-    res.json(result.rows[0]);
-  });
+      [id]);
+    })
+    .then(result => {
+      res.json(result.rows[0]);
+    });
 });
 
 router.put('/:id', (req, res) => {
-const body = req.body;
+  const body = req.body;
 
-client.query(`
+  client.query(`
   UPDATE islands
   SET
     name = $1,
@@ -98,21 +98,21 @@ client.query(`
     is_amazing as "isAmazing",
     rating_id as "ratingId";
 `,
-[body.name, body.loca, body.image, body.isAmazing, body.ratingId, body.id])
-  .then(result => {
-    console.log('this is the result', result);
-    res.json(result.rows[0]);
-  });
+  [body.name, body.loca, body.image, body.isAmazing, body.ratingId, body.id])
+    .then(result => {
+      console.log('this is the result', result);
+      res.json(result.rows[0]);
+    });
 });
 
 router.delete('/:id', (req, res) => {
   client.query(`
    DELETE FROM islands WHERE id = $1;
 `,
-[req.params.id])
-  .then(result => {
-    res.json({ removed:result.rowCount === 1 });
-  });
+  [req.params.id])
+    .then(result => {
+      res.json({ removed:result.rowCount === 1 });
+    });
 });
 
 module.exports = router;
