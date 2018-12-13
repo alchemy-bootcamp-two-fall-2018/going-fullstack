@@ -30,5 +30,11 @@ export default {
             body: JSON.stringify(racer)
         })
             .then(response => response.json()); 
+    },
+    deleteRacer(id) {
+        return fetch (`/api/racer/${id}`, {
+            method: 'DELETE'
+        })
+            .then(response => response.json());
     }
-};
+};   
