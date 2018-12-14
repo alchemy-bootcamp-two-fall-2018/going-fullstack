@@ -18,7 +18,7 @@ export default {
 <style scoped>
 a {
     color: rgb(214, 115, 22);
-    text: black;
+    font: black;
   }
   h3:hover {
     background: rgb(231, 235, 12);

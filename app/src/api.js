@@ -1,5 +1,16 @@
 let ratings = null;
 
+const getOptions = (method, data) => {
+  return {
+    method,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  };
+};
+
+
 export default {
   getIslands() {
     return fetch('/api/islands')
@@ -10,13 +21,7 @@ export default {
       .then(response => response.json());
   },
   addIsland(island) {
-    return fetch('/api/islands', {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json'
-      }, 
-      body: JSON.stringify(island)
-    })
+    return fetch('/api/islands', getOptions('POST', island))
       .then(response => response.json());
   },
 
@@ -27,13 +32,9 @@ export default {
       .then(response => response.json());
   },
   updateIsland(island) {
-    return fetch(`/api/islands/${island.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(island)
-    })
+    return fetch(`/api/islands/${island.id}`, 
+      getOptions('PUT', island)
+    )
       .then(response => response.json());
   },
 
@@ -46,6 +47,7 @@ export default {
         .then(response => response.json())
         .then(fetchedRatings => {
           ratings = fetchedRatings;
+          return ratings;
         });
     }
   }

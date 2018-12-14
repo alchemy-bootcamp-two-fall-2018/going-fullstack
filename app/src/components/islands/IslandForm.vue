@@ -28,7 +28,7 @@
       <option v-for="rating in ratings"
         :key="rating.id"
         :value="rating.id">
-        {{rating.name}} ({{rating.shortName}})
+        {{rating.name}} 
       </option>
       </select>
     </p>
@@ -56,7 +56,7 @@ function copyIsland(island) {
     loca: island.loca,
     image: island.image,
     isAmazing: island.isAmazing,
-    ratingId: island.ratingId
+    ratingId: island.rating_id
   };
 }
 export default {
@@ -67,14 +67,16 @@ export default {
   },
   data() {
     return {
-      island: this.islandToEdit ? copyIsland(this.islandToEdit) : initIsland(),
+      island: this.islandToEdit
+        ? copyIsland(this.islandToEdit)
+        : initIsland(),
       ratings: null
     };
   },
   created() {
-    api.getIslands()
-      .then(islands => {
-        this.islands = islands;
+    api.getRatings()
+      .then(ratings => {
+        this.ratings = ratings;
       });
   }
 };
