@@ -8,6 +8,7 @@ export default new VueRouter ({
     routes: [
         { path: '/', component: Home }, 
         { path: '/grapplers', component: Grapplers }, 
-        { path: '/grapplers/:id', component: GrapplerDetail }
+        { path: '/grapplers/:id', component: GrapplerDetail }, 
+        { path: '*', redirect: '/' }
     ]
 });

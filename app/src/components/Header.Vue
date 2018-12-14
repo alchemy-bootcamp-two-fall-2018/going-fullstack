@@ -4,7 +4,7 @@
             hello world
         </h1>
         <RouterLink class="home" to="/"> Home </RouterLink>
-            <RouterLink class="Add" to="/grapplers"> Add Page </RouterLink>
+            <RouterLink class="Add" to="/grapplers"> Grapplers </RouterLink>
     </div>
 </template>
 

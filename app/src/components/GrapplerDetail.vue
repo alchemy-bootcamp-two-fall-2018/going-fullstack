@@ -1,9 +1,11 @@
 <template>
     <div v-if="grappler">
         <h2> Name: {{grappler.name}}</h2>
-        <h3> Age:{{grappler.age}}</h3>
-        <h3>Championship Status: {{grappler.champ}}</h3>
-        <h3>Preference: {{grappler.pref_id}}</h3>
+        <p> Age:{{grappler.age}}</p>
+        <p>Championship Status: {{grappler.champ}}</p>
+        <p>Preference: {{grappler.prefId}}</p>
+
+
         <button @click="handleDelete">DELETE {{grappler.name}} </button>
 
         <UpdateForm :onUpdate="handleUpdate"
@@ -34,8 +36,12 @@ export default {
     },
     methods: {
         handleDelete() {
-            api.deleteGrappler(this.grappler.id);
+            api.deleteGrappler(this.grappler.id)
+                .then(() => {
+                    this.$router.push('/grapplers');
+                });
         }, 
+
         handleUpdate(grappler) {
             console.log('button fires update method onclick', grappler);
             api.updateGrappler(grappler)
@@ -49,28 +55,11 @@ export default {
 
 <style>
 body {
-    background: linear-gradient(307deg, #52f2c8, #5287f2);
-background-size: 400% 400%;
+  background-image: linear-gradient(to right bottom, #06d4f6, #00b7ff, #0095ff, #006aff, #6612eb);
+    }
 
--webkit-animation: AnimationName 0s ease infinite;
--moz-animation: AnimationName 0s ease infinite;
-animation: AnimationName 0s ease infinite;
-
-@-webkit-keyframes AnimationName {
-    0%{background-position:0% 18%}
-    50%{background-position:100% 83%}
-    100%{background-position:0% 18%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 18%}
-    50%{background-position:100% 83%}
-    100%{background-position:0% 18%}
-}
-@keyframes AnimationName { 
-    0%{background-position:0% 18%}
-    50%{background-position:100% 83%}
-    100%{background-position:0% 18%}
-}
-}
+    p {
+        font-size: 20px
+    }
 
 </style>

@@ -40,7 +40,14 @@ app.get('/api/data/grapplers', (req, res) => {
 app.get('/api/data/grapplers/:id', (req, res) => {
     client.query(` 
     
-    SELECT * FROM grapplers WHERE id = $1;`, 
+    SELECT
+        grapplers.id,
+        grapplers.name,
+        grapplers.age,
+        grapplers.champ,
+        pref_id as "prefId"
+     FROM grapplers WHERE id = $1
+     ;`, 
     [req.params.id])
         .then(result => {
             res.json(result.rows[0]);
@@ -82,7 +89,7 @@ app.post('/api/data/grapplers', (req, res) => {
     client.query (`
     INSERT INTO grapplers (name, age, champ, pref_id)
     VALUES($1, $2, $3, $4)
-    RETURNING id, name, age, champ;`,
+    RETURNING id, name, age, champ, pref_id as "prefId";`,
     [body.name, body.age, body.champ, body.prefId])
         .then(result => {
             const id = result.rows[0].id;
