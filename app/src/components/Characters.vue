@@ -26,15 +26,17 @@ export default {
         AddCharacter
     },
     created() {
-        api.getCharacters().then(characters => {
-            this.characters = characters;
-        }).catch(err => 
-            console.log(err));
+        api.getCharacters()
+            .then(characters => {
+                this.characters = characters;
+            }).catch(err => 
+                console.log(err));
     },
     methods: {
         handleAdd(character) {
             return api.addCharacter(character).then(saved => {
                 this.characters.push(saved);
+                this.$router.push(`/characters/${saved.id}`);
             });
         }
     }
@@ -42,16 +44,16 @@ export default {
 </script>
 
 <style scoped>
-li {
-    list-style: none;
-    padding: 5px;
-}
 ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-p {
-    font-weight: bold;
+	display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-column-gap: 10px;
+    grid-row-gap: 60px;
+    list-style: none;
+	}
+li :hover {
+    background: rgba(170, 170, 170, 0.452);
+    padding: 5px;
+    font-size: 1.05em;
 }
 </style>

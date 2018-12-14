@@ -1,30 +1,32 @@
 [
   {
-    "id": "hp",
     "name": "Harry Potter",
-    "cool": true,
-    "dob": "7/31/1980"
+    "house": "Gryffindor",
+    "alive": true,
+    "age": 38
   },
   {
-    "id": "hg",
     "name": "Hermione Granger",
-    "cool": true,
-    "dob": "9/19/1980"
+    "house": "Gryffindor",
+    "alive": true,
+    "age": 38
   },
   {
-    "id": "rw",
     "name": "Ron Weasley",
-    "cool": false,
-    "dob": "3/1/1980"
+    "house": "Gryffindor",
+    "alive": true,
+    "age": 38
   },
   {
-    "name": "Banana",
-    "cool": "true",
-    "dob": "2019-12-20"
+    "name": "Cedric Diggory",
+    "house": "Hufflepuff",
+    "alive": false,
+    "age": 17
   },
   {
-    "name": "Banana",
-    "cool": "false",
-    "dob": "1920-12-20"
+    "name": "Cho Chang",
+    "house": "Ravenclaw",
+    "alive": true,
+    "age": 38
   }
 ]

@@ -2,8 +2,8 @@
   <div id="app">
     <header>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/characters">Characters</RouterLink>
+        <span><RouterLink to="/">Home</RouterLink></span>
+        <span><RouterLink to="/characters">Characters</RouterLink></span>
       </nav>
     </header>
 
@@ -34,10 +34,11 @@ export default {
 nav {
   display: flex;
   justify-content: space-around;
-}
-header {
-  background-color: rgba(13, 221, 228, 0.411);
   padding: 20px;
 }
-
+span :hover {
+  background: rgba(170, 170, 170, 0.452);
+  padding: 5px;
+  font-size: 1.10em;
+}
 </style>
