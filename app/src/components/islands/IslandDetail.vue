@@ -8,7 +8,7 @@
         v-bind:island="island"
         v-bind:onEdit="handleEdit"/>
       </div>
-      <img v-bind:src="island.iamge"/>
+      <img v-bind:src="island.image"/>
       <p>Loca: {{island.loca}} </p>
       <p>isAmazing: {{island.isAmazing}} </p>
       <p>Rating: {{island.rating}} </p>
