@@ -6,17 +6,27 @@
     </p>
     <p>
       <label>Age:</label>
-      <input v-model="superhero.name">
+      <input type="number" v-model="superhero.age">
     </p>
     <p>
       <label>Ability:</label>
-      <input v-model="superhero.name">
+      <input v-model="superhero.ability">
     </p>
     <button>Add</button>
   </form>
 </template>
 
 <script>
+// import api from '../../services/api';
+
+// function initHero() {
+//   return {
+//     name: '',
+//     age: '',
+//     ability: ''
+//   };
+// }
+
 export default {
   props: {
     onAdd: Function
@@ -24,7 +34,9 @@ export default {
   data() {
     return {
       superhero: {
-        name: ''
+        name: '',
+        age: '',
+        ability: '',
       }
     };
   },
@@ -32,7 +44,7 @@ export default {
     handleSubmit() {
       this.onAdd(this.superhero)
         .then(() => {
-          this.superhero = { name: '' };
+          this.superhero = { name: '', age: '', ability: '' };
         });
     }
   }
