@@ -16,31 +16,27 @@
       <label>Number of Employees:</label>
       <input type="number" v-model="nonprofit.employees">
     </p>
-    <!-- <p>
+    <p>
       <label>In PDX Metro Area?</label>
       <select v-if="metropolitans" 
         v-model="nonprofit.metropol" 
-        required>
-        <option value="-1" disabled>Select A Response</option>
-        <option v-for="metropolitan in metropolitans"
-          :key="metropolitan.id"
-          :value="metropolitan.id"
-        >
-          {{metropolitan.name}}
-        </option>
+      >
+        <option value=true>Yes</option>
+        <option value=false>No</option>
       </select>
-    </p> -->
+    </p>
     <p>
       <label>Category:</label>
       <select v-if="categories" 
-        v-model="nonprofit.category" 
+        v-model="nonprofit.categoryId" 
         required
       >
-        <option v-for="(display, key) in categories"
-          :key="key"
-          :value="key"
+        <option value="-1" disabled>Select a Category</option>
+        <option v-for="category in categories"
+          :key="category.id"
+          :value="category.id"
         >
-          {{display}}
+          {{category.name}} ({{category.shortName}})
         </option>
       </select>
     </p>
@@ -54,12 +50,12 @@ import api from '../../services/api';
 function initNonprofit() {
   return {
     name: '',
-    //category: '',
     city: '',
     description: '',
     employees: 0,
     metropol: true,
-    category: 'edu'
+    category: 'edu',
+    categoryId: -1,
   };
 }
 
@@ -74,11 +70,11 @@ export default {
     };
   },
   created() {
-    // api.getMetropolitans()
-    //   .then(metropolitans => {
-    //     this.metropolitans = metropolitans;
-    //   });
     this.categories = api.getCategories();
+    api.getCategories()
+      .then(categories => {
+        this.categories = categories;
+      });
   },
   methods: {
     handleSubmit() {

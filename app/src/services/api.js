@@ -22,17 +22,7 @@ export default {
   },
   
   getCategories() {
-    // return fetch('./api/metropolitans')
-    //   .then(response => response.json());
-    return {
-      edu: 'Education',
-      you: 'Youth',
-      dv: 'Domestic Violence',
-      art: 'Arts',
-      ani: 'Animals',
-      env: 'Environment',
-      tec: 'Technology',
-      pub: 'Public Benefit'
-    };
+    return fetch('./api/categories')
+      .then(response => response.json());
   }
 };

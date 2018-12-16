@@ -12,8 +12,8 @@ export default {
   },
   computed: {
     formattedMetro() {
-      return new Metro(this.nonprofit.metropolitan).toString();
-    }
+      return new Metro(this.nonprofit.metropol).toString();
+    } //was metropolitan
   }
 };
 </script>
