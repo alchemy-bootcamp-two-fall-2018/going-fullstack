@@ -19,13 +19,13 @@
 <script>
 // import api from '../../services/api';
 
-// function initHero() {
-//   return {
-//     name: '',
-//     age: '',
-//     ability: ''
-//   };
-// }
+function initSuperhero() {
+  return {
+    name: '',
+    age: '',
+    ability: ''
+  };
+}
 
 export default {
   props: {
@@ -33,18 +33,14 @@ export default {
   },
   data() {
     return {
-      superhero: {
-        name: '',
-        age: '',
-        ability: '',
-      }
+      superhero: initSuperhero()
     };
   },
   methods: {
     handleSubmit() {
       this.onAdd(this.superhero)
         .then(() => {
-          this.superhero = { name: '', age: '', ability: '' };
+          this.superhero = initSuperhero();
         });
     }
   }

@@ -21,4 +21,9 @@ export default {
     })
       .then(response => response.json());
   },
+
+  getGroups() {
+    return fetch('/api/groups')
+      .then(response => response.json());
+  }
 };

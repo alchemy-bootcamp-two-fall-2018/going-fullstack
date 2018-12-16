@@ -2,26 +2,19 @@
   {
     "name": "Batman",
     "age": 40,
-    "ability": false
+    "ability": "martial arts", 
+    "group": "dc"
   },
   {
     "name": "Spiderman",
     "age": 45,
-    "ability": false
+    "ability": "web slinging", 
+    "group": "marvel"
   },
   {
     "name": "Ironman",
     "age": 42,
-    "ability": true
-  },
-  {
-    "name": "superman",
-    "age": 80,
-    "id": "GuMq-gjjx"
-  },
-  {
-    "name": "Flash",
-    "age": 90,
-    "id": "JQ8hNybep"
+    "ability": "flies",
+    "group": "marvel"
   }
 ]

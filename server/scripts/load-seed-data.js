@@ -1,30 +1,30 @@
 const client = require('../db-client');
 const superheroes = require('./superheroes.json');
+const groups = require('./groups');
 
-// client.connect()
-// .then(() => {
 Promise.all(
-  superheroes.map(hero => {
+  groups.map(group => {
     return client.query(`
-      INSERT INTO hero (name, age, ability)
-      VALUES ($1, $2, $3);
+      INSERT INTO group (name, short_name)
+      VALUES ($1, $2);
     `,
-    [hero.name, hero.age, hero.ability]);
+    [group.name, group.shortName]);
   })
 )
   .then(() => {
     return Promise.all(
       superheroes.map(hero => {
         return client.query(`
-          INSERT INTO hero (name, age, ability)
+          INSERT INTO hero (name, age, ability, group_id)
           SELECT
             $1 as name,
             $2 as age,
             $3 as ability
-          FROM hero
-          WHERE name = $1;
+            id as group_id
+          FROM group
+          WHERE short_name = $4;
         `,
-        [hero.name, hero.age, hero.ability]);
+        [hero.name, hero.age, hero.ability, hero.group]);
       })
     );
   })
