@@ -7,7 +7,7 @@ const client = new Client(databaseUrl);
 
 client.connect();
 client.query (`
-    SELECT name, city, description, employees, metropol, category FROM nonprofits;
+    SELECT name, city, description, employees, metropol, category FROM nonprofit;
 `)
   .then(
     results => {
