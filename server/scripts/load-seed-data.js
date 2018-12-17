@@ -15,12 +15,12 @@ Promise.all(
     return Promise.all(
       superheroes.map(hero => {
         return client.query(`
-          INSERT INTO hero (name, age, ability, group_id)
+          INSERT INTO hero (name, group_id, age, ability)
           SELECT
             $1 as name,
+            id as group_id,
             $2 as age,
             $3 as ability
-            id as group_id
           FROM group
           WHERE short_name = $4;
         `,

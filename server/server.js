@@ -34,7 +34,7 @@ app.get('/api/hero', (req, res) => {
     FROM hero
     JOIN group
     ON hero.group_id = group.id
-    ORDER BY ASC;
+    ORDER BY name ASC;
   `)
     .then(result => {
       res.json(result.rows);
@@ -56,10 +56,10 @@ app.post('/api/hero', (req, res) => {
 
   client.query(`
     INSERT INTO hero (name, age, ability, group_id)
-    VALUES($1, $2, $3)
+    VALUES($1, $2, $3, $4)
     RETURNING id;
   `,
-  [body.name, body.age, body.ability])
+  [body.name, body.age, body.ability, body.groupId])
     .then(result => {
       const id = result.rows[0].id;
 
