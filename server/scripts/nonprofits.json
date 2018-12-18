@@ -5,7 +5,7 @@
     "city": "Forest Grove",
     "description": "A fine school",
     "employees": 1500,
-    "metropolitan": true,
+    "metropol": true,
     "category": "Education"
   },
   {
@@ -14,7 +14,7 @@
     "city": "Portland",
     "description": "A fine society",
     "employees": 750,
-    "metropolitan": true,
+    "metropol": true,
     "category": "Youth"
   },
   {
@@ -23,7 +23,7 @@
     "city": "Portland",
     "description": "A fine organization",
     "employees": 200,
-    "metropolitan": true,
+    "metropol": true,
     "category": "Education"
   },
   {
@@ -32,7 +32,7 @@
     "city": "Portland",
     "description": "A very fine organization",
     "employees": 210,
-    "metropolitan": true,
+    "metropol": true,
     "category": "Domestic Violence"
   },
   {
@@ -41,7 +41,7 @@
     "city": "Portland",
     "description": "A fine museum",
     "employees": 500,
-    "metropolitan": true,
+    "metropol": true,
     "category": "Arts"
   },
   {
@@ -50,7 +50,7 @@
     "city": "Bandon",
     "description": "A fine foundation",
     "employees": 75,
-    "metropolitan": false,
+    "metropol": false,
     "category": "Public Benefit"
   },
   {
@@ -59,7 +59,7 @@
     "city": "Eugene",
     "description": "A fine rescue",
     "employees": 10,
-    "metropolitan": false,
+    "metropol": false,
     "category": "Animals"
   },
   {
@@ -68,7 +68,7 @@
     "city": "Mount Vernon",
     "description": "A fine arts foundation",
     "employees": 125,
-    "metropolitan": false,
+    "metropol": false,
     "category": "Arts"
   },
   {
@@ -77,7 +77,7 @@
     "city": "Eugene",
     "description": "A fine land trust",
     "employees": 25,
-    "metropolitan": false,
+    "metropol": false,
     "category": "Environment"
   },
   {
@@ -86,7 +86,7 @@
     "city": "Champoeg",
     "description": "A fine cemetery association",
     "employees": 24,
-    "metropolitan": false,
+    "metropol": false,
     "category": "Public Benefit"
   },
   {
@@ -95,7 +95,7 @@
     "city": "Bend",
     "description": "A fine fire victim assistance program",
     "employees": 5,
-    "metropolitan": false,
+    "metropol": false,
     "category": "Public Benefit"
   },
   {
@@ -104,7 +104,7 @@
     "city": "Portland",
     "description": "A fine tech networking organization",
     "employees": 1,
-    "metropolitan": true,
+    "metropol": true,
     "category": "Technology"
   }
 ]

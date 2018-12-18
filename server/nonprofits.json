@@ -4,7 +4,7 @@
     "city": "Eugene",
     "description": null,
     "employees": null,
-    "metropol": null,
+    "metropol": false,
     "category": null
   },
   {
@@ -12,7 +12,7 @@
     "city": "Forest Grove",
     "description": "A fine school",
     "employees": "1500",
-    "metropol": null,
+    "metropol": true,
     "category": "Education"
   },
   {
@@ -20,7 +20,7 @@
     "city": "Portland",
     "description": "A fine society",
     "employees": "750",
-    "metropol": null,
+    "metropol": true,
     "category": "Youth"
   },
   {
@@ -28,7 +28,7 @@
     "city": "Portland",
     "description": "A fine organization",
     "employees": "200",
-    "metropol": null,
+    "metropol": true,
     "category": "Education"
   },
   {
@@ -36,7 +36,7 @@
     "city": "Portland",
     "description": "A very fine organization",
     "employees": "210",
-    "metropol": null,
+    "metropol": true,
     "category": "Domestic Violence"
   },
   {
@@ -44,7 +44,7 @@
     "city": "Portland",
     "description": "A fine museum",
     "employees": "500",
-    "metropol": null,
+    "metropol": true,
     "category": "Arts"
   },
   {
@@ -52,7 +52,7 @@
     "city": "Bandon",
     "description": "A fine foundation",
     "employees": "75",
-    "metropol": null,
+    "metropol": false,
     "category": "Public Benefit"
   },
   {
@@ -60,7 +60,7 @@
     "city": "Eugene",
     "description": "A fine rescue",
     "employees": "10",
-    "metropol": null,
+    "metropol": false,
     "category": "Animals"
   },
   {
@@ -68,7 +68,7 @@
     "city": "Mount Vernon",
     "description": "A fine arts foundation",
     "employees": "125",
-    "metropol": null,
+    "metropol": false,
     "category": "Arts"
   },
   {
@@ -76,7 +76,7 @@
     "city": "Eugene",
     "description": "A fine land trust",
     "employees": "25",
-    "metropol": null,
+    "metropol": false,
     "category": "Environment"
   },
   {
@@ -84,7 +84,7 @@
     "city": "Champoeg",
     "description": "A fine cemetery association",
     "employees": "24",
-    "metropol": null,
+    "metropol": false,
     "category": "Public Benefit"
   },
   {
@@ -92,7 +92,7 @@
     "city": "Bend",
     "description": "A fine fire victim assistance program",
     "employees": "5",
-    "metropol": null,
+    "metropol": false,
     "category": "Public Benefit"
   },
   {
@@ -100,7 +100,7 @@
     "city": "Portland",
     "description": "A fine tech networking organization",
     "employees": "1",
-    "metropol": null,
+    "metropol": true,
     "category": "Technology"
   },
   {
@@ -108,7 +108,7 @@
     "city": "Forest Grove",
     "description": "A fine school",
     "employees": "1500",
-    "metropol": null,
+    "metropol": true,
     "category": "Education"
   },
   {
@@ -116,7 +116,7 @@
     "city": "Portland",
     "description": "A fine society",
     "employees": "750",
-    "metropol": null,
+    "metropol": true,
     "category": "Youth"
   },
   {
@@ -124,7 +124,7 @@
     "city": "Portland",
     "description": "A fine organization",
     "employees": "200",
-    "metropol": null,
+    "metropol": true,
     "category": "Education"
   },
   {
@@ -132,7 +132,7 @@
     "city": "Portland",
     "description": "A very fine organization",
     "employees": "210",
-    "metropol": null,
+    "metropol": true,
     "category": "Domestic Violence"
   },
   {
@@ -140,7 +140,7 @@
     "city": "Portland",
     "description": "A fine museum",
     "employees": "500",
-    "metropol": null,
+    "metropol": true,
     "category": "Arts"
   },
   {
@@ -148,7 +148,7 @@
     "city": "Bandon",
     "description": "A fine foundation",
     "employees": "75",
-    "metropol": null,
+    "metropol": false,
     "category": "Public Benefit"
   },
   {
@@ -156,7 +156,7 @@
     "city": "Eugene",
     "description": "A fine rescue",
     "employees": "10",
-    "metropol": null,
+    "metropol": false,
     "category": "Animals"
   },
   {
@@ -164,7 +164,7 @@
     "city": "Mount Vernon",
     "description": "A fine arts foundation",
     "employees": "125",
-    "metropol": null,
+    "metropol": false,
     "category": "Arts"
   },
   {
@@ -172,7 +172,7 @@
     "city": "Eugene",
     "description": "A fine land trust",
     "employees": "25",
-    "metropol": null,
+    "metropol": false,
     "category": "Environment"
   },
   {
@@ -180,7 +180,7 @@
     "city": "Champoeg",
     "description": "A fine cemetery association",
     "employees": "24",
-    "metropol": null,
+    "metropol": false,
     "category": "Public Benefit"
   },
   {
@@ -188,7 +188,7 @@
     "city": "Bend",
     "description": "A fine fire victim assistance program",
     "employees": "5",
-    "metropol": null,
+    "metropol": false,
     "category": "Public Benefit"
   },
   {
@@ -196,7 +196,7 @@
     "city": "Portland",
     "description": "A fine tech networking organization",
     "employees": "1",
-    "metropol": null,
+    "metropol": true,
     "category": "Technology"
   }
 ]
