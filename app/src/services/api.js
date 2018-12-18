@@ -22,8 +22,8 @@ export default {
       .then(response => response.json());
   },
 
-  getGroups() {
-    return fetch('/api/groups')
+  getGangs() {
+    return fetch('/api/gangs')
       .then(response => response.json());
   }
 };

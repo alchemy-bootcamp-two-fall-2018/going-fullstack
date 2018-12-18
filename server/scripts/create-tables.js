@@ -1,7 +1,7 @@
 const client = require('../db-client');
 
 client.query(`
-  CREATE TABLE IF NOT EXISTS groupie (
+  CREATE TABLE IF NOT EXISTS gang (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
     short_name VARCHAR(8) NOT NULL
@@ -10,7 +10,7 @@ client.query(`
   CREATE TABLE IF NOT EXISTS hero (
     id SERIAL PRIMARY KEY,
     name VARCHAR(256) NOT NULL,
-    groupie_id INTEGER NOT NULL REFERENCES groupie(id),
+    gang_id INTEGER NOT NULL REFERENCES gang(id),
     age INTEGER,
     ability VARCHAR(50)
   );

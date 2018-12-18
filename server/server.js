@@ -11,10 +11,10 @@ app.use(express.json());
 // const client = new Client(dbUrl);
 // client.connect();
 
-app.get('/api/groups', (req, res) => {
+app.get('/api/gangs', (req, res) => {
   client.query(`
     SELECT id, name, short_name as "shortName"
-    FROM group
+    FROM gang
     ORDER BY name;
   `)
     .then(result => {
@@ -29,11 +29,11 @@ app.get('/api/hero', (req, res) => {
       hero.name as name,
       hero.age as age,
       hero.ability as ability,
-      group.id as "groupId",
-      group.name as group
+      gang.id as "gangId",
+      gang.name as gang
     FROM hero
-    JOIN group
-    ON hero.group_id = group.id
+    JOIN gang
+    ON hero.gang_id = gang.id
     ORDER BY name ASC;
   `)
     .then(result => {
@@ -55,11 +55,11 @@ app.post('/api/hero', (req, res) => {
   const body = req.body;
 
   client.query(`
-    INSERT INTO hero (name, age, ability, group_id)
+    INSERT INTO hero (name, age, ability, gang_id)
     VALUES($1, $2, $3, $4)
     RETURNING id;
   `,
-  [body.name, body.age, body.ability, body.groupId])
+  [body.name, body.age, body.ability, body.gangId])
     .then(result => {
       const id = result.rows[0].id;
 
@@ -69,11 +69,11 @@ app.post('/api/hero', (req, res) => {
           hero.name as name,
           hero.age as age, 
           hero.ability as ability,
-          group.id as "groupId",
-          group.name as group
+          gang.id as "gangId",
+          gang.name as gang
         FROM hero
-        JOIN group
-        ON hero.group_id = group.id
+        JOIN gang
+        ON hero.gang_id = gang.id
         WHERE hero.id = $1;
       `,
       [id]);

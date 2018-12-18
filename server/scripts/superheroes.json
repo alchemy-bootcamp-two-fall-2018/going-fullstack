@@ -2,19 +2,19 @@
   {
     "name": "Batman",
     "age": 40,
-    "group": "dc",
+    "gang": "dc",
     "ability": "martial arts"
   },
   {
     "name": "Spiderman",
     "age": 45,
-    "group": "marvel",
+    "gang": "marvel",
     "ability": "web slinging" 
   },
   {
     "name": "Ironman",
     "age": 42,
-    "group": "marvel",
+    "gang": "marvel",
     "ability": "flies"
   }
 ]
