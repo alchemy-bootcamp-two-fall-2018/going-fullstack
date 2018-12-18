@@ -2,26 +2,19 @@
   {
     "name": "Batman",
     "age": 40,
-    "invisible": false
+    "gang": "dc",
+    "ability": "martial arts"
   },
   {
     "name": "Spiderman",
     "age": 45,
-    "flies": false
+    "gang": "marvel",
+    "ability": "web slinging" 
   },
   {
     "name": "Ironman",
     "age": 42,
-    "flies": true
-  },
-  {
-    "name": "superman",
-    "age": 80,
-    "id": "GuMq-gjjx"
-  },
-  {
-    "name": "Flash",
-    "age": 90,
-    "id": "JQ8hNybep"
+    "gang": "marvel",
+    "ability": "flies"
   }
 ]

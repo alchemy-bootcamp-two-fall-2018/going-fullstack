@@ -1,3 +1,4 @@
+
 export default {
   
   getHeroes() {
@@ -20,4 +21,9 @@ export default {
     })
       .then(response => response.json());
   },
+
+  getGangs() {
+    return fetch('/api/gangs')
+      .then(response => response.json());
+  }
 };

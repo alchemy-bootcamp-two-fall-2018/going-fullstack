@@ -8,7 +8,7 @@ const client = new Client(databaseUrl);
 client.connect();
 
 client.query(`
-  SELECT name, age;
+  SELECT name, age, ability, group FROM hero;
 `)
   .then(
     results => {

@@ -1,6 +1,8 @@
 <template>
-  <section v-if="superhero">
-    <h2>{{superhero.name}}</h2>
+  <section v-if="hero">
+    <h2>{{hero.name}}</h2>
+    <p>{{hero.age}}</p>
+    <p>{{hero.ability}}</p>
   </section>
 </template>
 
@@ -10,13 +12,13 @@ import api from '../../services/api';
 export default {
   data() {
     return {
-      superhero: null
+      hero: null
     };
   },
   created() {
     api.getHero(this.$route.params.id)
-      .then(superhero => {
-        this.superhero = superhero;
+      .then(hero => {
+        this.hero = hero;
       });
   }
 };
